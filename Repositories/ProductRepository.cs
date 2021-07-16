@@ -24,9 +24,5 @@ namespace ArtWebshop.Repositories
 
             return base.Update(product);
         }
-
-       
-
-
     }
 }
