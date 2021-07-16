@@ -1,4 +1,5 @@
 ﻿using ArtWebshop.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +17,29 @@ namespace ArtWebshop.Repositories
             _productContext = productDbContext;
 
         }
-        public virtual T Add(T entity)
+        public virtual void AddAsync(T entity)
         {
-            return _productContext.Add(entity).Entity;
+            _productContext.AddAsync(entity);
         }
 
-        public virtual IEnumerable<T> All()
+        public virtual async Task<IEnumerable<T>> All()
         {
-            return _productContext.Set<T>().ToList();
+            return await _productContext.Set<T>().ToListAsync();
         }
 
-        public virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
+        public virtual async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
         {
-            return _productContext.Set<T>().AsQueryable().Where(predicate).ToList();
+            return await _productContext.Set<T>().AsQueryable().Where(predicate).ToListAsync();
         }
 
-        public virtual T Get(string id)
+        public virtual async Task<T> GetAsync(string id)
         {
-            return _productContext.Find<T>(id);
+            return await _productContext.FindAsync<T>(id);
         }
 
-        public virtual void SaveChanges()
+        public virtual void SaveChangesAsync()
         {
-            _productContext.SaveChanges();
+            _productContext.SaveChangesAsync();
         }
 
         public virtual T Update(T entity)
