@@ -69,3 +69,80 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*BROWSE ART MENU*/
+.megamenu {
+    position: static
+}
+
+    .megamenu .dropdown-menu {
+        background: none;
+        border: none;
+        width: 100%
+    }
+
+body {
+    background: #eaafc8;
+    background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+    background: linear-gradient(to right, #eaafc8, #654ea3);
+    min-height: 100vh
+}
+
+code {
+    color: #745eb1;
+    background: #fff;
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.2rem
+}
+
+.text-uppercase {
+    letter-spacing: 0.08em
+}
+
+/*INDEX CAROUSEL*/
+
+#carouselTopSellers {
+    top: 200px;
+    margin: 0;
+}
+
+.carousel-indicators {
+    top: 370px;
+    /*justify-content: flex-start;*/
+    margin: 0;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    color: black;
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    border: 6px solid black;
+    background-image: none;
+}
+
+.TopSeller1, .TopSeller2, .TopSeller3 {
+    position: relative;
+    top: 30px;
+    color: white;
+    text-shadow: -2px -2px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 2px 2px 0 #000;
+}
+
+.TopSellerCap1, .TopSellerCap2, .TopSellerCap3 {
+    position: relative;
+    top: 25px;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+
+.imgTopSeller1, .imgTopSeller2, .imgTopSeller3 {
+    border-radius: 15px;
+    width: 75%;
+    height: 360px;
+}
