@@ -59,8 +59,12 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: #8e9eab;
+    background: -webkit-linear-gradient(120deg, #eef2f3, #8e9eab);
+    background: linear-gradient(120deg, #eef2f3, #8e9eab);
+    min-height: 100vh
 }
 .footer {
   position: absolute;
@@ -81,12 +85,6 @@ body {
         width: 100%
     }
 
-body {
-    background: #eaafc8;
-    background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
-    background: linear-gradient(to right, #eaafc8, #654ea3);
-    min-height: 100vh
-}
 
 code {
     color: #745eb1;
