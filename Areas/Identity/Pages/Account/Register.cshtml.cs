@@ -47,20 +47,47 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "Användarnamn")]
+            public string UserName { get; set; }
+
+            [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "E-mail")]
             public string Email { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Lösenord")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Bekräfta Lösenord")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Förnamn")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "Efternamn")]
+            public string LastName { get; set; }
+            [Required]
+            [Display(Name = "Gata")]
+            public string Street { get; set; }
+
+            [Required]
+            [Display(Name = "Postnummer")]
+            public string BillingPostalCode { get; set; }
+
+            [Required]
+            [Display(Name = "Ort/Stad")]
+            public string City { get; set; }
+
+            [Required]
+            [Display(Name = "Land")]
+            public string Country { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -75,7 +102,10 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { 
+                    UserName = Input.UserName, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName,
+                    BillingStreetName = Input.Street, BillingPostalCode = Input.BillingPostalCode, BillingCity = Input.City, BillingCountry = Input.Country
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
