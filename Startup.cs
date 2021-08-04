@@ -1,5 +1,6 @@
 using ArtWebshop.Data;
 using ArtWebshop.Models;
+using ArtWebshop.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -46,8 +47,13 @@ namespace ArtWebshop
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            services.AddScoped<IRepository<Product>, ProductRepository>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+
             services.AddHttpContextAccessor();
-            services.AddSession();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromDays(30);
+            });
 
             services.AddControllersWithViews();
         }
