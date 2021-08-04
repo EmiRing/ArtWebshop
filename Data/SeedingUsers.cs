@@ -162,7 +162,7 @@ namespace ArtWebshop.Data
             };
 
 
-            artistUser.PasswordHash = pH.HashPassword(artistUser, "customer");
+            artistUser.PasswordHash = pH.HashPassword(artistUser, "artist");
 
             modelBuilder.Entity<ApplicationUser>().HasData(artistUser);
 

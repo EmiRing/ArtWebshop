@@ -47,12 +47,8 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "Användarnamn")]
-            public string UserName { get; set; }
-
-            [Required]
             [EmailAddress]
-            [Display(Name = "E-mail")]
+            [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
@@ -75,7 +71,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
             public string LastName { get; set; }
             [Required]
             [Display(Name = "Gata")]
-            public string Street { get; set; }
+            public string BillingStreetName { get; set; }
 
             [Required]
             [Display(Name = "Postnummer")]
@@ -83,11 +79,11 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Ort/Stad")]
-            public string City { get; set; }
+            public string BillingCity { get; set; }
 
             [Required]
             [Display(Name = "Land")]
-            public string Country { get; set; }
+            public string BillingCountry { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -103,9 +99,16 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { 
-                    UserName = Input.UserName, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName,
-                    BillingStreetName = Input.Street, BillingPostalCode = Input.BillingPostalCode, BillingCity = Input.City, BillingCountry = Input.Country
+                    UserName = Input.Email, 
+                    Email = Input.Email, 
+                    FirstName = Input.FirstName, 
+                    LastName = Input.LastName,
+                    BillingStreetName = Input.BillingStreetName, 
+                    BillingPostalCode = Input.BillingPostalCode, 
+                    BillingCity = Input.BillingCity, 
+                    BillingCountry = Input.BillingCountry
                 };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
