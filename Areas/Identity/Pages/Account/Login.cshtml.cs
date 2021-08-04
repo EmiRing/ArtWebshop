@@ -45,13 +45,15 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
+            [Display(Name = "Email/Användarnamn")]
             public string Email { get; set; }
 
             [Required]
+            [Display(Name = "Lösenord")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Kom ihåg mig?")]
             public bool RememberMe { get; set; }
         }
 

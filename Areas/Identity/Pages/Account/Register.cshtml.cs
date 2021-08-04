@@ -49,7 +49,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Email/Användarnamn")]
             public string Email { get; set; }
 
             [Required]
@@ -60,7 +60,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
 
             [DataType(DataType.Password)]
             [Display(Name = "Bekräfta Lösenord")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Lösenordet och bekräftelse-lösenordet matchar inte.")]
             public string ConfirmPassword { get; set; }
 
             [Required]
@@ -114,7 +114,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(appUser, Input.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Användaren skapade ett nytt konto med lösenord.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -136,7 +136,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
                     (
                         Input.Email, 
                         "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
+                        $"vänligen bekräfta ditt konto genom att <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>klicka här</a>."
                     );
 
                     var resultAddUserToRole = await _userManager.AddToRoleAsync(appUser, "Customer");
