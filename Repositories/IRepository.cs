@@ -8,11 +8,11 @@ namespace ArtWebshop.Repositories
 {
     public interface IRepository<T>
     {
-        T Add(T entity);
+        void AddAsync(T entity);
         T Update(T entity);
-        T Get(string id);
-        IEnumerable<T> All();
-        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
-        void SaveChanges();
+        Task<T> GetAsync(string id);
+        Task<IEnumerable<T>> All();
+        Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate);
+        void SaveChangesAsync();
     }
 }

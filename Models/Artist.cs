@@ -11,6 +11,7 @@ namespace ArtWebshop.Models
         [Key]
         public string ArtistId { get; set; }
         public string UserId { get; set; }
+
         [Display(Name ="Artistnamn")]
         public string ArtistName { get; set; }
 
