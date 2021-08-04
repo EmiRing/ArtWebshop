@@ -7,13 +7,13 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using ArtWebshop.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using ArtWebshop.Models;
 
 namespace ArtWebshop.Areas.Identity.Pages.Account
 {
@@ -39,9 +39,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
 
         [BindProperty]
         public InputModel Input { get; set; }
-
         public string ReturnUrl { get; set; }
-
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
         public class InputModel
@@ -69,6 +67,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Efternamn")]
             public string LastName { get; set; }
+            
             [Required]
             [Display(Name = "Gata")]
             public string BillingStreetName { get; set; }
@@ -116,22 +115,41 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
+                    
+                    var callbackUrl = Url.Page
+                    (
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                        values: new { 
+                            area = "Identity", 
+                            userId = user.Id,
+                            code = code,
+                            returnUrl = returnUrl 
+                        },
+                        protocol: Request.Scheme
+                    );
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync
+                    (
+                        Input.Email, 
+                        "Confirm your email",
+                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
+                    );
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToPage("RegisterConfirmation", new
+                        { 
+                            email = Input.Email, 
+                            returnUrl = returnUrl 
+                        });
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        await _signInManager.SignInAsync(
+                            user, 
+                            isPersistent: false
+                        );
                         return LocalRedirect(returnUrl);
                     }
                 }
