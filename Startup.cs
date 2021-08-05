@@ -1,5 +1,6 @@
 using ArtWebshop.Data;
 using ArtWebshop.Models;
+using ArtWebshop.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -47,8 +48,13 @@ namespace ArtWebshop
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            services.AddScoped<IRepository<Product>, ProductRepository>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+
             services.AddHttpContextAccessor();
-            services.AddSession();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromDays(10);
+            });
 
             services.AddControllersWithViews();
         }
@@ -71,13 +77,15 @@ namespace ArtWebshop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSession();
+            
             app.UseCookiePolicy();
 
             app.UseRouting();
-
+            
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
