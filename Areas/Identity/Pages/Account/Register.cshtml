@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Registrera";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
+            <h4>Skapa ett nytt konto.</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
@@ -27,20 +27,52 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <div><input class="col-1 text-success" type="checkbox" onclick="myFunction()">Visa som plantext</div>
+            <br /><div class="col-12 w-100 border-top"></div><br />
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingStreetName"></label>
+                <input asp-for="Input.BillingStreetName" class="form-control" />
+                <span asp-validation-for="Input.BillingStreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingPostalCode"></label>
+                <input asp-for="Input.BillingPostalCode" class="form-control" />
+                <span asp-validation-for="Input.BillingPostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingCity"></label>
+                <input asp-for="Input.BillingCity" class="form-control" />
+                <span asp-validation-for="Input.BillingCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingCountry"></label>
+                <input asp-for="Input.BillingCountry" class="form-control" />
+                <span asp-validation-for="Input.BillingCountry" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrera</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to register.</h4>
+            <h4>Använd en annan tjänst för att registrera.</h4>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
+                            Det finns inga andra externa autentiserings-tjänster konfigurerade. Se <a href="https://go.microsoft.com/fwlink/?LinkID=532715">den här artikeln</a>
+                            för detaljer om hur du konfigurerar stöd i ASP.NET applikationen för inloggning via externa tjänster.
                         </p>
                     </div>
                 }
