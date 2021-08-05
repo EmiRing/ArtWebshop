@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,9 @@ namespace ArtWebshop.Models
     public class ShoppingCart
     {
         private readonly ProductDbContext _productDbContext;
-        private List<Product> _products;
+        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
+        
+        public ISession _session;
 
         public string ShoppingCartId { get; set; }
 
@@ -23,6 +26,7 @@ namespace ArtWebshop.Models
 
         public static ShoppingCart GetCart(IServiceProvider services)
         {
+            
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
 
             var context = services.GetService<ProductDbContext>();
@@ -31,12 +35,29 @@ namespace ArtWebshop.Models
 
             session.SetString("CartId", cartId);
 
-            return new ShoppingCart(context) { ShoppingCartId = cartId };
+            return new ShoppingCart(context) { ShoppingCartId = cartId, _session = session };
         }
 
         public void AddToCart(Product product)
         {
-            if(SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "ShoppingCartItems") != null)
+            var items = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_session, "ShoppingCartItems");
+            ShoppingCartItem item = items.FirstOrDefault(i => i.Product.ProductId == product.ProductId);
+
+            if (item == null)
+            {
+                item = new ShoppingCartItem()
+                {
+                    Product = product,
+                    Amount = 1,
+                    ShoppingCartId = ShoppingCartId
+                };
+            }
+            else
+            {
+                item.Amount++;
+            }
+            SessionHelper.SetObjectAsJson(_session, "ShoppingCartItems", item);
+
 
         }
     }

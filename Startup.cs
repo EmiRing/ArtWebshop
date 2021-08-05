@@ -52,7 +52,7 @@ namespace ArtWebshop
 
             services.AddHttpContextAccessor();
             services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromDays(30);
+                options.IdleTimeout = TimeSpan.FromDays(10);
             });
 
             services.AddControllersWithViews();
@@ -76,13 +76,15 @@ namespace ArtWebshop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSession();
+            
             app.UseCookiePolicy();
 
             app.UseRouting();
-
+            
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
