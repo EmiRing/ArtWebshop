@@ -50,47 +50,6 @@ namespace ArtWebshop.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public async Task<IActionResult> ChangeProduct(string id)
         {
             if (id == null)
@@ -142,7 +101,7 @@ namespace ArtWebshop.Controllers
         }
 
 
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> DeleteProduct(string id)
         {
             if (id == null)
             {
@@ -160,7 +119,7 @@ namespace ArtWebshop.Controllers
             return View(product);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteProduct")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
