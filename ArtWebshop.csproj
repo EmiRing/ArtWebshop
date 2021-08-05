@@ -26,4 +26,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Originals\Prints\" />
+    <Folder Include="wwwroot\Images\Originals\Paintings\" />
+    <Folder Include="wwwroot\Images\Thumbnails\Paintings\" />
+    <Folder Include="wwwroot\Images\Thumbnails\Prints\" />
+  </ItemGroup>
+
 </Project>
