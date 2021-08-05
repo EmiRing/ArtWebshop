@@ -62,7 +62,7 @@ namespace ArtWebshop.Data
                 ThumbnailLink = thumbLink
             };
 
-            modelBuilder.Entity<ApplicationUser>().HasData(product);
+            modelBuilder.Entity<Product>().HasData(product);
 
             return modelBuilder;
         }

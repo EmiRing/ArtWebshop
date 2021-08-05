@@ -133,5 +133,10 @@ namespace ArtWebshop.Controllers
         {
             return _context.Products.Any(e => e.ProductId == id);
         }
+
+        public IActionResult ListProducts()
+        {
+            return View(_context.Products.ToList());
+        }
     }
 }

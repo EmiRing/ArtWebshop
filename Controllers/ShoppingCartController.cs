@@ -1,5 +1,6 @@
 ﻿using ArtWebshop.Models;
 using ArtWebshop.Repositories;
+using ArtWebshop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,13 @@ namespace ArtWebshop.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = items;
+
+            return View(new ShoppingCartViewModel {
+                shoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+            });
         }
 
         public async Task<RedirectToActionResult> AddToShoppingCart(string productId)
@@ -35,7 +41,7 @@ namespace ArtWebshop.Controllers
                 _shoppingCart.AddToCart(product);
             }
 
-            return RedirectToAction();
+            return RedirectToAction("ListProducts", "Products");
         }
     }
 }

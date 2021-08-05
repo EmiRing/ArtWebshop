@@ -21,5 +21,11 @@ namespace ArtWebshop.Data
         public DbSet<ArtistRow> ArtistRows { get; set; }
         //public DbSet<Coupon> Coupons { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            SeedingProducts.seed(modelBuilder);
+        }
     }
 }
