@@ -47,14 +47,13 @@ namespace ArtWebshop.Models
             if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems") != null)
             {
                 ShoppingCartItems = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems");
-
             }
             else
             {
                 ShoppingCartItems = new List<ShoppingCartItem>();
             }
 
-            if (ShoppingCartItems.Exists(i => i.Product.ProductId == product.ProductId))//.FirstOrDefault(i => i.Product.ProductId == product.ProductId) == null)
+            if (ShoppingCartItems.Exists(i => i.Product.ProductId == product.ProductId))
             {
                 item = ShoppingCartItems.FirstOrDefault(i => i.Product.ProductId == product.ProductId);
                 item.Amount++;
