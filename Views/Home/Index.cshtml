@@ -82,10 +82,15 @@
             </button>
         </div>
     </div>
-    <div>
+    <div class="row">
         @foreach (var item in Model.Product)
-        {
-            <img src="@item.ThumbnailLink"  width="350" height="350" />
+        {   <div class="col-sm mb-4">
+                <div>@item.PictureLink</div>
+                <img src="@item.PictureLink" width="330" height="330" />
+                <div>Artist:&nbsp;&nbsp;&nbsp;&nbsp; @item.Artist.ArtistName</div>
+                <div>Description: @item.ShortDescription </div>
+                <div>Saldo: @item.Stock st </div>
+            </div>
         }
         <img src="@Model.Product.FirstOrDefault().PictureLink">
         @Model.Product.FirstOrDefault().PictureLink
