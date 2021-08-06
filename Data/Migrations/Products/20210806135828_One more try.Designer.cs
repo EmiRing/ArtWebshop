@@ -4,14 +4,16 @@ using ArtWebshop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArtWebshop.Data.Migrations.Products
 {
     [DbContext(typeof(ProductDbContext))]
-    partial class ProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210806135828_One more try")]
+    partial class Onemoretry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,25 +39,25 @@ namespace ArtWebshop.Data.Migrations.Products
                     b.HasData(
                         new
                         {
-                            ArtistId = "7bd6641e-853e-4194-bfe4-98e7d74d4c86",
+                            ArtistId = "e41c76b0-9639-4414-8588-256d116c73f6",
                             ArtistName = "Leonardo da Vinci",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "617c2263-cf15-4609-9b69-c267a61f2a36",
+                            ArtistId = "38d093e9-a749-4595-b0f8-2907e2d80653",
                             ArtistName = "Leonardo da Vinci",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "d969538a-e82e-4e3e-9dcf-2068f031024d",
+                            ArtistId = "86cb5b5c-a952-42ac-89f4-3220c8d4eae0",
                             ArtistName = "Edvard Munch",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "aaed5a19-d2db-4842-9628-0083d920a9a0",
+                            ArtistId = "a1e3cb4e-ab53-4710-88b7-280c4db835f1",
                             ArtistName = "Vincent van Gogh",
                             UserId = "userId"
                         });
@@ -212,8 +214,8 @@ namespace ArtWebshop.Data.Migrations.Products
                     b.HasData(
                         new
                         {
-                            ProductId = "7f847eb4-7fdc-45c3-a937-e48c8d25d4c0",
-                            ArtistId = "7bd6641e-853e-4194-bfe4-98e7d74d4c86",
+                            ProductId = "c48c5953-e717-44c1-95e5-698f09cccd40",
+                            ArtistId = "e41c76b0-9639-4414-8588-256d116c73f6",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1503),
                             Height = 53,
@@ -230,8 +232,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "7d4f87d9-b555-4872-aa3c-ca946cd4ccef",
-                            ArtistId = "617c2263-cf15-4609-9b69-c267a61f2a36",
+                            ProductId = "5081c33b-29b8-4937-9bf9-21af0159a9af",
+                            ArtistId = "38d093e9-a749-4595-b0f8-2907e2d80653",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1495),
                             Height = 460,
@@ -248,8 +250,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "7f11d7ff-6886-4c35-8bab-be4e95a0b78d",
-                            ArtistId = "d969538a-e82e-4e3e-9dcf-2068f031024d",
+                            ProductId = "19e4c2fb-29db-4c59-ad1c-c51645366a60",
+                            ArtistId = "86cb5b5c-a952-42ac-89f4-3220c8d4eae0",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1903),
                             Height = 460,
@@ -266,8 +268,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "5242d9ab-3637-4226-b424-375f3a906191",
-                            ArtistId = "aaed5a19-d2db-4842-9628-0083d920a9a0",
+                            ProductId = "6bae2b50-4943-4e0c-8ce5-5b7933fe8b99",
+                            ArtistId = "a1e3cb4e-ab53-4710-88b7-280c4db835f1",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1882),
                             Height = 460,
