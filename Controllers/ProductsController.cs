@@ -26,7 +26,6 @@ namespace ArtWebshop.Controllers
         }
 
 
-
         public IActionResult AddProduct()
         {
             ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId");
