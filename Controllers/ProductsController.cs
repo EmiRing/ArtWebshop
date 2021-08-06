@@ -26,7 +26,6 @@ namespace ArtWebshop.Controllers
         }
 
 
-
         public IActionResult AddProduct()
         {
             ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId");
@@ -132,6 +131,11 @@ namespace ArtWebshop.Controllers
         private bool ProductExists(string id)
         {
             return _context.Products.Any(e => e.ProductId == id);
+        }
+
+        public IActionResult ListProducts()
+        {
+            return View(_context.Products.ToList());
         }
     }
 }

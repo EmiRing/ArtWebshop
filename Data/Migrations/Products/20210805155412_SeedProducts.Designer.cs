@@ -4,14 +4,16 @@ using ArtWebshop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArtWebshop.Data.Migrations.Products
 {
     [DbContext(typeof(ProductDbContext))]
-    partial class ProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210805155412_SeedProducts")]
+    partial class SeedProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,33 +34,7 @@ namespace ArtWebshop.Data.Migrations.Products
 
                     b.HasKey("ArtistId");
 
-                    b.ToTable("Artist");
-
-                    b.HasData(
-                        new
-                        {
-                            ArtistId = "333d9d82-3340-40f2-ae21-71aad7e6d8ca",
-                            ArtistName = "Leonardo da Vinci",
-                            UserId = "userId"
-                        },
-                        new
-                        {
-                            ArtistId = "4ecfdefb-f419-44eb-930d-2fe1b897f64a",
-                            ArtistName = "~/Images/Originals/Paintings/Mona Lisa.jpg",
-                            UserId = "userId"
-                        },
-                        new
-                        {
-                            ArtistId = "d227232d-059b-4800-8b54-4f786e401eee",
-                            ArtistName = "Edvard Munch",
-                            UserId = "userId"
-                        },
-                        new
-                        {
-                            ArtistId = "5cf26302-b6e2-4ebd-8a1a-0e5c0455a202",
-                            ArtistName = "Vincent van Gogh",
-                            UserId = "userId"
-                        });
+                    b.ToTable("Artists");
                 });
 
             modelBuilder.Entity("ArtWebshop.Models.ArtistRow", b =>

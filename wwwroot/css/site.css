@@ -24,8 +24,8 @@ a {
   border-color: #1861ac;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
+/*footer
+
 html {
   font-size: 14px;
 }
@@ -50,9 +50,7 @@ button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
-
-/* Sticky footer styles
--------------------------------------------------- */
+ */
 html {
   position: relative;
   min-height: 100%;
@@ -143,4 +141,9 @@ code {
     border-radius: 15px;
     width: 75%;
     height: 360px;
+}
+
+/*Artist Product Upload*/
+#pShortDescription {
+    /*height: 200px;*/
 }
