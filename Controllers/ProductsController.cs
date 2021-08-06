@@ -29,7 +29,7 @@ namespace ArtWebshop.Controllers
 
         public IActionResult AddProduct()
         {
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId");
+            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId");
             return View();
         }
 
@@ -44,7 +44,7 @@ namespace ArtWebshop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId", product.ArtistId);
+            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", product.ArtistId);
             return View(product);
         }
 
@@ -62,7 +62,7 @@ namespace ArtWebshop.Controllers
             {
                 return NotFound();
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId", product.ArtistId);
+            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", product.ArtistId);
             return View(product);
         }
 
@@ -96,7 +96,7 @@ namespace ArtWebshop.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId", product.ArtistId);
+            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", product.ArtistId);
             return View(product);
         }
 

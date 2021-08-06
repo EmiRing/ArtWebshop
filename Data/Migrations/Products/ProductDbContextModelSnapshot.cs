@@ -32,7 +32,33 @@ namespace ArtWebshop.Data.Migrations.Products
 
                     b.HasKey("ArtistId");
 
-                    b.ToTable("Artists");
+                    b.ToTable("Artist");
+
+                    b.HasData(
+                        new
+                        {
+                            ArtistId = "333d9d82-3340-40f2-ae21-71aad7e6d8ca",
+                            ArtistName = "Leonardo da Vinci",
+                            UserId = "userId"
+                        },
+                        new
+                        {
+                            ArtistId = "4ecfdefb-f419-44eb-930d-2fe1b897f64a",
+                            ArtistName = "~/Images/Originals/Paintings/Mona Lisa.jpg",
+                            UserId = "userId"
+                        },
+                        new
+                        {
+                            ArtistId = "d227232d-059b-4800-8b54-4f786e401eee",
+                            ArtistName = "Edvard Munch",
+                            UserId = "userId"
+                        },
+                        new
+                        {
+                            ArtistId = "5cf26302-b6e2-4ebd-8a1a-0e5c0455a202",
+                            ArtistName = "Vincent van Gogh",
+                            UserId = "userId"
+                        });
                 });
 
             modelBuilder.Entity("ArtWebshop.Models.ArtistRow", b =>
@@ -182,6 +208,80 @@ namespace ArtWebshop.Data.Migrations.Products
                     b.HasIndex("ArtistId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = "e07b54c8-d1c4-45d9-be65-23d33bf57f6c",
+                            ArtistId = "333d9d82-3340-40f2-ae21-71aad7e6d8ca",
+                            Category = "Print",
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1503),
+                            Height = 53,
+                            IsPaintingOfTheWeek = false,
+                            LongDescription = "Mona Lisa, also called Portrait of Lisa Gherardini, wife of Francesco del Giocondo, Italian La Gioconda, or French La Joconde, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. It was painted sometime between 1503 and 1519, when Leonardo was living in Florence, and it now hangs in the Louvre Museum, Paris, where it remained an object of pilgrimage in the 21st century. The sitter’s mysterious smile and her unproven identity have made the painting a source of ongoing investigation and fascination.",
+                            PictureLink = "~/Images/Originals/Paintings/Mona Lisa.jpg",
+                            Price = 50.50m,
+                            ShortDescription = "A mysterious woman",
+                            Stock = 15,
+                            Style = "Oil on wood Panel",
+                            ThumbnailLink = "~/Images/Originals/Thumbnails/Prints/Mona Lisa (thumb).jpg",
+                            Title = "Mona Lisa.jpg",
+                            Width = 77
+                        },
+                        new
+                        {
+                            ProductId = "8973de12-a33e-4c5c-a53a-083fdf26dade",
+                            ArtistId = "4ecfdefb-f419-44eb-930d-2fe1b897f64a",
+                            Category = "Print",
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1495),
+                            Height = 460,
+                            IsPaintingOfTheWeek = false,
+                            LongDescription = "Leonardo Da Vinci",
+                            PictureLink = "~/Images/Originals/Paintings/Nattvarden.jpg",
+                            Price = 33.00m,
+                            ShortDescription = "The last supper",
+                            Stock = 3,
+                            Style = "Olja på duk",
+                            ThumbnailLink = "~/Images/Originals/Thumbnails/Prints/Nattvarden (thumb).jpg",
+                            Title = "The Last Supper.jpg",
+                            Width = 880
+                        },
+                        new
+                        {
+                            ProductId = "555cf7cd-e742-491e-ba0b-878bec6b0ac5",
+                            ArtistId = "d227232d-059b-4800-8b54-4f786e401eee",
+                            Category = "Print",
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1903),
+                            Height = 460,
+                            IsPaintingOfTheWeek = false,
+                            LongDescription = "",
+                            PictureLink = "~/Images/Originals/Paintings/Skriet.jpg",
+                            Price = 15.505m,
+                            ShortDescription = "Edvard Munch",
+                            Stock = 150,
+                            Style = "Olja, tempera och pastell på papp",
+                            ThumbnailLink = "~/Images/Originals/Thumbnails/Prints/Skriet (thumb).jpg",
+                            Title = "Skriet.jpg",
+                            Width = 880
+                        },
+                        new
+                        {
+                            ProductId = "3a669355-8cdd-4182-ba29-f20913aa6e88",
+                            ArtistId = "5cf26302-b6e2-4ebd-8a1a-0e5c0455a202",
+                            Category = "Print",
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1882),
+                            Height = 460,
+                            IsPaintingOfTheWeek = false,
+                            LongDescription = "",
+                            PictureLink = "~/Images/Originals/Paintings/Utsliten.jpg",
+                            Price = 18.505m,
+                            ShortDescription = "Vincent van Gogh",
+                            Stock = 5,
+                            Style = "Postexpressionism: Teckning penna på vattenfärgat papper",
+                            ThumbnailLink = "~/Images/Originals/Thumbnails/Prints/Utsliten (thumb).jpg",
+                            Title = "Utsliten.jpg",
+                            Width = 880
+                        });
                 });
 
             modelBuilder.Entity("ArtWebshop.Models.ArtistRow", b =>

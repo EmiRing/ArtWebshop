@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtWebshop", "ArtWebshop.cs
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F93B40F7-524E-498C-974A-160F79316DBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtWebshop.Repositories.Test", "..\ArtWebshop.Repositories.Test\ArtWebshop.Repositories.Test.csproj", "{D129C04F-05B4-41EB-87AB-D937551622FE}"
+<!--Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtWebshop.Repositories.Test", "..\ArtWebshop.Repositories.Test\ArtWebshop.Repositories.Test.csproj", "{D129C04F-05B4-41EB-87AB-D937551622FE}"-->
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

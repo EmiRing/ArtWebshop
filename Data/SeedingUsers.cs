@@ -28,8 +28,8 @@ namespace ArtWebshop.Data
             var adminUser = new ApplicationUser
             {
                 Id = userId,
-                FirstName = "Admin",
-                LastName = "A",
+                FirstName = "TestUserAdmin",
+                LastName = "SuperUser",
                 Email = "admin@site.com",
                 NormalizedEmail = "ADMIN@SITE.COM",
                 EmailConfirmed = true,
@@ -68,8 +68,8 @@ namespace ArtWebshop.Data
             var vendorUser = new ApplicationUser
             {
                 Id = userId,
-                FirstName = "Vendor",
-                LastName = "A",
+                FirstName = "TestUserVendor",
+                LastName = "Admin",
                 Email = "vendor@site.com",
                 NormalizedEmail = "VENDOR@SITE.COM",
                 EmailConfirmed = true,
@@ -108,8 +108,8 @@ namespace ArtWebshop.Data
             var customerUser = new ApplicationUser
             {
                 Id = userId,
-                FirstName = "Customer",
-                LastName = "A",
+                FirstName = "TestUserCustomer",
+                LastName = "Buy",
                 Email = "customer@site.com",
                 NormalizedEmail = "CUSTOMER@SITE.COM",
                 EmailConfirmed = true,
@@ -148,8 +148,8 @@ namespace ArtWebshop.Data
             var artistUser = new ApplicationUser
             {
                 Id = userId,
-                FirstName = "Artist",
-                LastName = "A",
+                FirstName = "TestUserArtist",
+                LastName = "Upload",
                 Email = "artist@site.com",
                 NormalizedEmail = "ARTIST@SITE.COM",
                 EmailConfirmed = true,
@@ -173,7 +173,5 @@ namespace ArtWebshop.Data
                     UserId = userId
                 });
         }
-
     }
-
 }

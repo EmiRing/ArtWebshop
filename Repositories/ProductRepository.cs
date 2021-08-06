@@ -17,8 +17,8 @@ namespace ArtWebshop.Repositories
         {
             var product = _productContext.Products.Single(p => p.ProductId == entity.ProductId);
 
-            product.Title = entity.Title;
             product.ArtistId = entity.ArtistId;
+            product.Title = entity.Title;
             product.Width = entity.Width;
             product.Height = entity.Height;
 

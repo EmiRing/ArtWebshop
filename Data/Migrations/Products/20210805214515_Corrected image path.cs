@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ArtWebshop.Data.Migrations.Products
 {
-    public partial class InitialCreate : Migration
+    public partial class Correctedimagepath : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Artists",
+                name: "Artist",
                 columns: table => new
                 {
                     ArtistId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -17,7 +17,7 @@ namespace ArtWebshop.Data.Migrations.Products
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artists", x => x.ArtistId);
+                    table.PrimaryKey("PK_Artist", x => x.ArtistId);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,9 +66,9 @@ namespace ArtWebshop.Data.Migrations.Products
                 {
                     table.PrimaryKey("PK_Products", x => x.ProductId);
                     table.ForeignKey(
-                        name: "FK_Products_Artists_ArtistId",
+                        name: "FK_Products_Artist_ArtistId",
                         column: x => x.ArtistId,
-                        principalTable: "Artists",
+                        principalTable: "Artist",
                         principalColumn: "ArtistId",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -86,9 +86,9 @@ namespace ArtWebshop.Data.Migrations.Products
                 {
                     table.PrimaryKey("PK_ArtistRows", x => x.RowId);
                     table.ForeignKey(
-                        name: "FK_ArtistRows_Artists_ArtistId",
+                        name: "FK_ArtistRows_Artist_ArtistId",
                         column: x => x.ArtistId,
-                        principalTable: "Artists",
+                        principalTable: "Artist",
                         principalColumn: "ArtistId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -124,6 +124,28 @@ namespace ArtWebshop.Data.Migrations.Products
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Artist",
+                columns: new[] { "ArtistId", "ArtistName", "UserId" },
+                values: new object[,]
+                {
+                    { "333d9d82-3340-40f2-ae21-71aad7e6d8ca", "Leonardo da Vinci", "userId" },
+                    { "4ecfdefb-f419-44eb-930d-2fe1b897f64a", "~/Images/Originals/Paintings/Mona Lisa.jpg", "userId" },
+                    { "d227232d-059b-4800-8b54-4f786e401eee", "Edvard Munch", "userId" },
+                    { "5cf26302-b6e2-4ebd-8a1a-0e5c0455a202", "Vincent van Gogh", "userId" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "ArtistId", "Category", "CreationDate", "Height", "IsPaintingOfTheWeek", "LongDescription", "PictureLink", "Price", "ShortDescription", "Stock", "Style", "ThumbnailLink", "Title", "Width" },
+                values: new object[,]
+                {
+                    { "e07b54c8-d1c4-45d9-be65-23d33bf57f6c", "333d9d82-3340-40f2-ae21-71aad7e6d8ca", "Print", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1503), 53, false, "Mona Lisa, also called Portrait of Lisa Gherardini, wife of Francesco del Giocondo, Italian La Gioconda, or French La Joconde, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. It was painted sometime between 1503 and 1519, when Leonardo was living in Florence, and it now hangs in the Louvre Museum, Paris, where it remained an object of pilgrimage in the 21st century. The sitter’s mysterious smile and her unproven identity have made the painting a source of ongoing investigation and fascination.", "~/Images/Originals/Paintings/Mona Lisa.jpg", 50.50m, "A mysterious woman", 15, "Oil on wood Panel", "~/Images/Originals/Thumbnails/Prints/Mona Lisa (thumb).jpg", "Mona Lisa.jpg", 77 },
+                    { "8973de12-a33e-4c5c-a53a-083fdf26dade", "4ecfdefb-f419-44eb-930d-2fe1b897f64a", "Print", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1495), 460, false, "Leonardo Da Vinci", "~/Images/Originals/Paintings/Nattvarden.jpg", 33.00m, "The last supper", 3, "Olja på duk", "~/Images/Originals/Thumbnails/Prints/Nattvarden (thumb).jpg", "The Last Supper.jpg", 880 },
+                    { "555cf7cd-e742-491e-ba0b-878bec6b0ac5", "d227232d-059b-4800-8b54-4f786e401eee", "Print", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1903), 460, false, "", "~/Images/Originals/Paintings/Skriet.jpg", 15.505m, "Edvard Munch", 150, "Olja, tempera och pastell på papp", "~/Images/Originals/Thumbnails/Prints/Skriet (thumb).jpg", "Skriet.jpg", 880 },
+                    { "3a669355-8cdd-4182-ba29-f20913aa6e88", "5cf26302-b6e2-4ebd-8a1a-0e5c0455a202", "Print", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1882), 460, false, "", "~/Images/Originals/Paintings/Utsliten.jpg", 18.505m, "Vincent van Gogh", 5, "Postexpressionism: Teckning penna på vattenfärgat papper", "~/Images/Originals/Thumbnails/Prints/Utsliten (thumb).jpg", "Utsliten.jpg", 880 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -167,7 +189,7 @@ namespace ArtWebshop.Data.Migrations.Products
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Artists");
+                name: "Artist");
         }
     }
 }
