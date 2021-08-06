@@ -51,6 +51,7 @@ namespace ArtWebshop.Models
         
         public string ArtistId { get; set; }
         public bool IsPaintingOfTheWeek { get; set; }
+        [Display(Name ="Lagersaldo")]
         public int Stock { get; set; }
         
         public List<OrderRow> OrderRows { get; set; }

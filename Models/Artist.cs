@@ -14,6 +14,10 @@ namespace ArtWebshop.Models
 
         [Display(Name ="Artistnamn")]
         public string ArtistName { get; set; }
+        [Display(Name ="Profilbild")]
+        public string ProfilePicture { get; set; }
+        [Display(Name ="Presentation")]
+        public string Presentation { get; set; }
 
         public List<ArtistRow> ArtistRows { get; set; }
         //public ApplicationUser User { get; set; }

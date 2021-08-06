@@ -27,6 +27,12 @@ namespace ArtWebshop.Data.Migrations.Products
                     b.Property<string>("ArtistName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Presentation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
