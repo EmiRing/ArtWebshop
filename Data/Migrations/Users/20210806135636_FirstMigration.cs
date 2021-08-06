@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ArtWebshop.Data.Migrations.Users
+namespace ArtWebshop.Data.Migrations.User
 {
-    public partial class First : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -167,10 +167,10 @@ namespace ArtWebshop.Data.Migrations.Users
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "cfd3e227-a15b-4bde-bef4-e093ea748157", "cfd3e227-a15b-4bde-bef4-e093ea748157", "Admin", "ADMIN" },
-                    { "c3c0726b-072f-4202-b2a3-a71309e8e870", "c3c0726b-072f-4202-b2a3-a71309e8e870", "Vendor", "VENDOR" },
-                    { "878c8bfc-59b1-4a41-becc-e6b2b5f7185b", "878c8bfc-59b1-4a41-becc-e6b2b5f7185b", "User", "USER" },
-                    { "55a182aa-10ce-4975-901a-38e606978b32", "55a182aa-10ce-4975-901a-38e606978b32", "Artist", "ARTIST" }
+                    { "cf6cbbb1-793e-4996-9a7b-09b66e330661", "cf6cbbb1-793e-4996-9a7b-09b66e330661", "Admin", "ADMIN" },
+                    { "d58a14b6-6efc-426f-ba02-a01fbe40a2fe", "d58a14b6-6efc-426f-ba02-a01fbe40a2fe", "Vendor", "VENDOR" },
+                    { "2f1da8ed-5fb1-4646-90d4-4a23f3d0708b", "2f1da8ed-5fb1-4646-90d4-4a23f3d0708b", "User", "USER" },
+                    { "136497bb-c1c9-4b91-9934-eb537dde5a25", "136497bb-c1c9-4b91-9934-eb537dde5a25", "Artist", "ARTIST" }
                 });
 
             migrationBuilder.InsertData(
@@ -178,10 +178,10 @@ namespace ArtWebshop.Data.Migrations.Users
                 columns: new[] { "Id", "AccessFailedCount", "BillingCity", "BillingCountry", "BillingPostalCode", "BillingStreetName", "ConcurrencyStamp", "DeliveryCity", "DeliveryCountry", "DeliveryPostalCode", "DeliveryStreetName", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "9e930bfa-991b-40f6-a86b-6519f55cf78a", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "bea55096-d5fc-4d8e-93c0-fc9532f9be69", null, null, null, null, "admin@site.com", true, "TestUserAdmin", "SuperUser", false, null, "ADMIN@SITE.COM", "ADMIN@SITE.COM", "AQAAAAEAACcQAAAAEB10g1IbXlGZJByXyz8P1K6CspS9XqumQcdLjCNc1ABTOkgkETpXfWlC6WXDO/zlig==", null, false, "917cfd6d-aac9-4cca-b518-88bce5a69d88", false, "admin@site.com" },
-                    { "8aee0c42-b86c-480d-8585-8e632ae44adf", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "d9afdc32-6c86-46b8-9f91-4f46b6cc87bb", null, null, null, null, "vendor@site.com", true, "TestUserVendor", "Admin", false, null, "VENDOR@SITE.COM", "VENDOR@SITE.COM", "AQAAAAEAACcQAAAAEMVuD9rzIe0VB3ZR2dp0S/909PP6FYpkfZUfAVODJ9ihfe4CBmL8oSqC9n1ngrLFTg==", null, false, "d8431dc6-cf00-47e9-bdd4-72e0333e5a31", false, "vendor@site.com" },
-                    { "148212fc-8421-4151-8a20-daad9dd4cd9a", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "fa1788da-fa2e-4767-b46b-ca5f2fe843f3", null, null, null, null, "customer@site.com", true, "TestUserCustomer", "Buy", false, null, "CUSTOMER@SITE.COM", "CUSTOMER@SITE.COM", "AQAAAAEAACcQAAAAEBlEkaUGrnlVJwTOp4TTlV4oDkMwsuE7sHeBcUaKmidTXdFqUwbxbH/svnusj6w7vQ==", null, false, "e7da5d15-526f-439e-8be0-dcd9d189fd22", false, "customer@site.com" },
-                    { "3a037856-e1ad-48d6-92f3-77553d97f535", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "09d1c91e-177d-42b1-986a-6e213bf37616", null, null, null, null, "artist@site.com", true, "TestUserArtist", "Upload", false, null, "ARTIST@SITE.COM", "ARTIST@SITE.COM", "AQAAAAEAACcQAAAAEI4b7pDAld3ZkfBIILeaD+70vA0gnFUECYJI6lhyVZzVjmHohp/NQuQHC8eVohQHxA==", null, false, "20392f7c-eb6b-4654-b0c8-bedc56a3a479", false, "artist@site.com" }
+                    { "b84357c6-ef6d-4fbd-b349-38b052f066e1", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "b59f1fe0-67d5-4707-84ed-2c73c17a35a8", null, null, null, null, "admin@site.com", true, "TestUserAdmin", "SuperUser", false, null, "ADMIN@SITE.COM", "ADMIN@SITE.COM", "AQAAAAEAACcQAAAAEBaEB8D1H/o2HjEMcIT8kWaWZ/h8h/1UpDqS9G/W2ypj94jUKX9Thqi/gx5frUqa8A==", null, false, "44401953-0991-49c0-9e39-7637222e1bd9", false, "admin@site.com" },
+                    { "12752564-6882-4aa1-b484-889826f71edf", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "c6b2aa0f-a796-448e-a379-286f0c9d23b1", null, null, null, null, "vendor@site.com", true, "TestUserVendor", "Admin", false, null, "VENDOR@SITE.COM", "VENDOR@SITE.COM", "AQAAAAEAACcQAAAAEKObbW1yzfoWm6Cypa3OtI6OCr9Nu+GfANDVX6ke/WtOvggY49i/5UIMGtH/ZPu77g==", null, false, "0c7dd75d-1e60-4701-8ba7-bf4873423eab", false, "vendor@site.com" },
+                    { "f2868be0-8053-4ad1-a092-4403741f230b", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "93f33ed8-e160-456f-a1f7-1836d3a501f6", null, null, null, null, "customer@site.com", true, "TestUserCustomer", "Buy", false, null, "CUSTOMER@SITE.COM", "CUSTOMER@SITE.COM", "AQAAAAEAACcQAAAAEDwd1ywOneebihJgj2gSDTWcpvMKNlCEMTZh2U9yMX/Uf+mRFEFFV8+63TtmMyxxaA==", null, false, "569ed5b6-8912-47bb-bb5b-7c81acc2077f", false, "customer@site.com" },
+                    { "39be2141-fe19-4129-92b3-dbbe5f8e6896", 0, "Göteborg", "Sverige", "12345", "Hemadress 1", "85b58529-18e7-43bf-adfc-a08c242bfa19", null, null, null, null, "artist@site.com", true, "TestUserArtist", "Upload", false, null, "ARTIST@SITE.COM", "ARTIST@SITE.COM", "AQAAAAEAACcQAAAAEE4SgacTz6KCRrGtTDRUocs/Rk0o//AAFtg9c8xHmixZTRK6w3SuSky7kdDJ617P6Q==", null, false, "d2d3f13b-5c04-4ffa-b2a8-929093193ae8", false, "artist@site.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -189,10 +189,10 @@ namespace ArtWebshop.Data.Migrations.Users
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "cfd3e227-a15b-4bde-bef4-e093ea748157", "9e930bfa-991b-40f6-a86b-6519f55cf78a" },
-                    { "c3c0726b-072f-4202-b2a3-a71309e8e870", "8aee0c42-b86c-480d-8585-8e632ae44adf" },
-                    { "878c8bfc-59b1-4a41-becc-e6b2b5f7185b", "148212fc-8421-4151-8a20-daad9dd4cd9a" },
-                    { "55a182aa-10ce-4975-901a-38e606978b32", "3a037856-e1ad-48d6-92f3-77553d97f535" }
+                    { "cf6cbbb1-793e-4996-9a7b-09b66e330661", "b84357c6-ef6d-4fbd-b349-38b052f066e1" },
+                    { "d58a14b6-6efc-426f-ba02-a01fbe40a2fe", "12752564-6882-4aa1-b484-889826f71edf" },
+                    { "2f1da8ed-5fb1-4646-90d4-4a23f3d0708b", "f2868be0-8053-4ad1-a092-4403741f230b" },
+                    { "136497bb-c1c9-4b91-9934-eb537dde5a25", "39be2141-fe19-4129-92b3-dbbe5f8e6896" }
                 });
 
             migrationBuilder.CreateIndex(

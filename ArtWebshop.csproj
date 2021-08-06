@@ -27,8 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\Products\" />
-    <Folder Include="Data\Migrations\Users\" />
     <Folder Include="wwwroot\Images\Originals\Prints\" />
     <Folder Include="wwwroot\Images\Originals\Paintings\" />
     <Folder Include="wwwroot\Images\Thumbnails\Paintings\" />

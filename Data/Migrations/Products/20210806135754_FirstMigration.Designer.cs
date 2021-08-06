@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtWebshop.Data.Migrations.Products
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20210805214515_Corrected image path")]
-    partial class Correctedimagepath
+    [Migration("20210806135754_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,25 +39,25 @@ namespace ArtWebshop.Data.Migrations.Products
                     b.HasData(
                         new
                         {
-                            ArtistId = "333d9d82-3340-40f2-ae21-71aad7e6d8ca",
+                            ArtistId = "9af131ac-15e8-4133-8e2b-e7a5a9cf7fc9",
                             ArtistName = "Leonardo da Vinci",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "4ecfdefb-f419-44eb-930d-2fe1b897f64a",
-                            ArtistName = "~/Images/Originals/Paintings/Mona Lisa.jpg",
+                            ArtistId = "3c24b971-8bd4-4ac0-8547-a0fe5e1c113c",
+                            ArtistName = "Leonardo da Vinci",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "d227232d-059b-4800-8b54-4f786e401eee",
+                            ArtistId = "bd695714-66cd-4d80-b3f0-42b8b4ab29b6",
                             ArtistName = "Edvard Munch",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "5cf26302-b6e2-4ebd-8a1a-0e5c0455a202",
+                            ArtistId = "00ade1ba-3e6b-49c9-8450-33036cf18785",
                             ArtistName = "Vincent van Gogh",
                             UserId = "userId"
                         });
@@ -214,8 +214,8 @@ namespace ArtWebshop.Data.Migrations.Products
                     b.HasData(
                         new
                         {
-                            ProductId = "e07b54c8-d1c4-45d9-be65-23d33bf57f6c",
-                            ArtistId = "333d9d82-3340-40f2-ae21-71aad7e6d8ca",
+                            ProductId = "1e748a43-fbb4-402e-a80b-8957b3b35898",
+                            ArtistId = "9af131ac-15e8-4133-8e2b-e7a5a9cf7fc9",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1503),
                             Height = 53,
@@ -232,14 +232,14 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "8973de12-a33e-4c5c-a53a-083fdf26dade",
-                            ArtistId = "4ecfdefb-f419-44eb-930d-2fe1b897f64a",
+                            ProductId = "6824b620-3d57-410a-b8c4-c918426a1247",
+                            ArtistId = "3c24b971-8bd4-4ac0-8547-a0fe5e1c113c",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1495),
                             Height = 460,
                             IsPaintingOfTheWeek = false,
                             LongDescription = "Leonardo Da Vinci",
-                            PictureLink = "~/Images/Originals/Paintings/Nattvarden.jpg",
+                            PictureLink = "~/Images/Originals/Paintings/The Last Supper.jpg",
                             Price = 33.00m,
                             ShortDescription = "The last supper",
                             Stock = 3,
@@ -250,8 +250,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "555cf7cd-e742-491e-ba0b-878bec6b0ac5",
-                            ArtistId = "d227232d-059b-4800-8b54-4f786e401eee",
+                            ProductId = "3160d351-cf46-45b8-839a-b4a3000552b3",
+                            ArtistId = "bd695714-66cd-4d80-b3f0-42b8b4ab29b6",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1903),
                             Height = 460,
@@ -262,14 +262,14 @@ namespace ArtWebshop.Data.Migrations.Products
                             ShortDescription = "Edvard Munch",
                             Stock = 150,
                             Style = "Olja, tempera och pastell på papp",
-                            ThumbnailLink = "~/Images/Originals/Thumbnails/Prints/Skriet (thumb).jpg",
+                            ThumbnailLink = "~/Images/Originals/Thumbnails/Skriet (thumb).jpg",
                             Title = "Skriet.jpg",
                             Width = 880
                         },
                         new
                         {
-                            ProductId = "3a669355-8cdd-4182-ba29-f20913aa6e88",
-                            ArtistId = "5cf26302-b6e2-4ebd-8a1a-0e5c0455a202",
+                            ProductId = "829836e8-a0ef-4ac3-961f-a4dba5829ac2",
+                            ArtistId = "00ade1ba-3e6b-49c9-8450-33036cf18785",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1882),
                             Height = 460,
@@ -280,7 +280,7 @@ namespace ArtWebshop.Data.Migrations.Products
                             ShortDescription = "Vincent van Gogh",
                             Stock = 5,
                             Style = "Postexpressionism: Teckning penna på vattenfärgat papper",
-                            ThumbnailLink = "~/Images/Originals/Thumbnails/Prints/Utsliten (thumb).jpg",
+                            ThumbnailLink = "~/Images/Originals/Thumbnails/Utsliten (thumb).jpg",
                             Title = "Utsliten.jpg",
                             Width = 880
                         });

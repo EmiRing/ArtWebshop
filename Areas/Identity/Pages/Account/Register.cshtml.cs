@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 using ArtWebshop.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using ArtWebshop.Data;
-using ArtWebshop.Data.Migrations.Users;
+
 
 namespace ArtWebshop.Areas.Identity.Pages.Account
 {
