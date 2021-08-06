@@ -11,8 +11,8 @@ namespace ArtWebshop.Models
     {
         [Key]
         public string ProductId { get; set; }
-        [Required]
         
+        [Required]        
         [Display(Name = "Namn")]
         public string Title { get; set; }
         
