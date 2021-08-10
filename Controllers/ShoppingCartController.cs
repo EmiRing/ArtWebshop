@@ -43,5 +43,53 @@ namespace ArtWebshop.Controllers
 
             return RedirectToAction("ListProducts", "Products");
         }
+
+        public async Task<IActionResult> ReduceAmount(string productId)
+        {
+            Product product = await _productRepository.GetAsync(productId);
+
+            if (product != null)
+            {
+                _shoppingCart.ReduceAmountInCart(product);
+            }
+
+            return View("Index", new ShoppingCartViewModel
+            {
+                shoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+            });
+        }
+
+        public async Task<IActionResult> IncreaseAmount(string productId)
+        {
+            Product product = await _productRepository.GetAsync(productId);
+
+            if (product != null)
+            {
+                _shoppingCart.IncreaseAmountInCart(product);
+            }
+
+            return View("Index", new ShoppingCartViewModel
+            {
+                shoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+            });
+        }
+
+        public async Task<IActionResult> RemoveFromCart(string productId)
+        {
+            Product product = await _productRepository.GetAsync(productId);
+
+            if (product != null)
+            {
+                _shoppingCart.RemoveFromCart(product);
+            }
+
+            return View("Index", new ShoppingCartViewModel
+            {
+                shoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+            });
+        }
     }
 }
