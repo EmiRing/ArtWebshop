@@ -36,6 +36,7 @@ namespace ArtWebshop.Models
 
             session.SetString("CartId", cartId);
             
+            
 
             return new ShoppingCart(context, services.GetRequiredService<IHttpContextAccessor>()) { ShoppingCartId = cartId };
         }
@@ -71,6 +72,71 @@ namespace ArtWebshop.Models
             }
             
             SessionHelper.SetObjectAsJson(_contextAccessor.HttpContext.Session, "ShoppingCartItems", ShoppingCartItems);
+        }
+
+        public void ReduceAmountInCart(Product product)
+        {
+            ShoppingCartItem item;
+
+            if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems") != null)
+            {
+                ShoppingCartItems = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems");
+            }
+
+            if (ShoppingCartItems.Exists(i => i.Product.ProductId == product.ProductId))
+            {
+                item = ShoppingCartItems.FirstOrDefault(i => i.Product.ProductId == product.ProductId);
+                if (item.Amount > 1)
+                { 
+                    item.Amount--;
+                    
+                }
+                else
+                {
+                    ShoppingCartItems.Remove(item);
+                }
+
+                SessionHelper.SetObjectAsJson(_contextAccessor.HttpContext.Session, "ShoppingCartItems", ShoppingCartItems);
+            }
+        }
+
+        public void IncreaseAmountInCart(Product product)
+        {
+            ShoppingCartItem item;
+
+            if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems") != null)
+            {
+                ShoppingCartItems = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems");
+            }
+
+            if (ShoppingCartItems.Exists(i => i.Product.ProductId == product.ProductId))
+            {
+                item = ShoppingCartItems.FirstOrDefault(i => i.Product.ProductId == product.ProductId);
+                item.Amount++;
+
+                SessionHelper.SetObjectAsJson(_contextAccessor.HttpContext.Session, "ShoppingCartItems", ShoppingCartItems);
+            }
+        }
+
+        public void RemoveFromCart(Product product)
+        {
+            ShoppingCartItem item;
+
+            if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems") == null) return;
+               
+            ShoppingCartItems = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems");
+
+            if (!ShoppingCartItems.Exists(i => i.Product.ProductId == product.ProductId))
+            {
+                return;
+            }
+            
+            item = ShoppingCartItems.FirstOrDefault(i => i.Product.ProductId == product.ProductId);
+                
+            ShoppingCartItems.Remove(item);
+                
+            SessionHelper.SetObjectAsJson(_contextAccessor.HttpContext.Session, "ShoppingCartItems", ShoppingCartItems);
+            
         }
 
         public List<ShoppingCartItem> GetShoppingCartItems()
