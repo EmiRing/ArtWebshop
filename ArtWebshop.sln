@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtWebshop", "ArtWebshop.csproj", "{3D9228CB-05E7-4F30-A759-541A6E6B8AC6}"
 EndProject
-Global
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F93B40F7-524E-498C-974A-160F79316DBE}"
+EndProject
+<!--Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopingCartTest", "..\ShopingCartTest\ShopingCartTest.csproj", "{40223A1E-D8D7-4109-9105-2136271744E9}"-->
+	ProjectSection(ProjectDependencies) = postProject
+		{3D9228CB-05E7-4F30-A759-541A6E6B8AC6} = {3D9228CB-05E7-4F30-A759-541A6E6B8AC6}
+	EndProjectSection
+EndProject
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

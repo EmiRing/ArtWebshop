@@ -82,18 +82,21 @@
             </button>
         </div>
     </div>
-    <div class="row">
+    <div class="row p-3">
         @foreach (var item in Model.Product)
         {   <div class="col-sm mb-4">
                 <div>@item.PictureLink</div>
-                <img src="@item.PictureLink" width="330" height="330" />
-                <div>Artist:&nbsp;&nbsp;&nbsp;&nbsp; @item.Artist.ArtistName</div>
-                <div>Description: @item.ShortDescription </div>
-                <div>Saldo: @item.Stock st </div>
+                <div>
+                    <img src="@Model.Product.FirstOrDefault().PictureLink" width="330" height="330" />
+                </div>
+                <div>Verk:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@item.Title</div>
+                <div>Konstnär:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@item.Artist.ArtistName</div>
+                <div>Beskrivning: @item.ShortDescription </div>
+                <div class="row">
+                    <div class="col">Pris: @item.Price kr</div><div class="col">Saldo: @item.Stock st</div><div class="col"><button class="btn-primary">Köp</button></div>
+                </div>
             </div>
         }
-        <img src="@Model.Product.FirstOrDefault().PictureLink">
-        @Model.Product.FirstOrDefault().PictureLink
     </div>
 </body>
 </html>

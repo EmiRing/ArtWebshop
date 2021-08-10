@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,28 +11,38 @@ namespace ArtWebshop.Models
     {
         [Key]
         public string ProductId { get; set; }
-        [Required]
+        
+        [Required]        
         [Display(Name = "Namn")]
         public string Title { get; set; }
+        
         [Required]
         [Display(Name = "Bredd")]
         public int Width { get; set; }
+        
         [Required]
         [Display(Name = "Höjd")]
         public int Height { get; set; }
+        
         [Required]
         [Display(Name ="Sammanfattning")]
         public string ShortDescription { get; set; }
+        
         [Display(Name = "Beskrivning")]
         public string LongDescription { get; set; }
+        
         [Required]
         [Display(Name ="Kategori")]
         public string Category { get; set; }
+        
         [Display(Name ="Stil")]
         public string Style { get; set; }
+        
         [Display(Name = "Skapad")]
         public DateTime CreationDate { get; set; }
+        
         [Required]
+        [Column(TypeName = "decimal(18,2)")]
         [Display(Name ="Pris")]
         public decimal Price { get; set; }
         
@@ -46,7 +57,5 @@ namespace ArtWebshop.Models
         public List<OrderRow> OrderRows { get; set; }
         public Artist Artist { get; set; }
         public List<ArtistRow> ArtistRows { get; set; }
-
-
     }
 }
