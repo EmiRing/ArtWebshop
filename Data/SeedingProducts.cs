@@ -59,7 +59,7 @@ namespace ArtWebshop.Data
             return modelBuilder;
         }
         public static ModelBuilder SetProduct(string title, int width, int height, string shortDesc, string longDesc, string category, 
-            string style, DateTime createDate, decimal price, string pictLink, string thumbLink, bool isPaintingOfTjeWeek, int inStock, 
+            string style, DateTime createDate, decimal price, string pictLink, string thumbLink, bool isPaintingOfTheWeek, int inStock, 
             string artistId, ModelBuilder modelBuilder)
         {
             string productId = Guid.NewGuid().ToString();

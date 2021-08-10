@@ -121,13 +121,13 @@ namespace ArtWebshop.Data.Migrations.Users
                     b.HasData(
                         new
                         {
-                            Id = "6f771b46-dac3-4860-b056-71263c1f1890",
+                            Id = "54d61f5f-98f1-489b-8bca-651c70d80ff1",
                             AccessFailedCount = 0,
                             BillingCity = "Göteborg",
                             BillingCountry = "Sverige",
                             BillingPostalCode = "12345",
                             BillingStreetName = "Hemadress 1",
-                            ConcurrencyStamp = "58f0353a-82e4-486c-b37e-dc71dffa4564",
+                            ConcurrencyStamp = "f1a1c4ae-4be9-4d16-a93b-a438294883c3",
                             Email = "admin@site.com",
                             EmailConfirmed = true,
                             FirstName = "TestUserAdmin",
@@ -135,21 +135,21 @@ namespace ArtWebshop.Data.Migrations.Users
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@SITE.COM",
                             NormalizedUserName = "ADMIN@SITE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBOKiB0f/K/lMHXOsS6IFHsJsmWyy9dzfOWkKkPObF2X5jzJWe1CRNxTnpA48gquHQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEODz6OjPV7j0TuR/j9qIvd+Dn6OksYFa/SJ9i/huj/XPqbCq+iz1ymA/zTNobTEK3w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a60f5cf4-b76a-44d7-a44c-2f61a9b78eb1",
+                            SecurityStamp = "52bac319-aac4-44b0-80a0-a150ba9eef82",
                             TwoFactorEnabled = false,
                             UserName = "admin@site.com"
                         },
                         new
                         {
-                            Id = "7853f3e9-b12c-4955-a1d3-383c0caa3d16",
+                            Id = "db46f107-766d-4b38-9d3b-d1b22b6fd811",
                             AccessFailedCount = 0,
                             BillingCity = "Göteborg",
                             BillingCountry = "Sverige",
                             BillingPostalCode = "12345",
                             BillingStreetName = "Hemadress 1",
-                            ConcurrencyStamp = "7c22acb9-195a-4d11-ba65-8a10c2f906aa",
+                            ConcurrencyStamp = "626828ed-00e3-48a5-830f-3bbba88ee920",
                             Email = "vendor@site.com",
                             EmailConfirmed = true,
                             FirstName = "TestUserVendor",
@@ -157,21 +157,21 @@ namespace ArtWebshop.Data.Migrations.Users
                             LockoutEnabled = false,
                             NormalizedEmail = "VENDOR@SITE.COM",
                             NormalizedUserName = "VENDOR@SITE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDPDubzk42650JAf08I3rJbon2bmxcyUit08gD9lgiuHTBzdfHfcui48vUUP0f5a2g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAL0F9IAJQ4BtcrTjmY1tuYw5EVjRCEWZgOGmkIUOjuNDaY/cutLqx/Zh87ubShu1A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a1571469-2ab7-4a39-930a-6a41dd2ed66c",
+                            SecurityStamp = "2eb4d7f4-192d-440b-ac4e-0e9faf64605e",
                             TwoFactorEnabled = false,
                             UserName = "vendor@site.com"
                         },
                         new
                         {
-                            Id = "c9c50f87-9cb6-46cf-a04f-97255608a6fb",
+                            Id = "6ab96968-d910-4c01-908a-8445be5ce216",
                             AccessFailedCount = 0,
                             BillingCity = "Göteborg",
                             BillingCountry = "Sverige",
                             BillingPostalCode = "12345",
                             BillingStreetName = "Hemadress 1",
-                            ConcurrencyStamp = "e0efc47d-c815-4f82-a2e0-04f8ea196a80",
+                            ConcurrencyStamp = "0baeaf44-fcea-4fd8-b658-f07121415e1e",
                             Email = "customer@site.com",
                             EmailConfirmed = true,
                             FirstName = "TestUserCustomer",
@@ -179,21 +179,21 @@ namespace ArtWebshop.Data.Migrations.Users
                             LockoutEnabled = false,
                             NormalizedEmail = "CUSTOMER@SITE.COM",
                             NormalizedUserName = "CUSTOMER@SITE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKRoJUS/rFKP713fQE3goB4o0+GbrsJmwRIe8N8kF6UX7WcaQ+xZwMbWPqdWMqNX4w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAamU+e4ZuxEOz8IyoQxK38lF1+90OYN0Pz+J9lKLlYEs6KyRM3gBsW8+TZ8SRxdgw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3ac19513-9e10-42f9-b4ef-26ad0cb5546f",
+                            SecurityStamp = "053060da-bf15-4cd6-9746-2b1e8c0fbd8b",
                             TwoFactorEnabled = false,
                             UserName = "customer@site.com"
                         },
                         new
                         {
-                            Id = "9b4fb251-de7c-46b5-9d34-dee375f3bb9a",
+                            Id = "87738567-4d4e-4460-8c4d-a9e2b2157992",
                             AccessFailedCount = 0,
                             BillingCity = "Göteborg",
                             BillingCountry = "Sverige",
                             BillingPostalCode = "12345",
                             BillingStreetName = "Hemadress 1",
-                            ConcurrencyStamp = "9f72584f-8b3b-41fb-b40a-ba28cad67669",
+                            ConcurrencyStamp = "448af235-f6ff-4f26-91e7-179facf9a42d",
                             Email = "artist@site.com",
                             EmailConfirmed = true,
                             FirstName = "TestUserArtist",
@@ -201,9 +201,9 @@ namespace ArtWebshop.Data.Migrations.Users
                             LockoutEnabled = false,
                             NormalizedEmail = "ARTIST@SITE.COM",
                             NormalizedUserName = "ARTIST@SITE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKwJcGON+x6TliPeRgzB0Kj/C0sT9d3D3KmgDibejs59RpPe5ayMN8uoaYdBfSZuLA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOGwCr+MQ6RHF6VQpnjK/Ddh8oZWVNye8zR3U4hz8ykAQakXfTjIACOxvPrDdyhJkA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fd4bb31a-bcb9-446a-8dc4-ff645098498e",
+                            SecurityStamp = "0d6f66c2-f11c-49ea-84f4-64b536fe78bb",
                             TwoFactorEnabled = false,
                             UserName = "artist@site.com"
                         });
@@ -238,29 +238,29 @@ namespace ArtWebshop.Data.Migrations.Users
                     b.HasData(
                         new
                         {
-                            Id = "d38f1499-8a56-49e9-9499-b44106cf488f",
-                            ConcurrencyStamp = "d38f1499-8a56-49e9-9499-b44106cf488f",
+                            Id = "fc7eca9a-7b44-42df-8a6d-2a35a51e7fe9",
+                            ConcurrencyStamp = "fc7eca9a-7b44-42df-8a6d-2a35a51e7fe9",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "2ba890d1-7638-4dd7-89f6-0471ffde0fab",
-                            ConcurrencyStamp = "2ba890d1-7638-4dd7-89f6-0471ffde0fab",
+                            Id = "0329ff7d-7d07-43d9-ae9a-e57dbbb76123",
+                            ConcurrencyStamp = "0329ff7d-7d07-43d9-ae9a-e57dbbb76123",
                             Name = "Vendor",
                             NormalizedName = "VENDOR"
                         },
                         new
                         {
-                            Id = "dcd7abf1-add1-4f94-bdd6-331c3e441323",
-                            ConcurrencyStamp = "dcd7abf1-add1-4f94-bdd6-331c3e441323",
+                            Id = "c10f1603-c552-4ebb-b9dd-dab126d5bdf1",
+                            ConcurrencyStamp = "c10f1603-c552-4ebb-b9dd-dab126d5bdf1",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fbfd952f-db39-44c4-a831-fc718d1fbe28",
-                            ConcurrencyStamp = "fbfd952f-db39-44c4-a831-fc718d1fbe28",
+                            Id = "ba217b17-2277-4789-b6ef-388d7912f99f",
+                            ConcurrencyStamp = "ba217b17-2277-4789-b6ef-388d7912f99f",
                             Name = "Artist",
                             NormalizedName = "ARTIST"
                         });
@@ -355,23 +355,23 @@ namespace ArtWebshop.Data.Migrations.Users
                     b.HasData(
                         new
                         {
-                            UserId = "6f771b46-dac3-4860-b056-71263c1f1890",
-                            RoleId = "d38f1499-8a56-49e9-9499-b44106cf488f"
+                            UserId = "54d61f5f-98f1-489b-8bca-651c70d80ff1",
+                            RoleId = "fc7eca9a-7b44-42df-8a6d-2a35a51e7fe9"
                         },
                         new
                         {
-                            UserId = "7853f3e9-b12c-4955-a1d3-383c0caa3d16",
-                            RoleId = "2ba890d1-7638-4dd7-89f6-0471ffde0fab"
+                            UserId = "db46f107-766d-4b38-9d3b-d1b22b6fd811",
+                            RoleId = "0329ff7d-7d07-43d9-ae9a-e57dbbb76123"
                         },
                         new
                         {
-                            UserId = "c9c50f87-9cb6-46cf-a04f-97255608a6fb",
-                            RoleId = "dcd7abf1-add1-4f94-bdd6-331c3e441323"
+                            UserId = "6ab96968-d910-4c01-908a-8445be5ce216",
+                            RoleId = "c10f1603-c552-4ebb-b9dd-dab126d5bdf1"
                         },
                         new
                         {
-                            UserId = "9b4fb251-de7c-46b5-9d34-dee375f3bb9a",
-                            RoleId = "fbfd952f-db39-44c4-a831-fc718d1fbe28"
+                            UserId = "87738567-4d4e-4460-8c4d-a9e2b2157992",
+                            RoleId = "ba217b17-2277-4789-b6ef-388d7912f99f"
                         });
                 });
 

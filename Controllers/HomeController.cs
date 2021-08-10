@@ -17,21 +17,14 @@ namespace ArtWebshop.Controllers
         private readonly ProductDbContext _prodContext;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, ProductDbContext prodContext)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _prodContext = prodContext;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-            artProdViewModel.Product = await _prodContext.Products
-                .Include(a => a.Artist)
-                .ToListAsync();
-            Debug.WriteLine("\n\t" + artProdViewModel.Product.FirstOrDefault().Title);
-
-            return View(artProdViewModel);
+            return View();
         }
 
         public IActionResult Privacy()

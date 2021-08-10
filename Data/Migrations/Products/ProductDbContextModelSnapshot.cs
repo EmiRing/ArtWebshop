@@ -38,30 +38,30 @@ namespace ArtWebshop.Data.Migrations.Products
 
                     b.HasKey("ArtistId");
 
-                    b.ToTable("Artist");
+                    b.ToTable("Artists");
 
                     b.HasData(
                         new
                         {
-                            ArtistId = "7bd6641e-853e-4194-bfe4-98e7d74d4c86",
+                            ArtistId = "641b2d0c-3beb-425b-bd7c-20a852f51e26",
                             ArtistName = "Leonardo da Vinci",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "617c2263-cf15-4609-9b69-c267a61f2a36",
+                            ArtistId = "234654fc-015d-46fa-b519-5a8a29dab5b6",
                             ArtistName = "Leonardo da Vinci",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "d969538a-e82e-4e3e-9dcf-2068f031024d",
+                            ArtistId = "fb235d70-7f67-4712-b99b-da281259f1a9",
                             ArtistName = "Edvard Munch",
                             UserId = "userId"
                         },
                         new
                         {
-                            ArtistId = "aaed5a19-d2db-4842-9628-0083d920a9a0",
+                            ArtistId = "5c41bf9b-4bbd-41f1-93b9-985bc1225357",
                             ArtistName = "Vincent van Gogh",
                             UserId = "userId"
                         });
@@ -76,7 +76,7 @@ namespace ArtWebshop.Data.Migrations.Products
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
@@ -139,13 +139,13 @@ namespace ArtWebshop.Data.Migrations.Products
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Discount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<string>("OrderId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
@@ -184,10 +184,11 @@ namespace ArtWebshop.Data.Migrations.Products
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureLink")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(260)
+                        .HasColumnType("nvarchar(260)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<string>("ShortDescription")
                         .IsRequired()
@@ -200,7 +201,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ThumbnailLink")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(260)
+                        .HasColumnType("nvarchar(260)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -218,8 +220,8 @@ namespace ArtWebshop.Data.Migrations.Products
                     b.HasData(
                         new
                         {
-                            ProductId = "7f847eb4-7fdc-45c3-a937-e48c8d25d4c0",
-                            ArtistId = "7bd6641e-853e-4194-bfe4-98e7d74d4c86",
+                            ProductId = "a6a4ccb8-3851-408c-bc60-0427124d4c38",
+                            ArtistId = "641b2d0c-3beb-425b-bd7c-20a852f51e26",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1503),
                             Height = 53,
@@ -236,8 +238,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "7d4f87d9-b555-4872-aa3c-ca946cd4ccef",
-                            ArtistId = "617c2263-cf15-4609-9b69-c267a61f2a36",
+                            ProductId = "83ce44b3-4532-4292-8a56-23196a700045",
+                            ArtistId = "234654fc-015d-46fa-b519-5a8a29dab5b6",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1495),
                             Height = 460,
@@ -254,8 +256,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "7f11d7ff-6886-4c35-8bab-be4e95a0b78d",
-                            ArtistId = "d969538a-e82e-4e3e-9dcf-2068f031024d",
+                            ProductId = "4f141cf9-5127-4c5a-88cc-41b5e4406394",
+                            ArtistId = "fb235d70-7f67-4712-b99b-da281259f1a9",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1903),
                             Height = 460,
@@ -272,8 +274,8 @@ namespace ArtWebshop.Data.Migrations.Products
                         },
                         new
                         {
-                            ProductId = "5242d9ab-3637-4226-b424-375f3a906191",
-                            ArtistId = "aaed5a19-d2db-4842-9628-0083d920a9a0",
+                            ProductId = "abf7f07b-908e-48c6-8ed3-d200c3cc8261",
+                            ArtistId = "5c41bf9b-4bbd-41f1-93b9-985bc1225357",
                             Category = "Print",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1882),
                             Height = 460,

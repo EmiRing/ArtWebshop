@@ -13,7 +13,7 @@ namespace ArtWebshop.Models
         public string ProductId { get; set; }
         
         [Required]        
-        [Display(Name = "Namn")]
+        [Display(Name = "Titel")]
         public string Title { get; set; }
         
         [Required]
@@ -38,24 +38,31 @@ namespace ArtWebshop.Models
         [Display(Name ="Stil")]
         public string Style { get; set; }
         
-        [Display(Name = "Skapad")]
+        [Display(Name = "Skapad Datum")]
+        [DataType(DataType.Date)]
         public DateTime CreationDate { get; set; }
         
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name ="Pris")]
         public decimal Price { get; set; }
-        
+
+        [MaxLength(260)]         // Max path length in Windows 260 char
         public string PictureLink { get; set; }
-        public string ThumbnailLink { get; set; }
         
-        public string ArtistId { get; set; }
+        [MaxLength(260)]         // Max path length in Windows 260 char
+        public string ThumbnailLink { get; set; }
+
         public bool IsPaintingOfTheWeek { get; set; }
+        
         [Display(Name ="Lagersaldo")]
         public int Stock { get; set; }
-        
-        public List<OrderRow> OrderRows { get; set; }
+
+
+        [ForeignKey("ArtistId")]
+        public string ArtistId { get; set; }
         public Artist Artist { get; set; }
         public List<ArtistRow> ArtistRows { get; set; }
+        public List<OrderRow> OrderRows { get; set; }
     }
 }

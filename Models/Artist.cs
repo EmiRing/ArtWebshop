@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,8 +15,10 @@ namespace ArtWebshop.Models
 
         [Display(Name ="Artistnamn")]
         public string ArtistName { get; set; }
+        
         [Display(Name ="Profilbild")]
         public string ProfilePicture { get; set; }
+        
         [Display(Name ="Presentation")]
         public string Presentation { get; set; }
 

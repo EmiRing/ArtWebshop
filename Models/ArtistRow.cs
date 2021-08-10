@@ -13,6 +13,7 @@ namespace ArtWebshop.Models
         public string RowId { get; set; }
         public string ProductId { get; set; }
         public string ArtistId { get; set; }
+        
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
