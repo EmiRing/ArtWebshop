@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="eFlexis.Dialog" Version="0.1.0" />
+    <PackageReference Include="jQuery" Version="3.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
@@ -30,7 +32,6 @@
     <Folder Include="Data\Migrations\Products\" />
     <Folder Include="Data\Migrations\Users\" />
     <Folder Include="wwwroot\Images\Originals\Prints\" />
-    <Folder Include="wwwroot\Images\Originals\Paintings\" />
     <Folder Include="wwwroot\Images\Thumbnails\Paintings\" />
     <Folder Include="wwwroot\Images\Thumbnails\Prints\" />
   </ItemGroup>

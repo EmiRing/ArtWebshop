@@ -1,9 +1,6 @@
 ﻿using ArtWebshop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ArtWebshop.Data
 {
@@ -18,32 +15,40 @@ namespace ArtWebshop.Data
             string monaLisaPictLink = dirPaintings + "Mona Lisa.jpg";
             string monaLisaThumbLink = dirThumbnails + "/Mona Lisa (thumb).jpg";
             string monaLisaLongDesc = "Mona Lisa, also called Portrait of Lisa Gherardini, wife of Francesco del Giocondo, Italian La Gioconda, or French La Joconde, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. It was painted sometime between 1503 and 1519, when Leonardo was living in Florence, and it now hangs in the Louvre Museum, Paris, where it remained an object of pilgrimage in the 21st century. The sitter’s mysterious smile and her unproven identity have made the painting a source of ongoing investigation and fascination.";
-            modelBuilder = SetProduct("Mona Lisa.jpg", 77, 53, "A mysterious woman", monaLisaLongDesc, "Print", "Oil on wood Panel",
+            modelBuilder = SetProduct("Mona Lisa", 77, 53, "A mysterious woman", monaLisaLongDesc, "Print", "Oil on wood Panel",
                 new DateTime(1503), 50.50M, monaLisaPictLink, monaLisaThumbLink, false, 15, artistId, modelBuilder);
 
             artistId = Guid.NewGuid().ToString();
             SetArtist(artistId, null, "Leonardo da Vinci", modelBuilder);
             string lastSupperPictLink = dirPaintings + "The Last Supper.jpg";
             string lastSupperThumbLink = dirThumbnails + "Nattvarden (thumb).jpg";
-            string lastSupperLongDesc = "Leonardo Da Vinci";
-            modelBuilder = SetProduct("The Last Supper.jpg", 880, 460, "The last supper", lastSupperLongDesc, "Print", "Olja på duk",
+            string lastSupperLongDesc = "Long, long, long description";
+            modelBuilder = SetProduct("The Last Supper", 880, 460, "Short description", lastSupperLongDesc, "Print", "Olja på duk",
                 new DateTime(1495), 33.00M, lastSupperPictLink, lastSupperThumbLink, false, 3, artistId, modelBuilder);
 
             artistId = Guid.NewGuid().ToString();
             SetArtist(artistId, null, "Edvard Munch", modelBuilder);
             string skrietPictLink = dirPaintings + "Skriet.jpg";
-            string skrietThumbLink = dirThumbnails + "Skriet (thumb).jpg";
-            string skrietLongDesc = "";
-            modelBuilder = SetProduct("Skriet.jpg", 880, 460, "Edvard Munch", skrietLongDesc, "Print", "Olja, tempera och pastell på papp",
+            string skrietThumbLink = dirThumbnails + "Skriet (thumb).";
+            string skrietLongDesc = "Long, long, long description";
+            modelBuilder = SetProduct("Skriet", 880, 460, "Short description", skrietLongDesc, "Print", "Olja, tempera och pastell på papp",
                 new DateTime(1903), 15.505M, skrietPictLink, skrietThumbLink, true, 150, artistId, modelBuilder);
 
             artistId = Guid.NewGuid().ToString();
             SetArtist(artistId, null, "Vincent van Gogh", modelBuilder);
             string utslitenPictLink = dirPaintings + "Utsliten.jpg";
             string utslitenThumbLink = dirThumbnails + "Utsliten (thumb).jpg";
-            string utslitenLongDesc = "";
-            modelBuilder = SetProduct("Utsliten.jpg", 880, 460, "Vincent van Gogh", utslitenLongDesc, "Print", "Postexpressionism: Teckning penna på vattenfärgat papper",
+            string utslitenLongDesc = "Long, long, long description";
+            modelBuilder = SetProduct("Utsliten", 880, 460, "Short description", utslitenLongDesc, "Print", "Postexpressionism: Teckning penna på vattenfärgat papper",
                 new DateTime(1882), 18.505M, utslitenPictLink, utslitenThumbLink, false, 5, artistId, modelBuilder);
+
+            artistId = Guid.NewGuid().ToString();
+            SetArtist(artistId, null, "Sandro Botticelli", modelBuilder);
+            string birthOfVenusPictLink = dirPaintings + "Venus Födelse.jpg";
+            string birthOfVenusThumbLink = dirThumbnails + "Venus Födelse (thumb).jpg";
+            string birthOfVenusLongDesc = "Long, long, long description";
+            modelBuilder = SetProduct("Venus Födelse", 880, 460, "Kort beskrivning", birthOfVenusLongDesc, "Print", "Tempera på duk",
+                new DateTime(1485), 89.50M, birthOfVenusPictLink, birthOfVenusThumbLink, false, 53, artistId, modelBuilder);
         }
 
         public static ModelBuilder SetArtist(string artistId, string userId, string artistName, ModelBuilder modelBuilder)

@@ -27,9 +27,9 @@ namespace ArtWebshop.Controllers
         {
             ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
             artProdViewModel.Product = await _prodContext.Products
-            .Include(a => a.Artist)
+                .OrderBy(p => p.Title)
+                .Include(a => a.Artist)
                 .ToListAsync();
-            Debug.WriteLine("\n\t" + artProdViewModel.Product.FirstOrDefault().Title);
 
             return View(artProdViewModel);
         }

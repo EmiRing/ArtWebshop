@@ -1,22 +1,45 @@
 ﻿@model ArtistProductViewModel
 
-<div class="d-flex flex-row mt-5 p-3">
-    @foreach (var item in Model.Product)
-    {
-        <div class="col-sm mb-4 mr-4 p-2" min-width="350" min-height="350">
-            <div class="d-flex flex-row">
-                <img src="@item.PictureLink" width="330" height="330" />
-            </div>
-            <div class="d-flex flex-row pr-2">
-                Verk:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@item.Title
-            </div>
-            <div class="d-flex flex-row pr-2">
-                Konstnär:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@item.Artist.ArtistName
-            </div>
-            <div class="d-flex flex-row">
-                <div class="col">Pris: @item.Price kr</div>
-                <div class="col"><button class="btn-primary">Köp</button></div>
-            </div>
+@foreach (var item in Model.Product)
+{
+    <div class="col-3 card pt-2">
+        <div class="image-thumb">
+            <img src="@item.PictureLink" class="frame" width="305" height="305" />
         </div>
-    }
+        <table class="table-sm">
+            <tr>
+                <td scope="col">Verk:</td>
+                <td scope="col">@item.Title</td>
+            </tr>
+            <tr>
+                <td scope="col">Konstnär:</td>
+                <td scope="col">@item.Artist.ArtistName</td>
+            </tr>
+            <tr>
+                <td scope="col">Pris:</td>
+                <td scope="col">@item.Price kr</td>
+                <td scope="col"><button class="btn-primary" onClick="">Köp</button></td>
+            </tr>
+        </table>
+    </div>
+}
+
+<div class="product-options">
+    <a id="myWish" href="javascript:;" class="btn btn-mini">Köp </a>
 </div>
+<div class="alert alert-success" id="success-alert">
+    <strong>Success! </strong> 1 Tavla tillagd i kassan.
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#success-alert").hide();
+        $("#myWish").click(function showAlert() {
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+            });
+        });
+    });
+</script>
