@@ -4,6 +4,10 @@
     ViewData["Title"] = "List Products (Temp)";
 }
 
-<div class="row">
+<div id="Filter" class="row">
+    <partial name="_SortFilterPartial" model="Model" />
+</div>
+
+<div id="cards" class="row">
     <partial name="_ProductCardPartial" model="Model" />
 </div>

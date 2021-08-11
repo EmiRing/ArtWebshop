@@ -1,0 +1,16 @@
+﻿@model ArtistProductViewModel
+    
+    <form method="POST" asp-controller="ProductTemp" asp-action="SortFilter">
+        <label for="sortCriteria" style="margin-right: 10px">Sortera</label>
+        <select name="sortCriteria">
+            <option value="title" selected>Tavla</option>
+            <option value="artist">Konstnär</option>
+            <option value="price">Pris</option>
+        </select>
+
+        <select name="ascDesc">
+            <option value="asc" selected>Asc</option>
+            <option value="desc">Desc</option>
+        </select>
+        <button type="submit">Sortera</button>
+    </form>
