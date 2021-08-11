@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArtWebshop.Data;
 using ArtWebshop.Models;
+using ArtWebshop.ViewModels;
 
 namespace ArtWebshop.Controllers
 {
@@ -47,7 +48,33 @@ namespace ArtWebshop.Controllers
             return View(product);
         }
 
+        public async Task<IActionResult> MakePublic(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var product = await _context.Products
+                .Include(p => p.Artist)
+                .FirstOrDefaultAsync(m => m.ProductId == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+
+        [HttpPost, ActionName("MakePublic")]
+        public async Task<IActionResult> MakePublicConfirmed(string id)
+        {
+            ArtistProductViewModel artistProdViewModel = new ArtistProductViewModel();
+            artistProdViewModel.Product = await _context.Products
+                .Include(a => a.Artist)
+                .ToListAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
         public async Task<IActionResult> ChangeProduct(string id)
         {

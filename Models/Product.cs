@@ -58,6 +58,7 @@ namespace ArtWebshop.Models
         [Display(Name ="Lagersaldo")]
         public int Stock { get; set; }
 
+        public bool IsPublic { get; set; }
 
         [ForeignKey("ArtistId")]
         public string ArtistId { get; set; }
