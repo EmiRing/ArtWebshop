@@ -24,6 +24,8 @@ namespace ArtWebshop.Controllers
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
+            
+            if (items == null) return NoContent();
 
             return View(new ShoppingCartViewModel {
                 shoppingCart = _shoppingCart,
@@ -31,7 +33,7 @@ namespace ArtWebshop.Controllers
             });
         }
 
-        public async Task<RedirectToActionResult> AddToShoppingCart(string productId)
+        public async Task<RedirectToActionResult> AddToShoppingCart(string productId) 
         {
             
             Product product = await _productRepository.GetAsync(productId);
@@ -40,7 +42,7 @@ namespace ArtWebshop.Controllers
             {
                 _shoppingCart.AddToCart(product);
             }
-
+             
             return RedirectToAction("ListProducts", "Products");
         }
 
@@ -107,8 +109,9 @@ namespace ArtWebshop.Controllers
                 case "delete":
 
                     _shoppingCart.RemoveFromCart(product);
-
                     break;
+
+                    
                 case "neither":
 
                     break;
@@ -116,7 +119,7 @@ namespace ArtWebshop.Controllers
                     break;
             }
 
-            return Ok();
+            return NoContent();
         }
 
        
