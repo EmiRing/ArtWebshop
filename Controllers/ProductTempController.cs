@@ -31,7 +31,7 @@ namespace ArtWebshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SortFilter(string ascDesc, string sortCriteria) // make use of "sortCriteria"
+        public async Task<IActionResult> SortFilter(string ascDesc, string sortCriteria)
         {
             Debug.WriteLine("\n\t" + sortCriteria + " : " + ascDesc);
 
@@ -75,6 +75,13 @@ namespace ArtWebshop.Controllers
             }
 
             return View("Index", artProdViewModel);
+        }
+        public async Task<IActionResult> Info(string ascDesc, string sortCriteria)
+        {
+            ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
+            artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+            
+            return View(artProdViewModel);
         }
     }
 }
