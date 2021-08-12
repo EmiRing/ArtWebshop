@@ -91,5 +91,34 @@ namespace ArtWebshop.Controllers
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
             });
         }
+
+        public async Task<IActionResult> ChangeAmount(string itemId, string check = "neither")
+        {
+            var item = _shoppingCart.GetShoppingCartItems().FirstOrDefault(i => i.Product.ProductId == itemId);
+            Product product = await _productRepository.GetAsync(item.Product.ProductId);
+            switch (check)
+            {
+                case "add":
+                    _shoppingCart.IncreaseAmountInCart(product);
+                    break;
+                case "remove":
+                    _shoppingCart.ReduceAmountInCart(product);
+                    break;
+                case "delete":
+
+                    _shoppingCart.RemoveFromCart(product);
+
+                    break;
+                case "neither":
+
+                    break;
+                default:
+                    break;
+            }
+
+            return Ok();
+        }
+
+       
     }
 }
