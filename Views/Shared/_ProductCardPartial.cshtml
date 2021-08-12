@@ -16,7 +16,7 @@
 @foreach (var item in Model.Product)
 {
     <div class="col-3 card pt-2">
-        <a href='@Url.Action("Info","ProductTemp")'>
+        <a href='@Url.Action("Info","ProductTemp", new { title=@item.Title })'>
             <img src="@item.PictureLink" class="frame" width="305" height="305" />
         </a>
         <table class="table-sm">

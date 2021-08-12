@@ -76,10 +76,15 @@ namespace ArtWebshop.Controllers
 
             return View("Index", artProdViewModel);
         }
-        public async Task<IActionResult> Info(string ascDesc, string sortCriteria)
+        public async Task<IActionResult> Info(string title)
         {
+            Debug.WriteLine(title);
+
             ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-            artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+            artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Title)
+                .Where(p => p.Title == title)
+                .Include(a => a.Artist)
+                .ToListAsync();
             
             return View(artProdViewModel);
         }
