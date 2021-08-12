@@ -2,10 +2,10 @@
 using ArtWebshop.Models;
 using ArtWebshop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -87,6 +87,20 @@ namespace ArtWebshop.Controllers
                 .ToListAsync();
             
             return View(artProdViewModel);
+        }
+        public async Task<IActionResult> AddProduct(Product product)
+        {
+            Debug.WriteLine("\nController says:\t" + product.Title + "\t");
+            if (ModelState.IsValid)
+            {
+                product.ProductId = Guid.NewGuid().ToString();
+                _prodContext.Add(product);
+
+                await _prodContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["ArtistId"] = new SelectList(_prodContext.Artists, "ArtistId", "ArtistId", product.ArtistId);
+            return View(product);
         }
     }
 }
