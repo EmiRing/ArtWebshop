@@ -146,6 +146,7 @@ namespace ArtWebshop.Models
 
         public decimal GetShoppingCartTotal()
         {
+            if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems") == null) return 0;
             var items = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems");
             var total = items.Select(i => i.Product.Price * i.Amount).Sum();
             return total;
