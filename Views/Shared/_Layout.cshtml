@@ -4,20 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ArtWebshop</title>
+    <script src="https://kit.fontawesome.com/efa781d886.js" crossorigin="anonymous"></script>
     <script src="/Scripts/jquery-3.6.0.min.js"></script>
+    
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Art<br />Webshop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">                                
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Art Webshop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span><i class="fa-solid fa-cart-shopping-fast"></i>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-md-inline-flex justify-content-between" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hem</a>
@@ -26,16 +29,19 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="ProductTemp" asp-action="Index">Galleri</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">AddART tmp</a>
+                            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index">AddART tmp</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ListProducts">List Products tmp</a>
+                            <a class="nav-link text-dark" asp-controller="Products" asp-action="ListProducts">List Products tmp</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Sekretess</a>
                         </li>
+                        
                     </ul>
                     <partial name="_LoginPartial" />
+                    @*@await Component.InvokeAsync("ShoppingCartSummary")*@
+                    <vc:shopping-cart-summary ></vc:shopping-cart-summary>
                 </div>
             </div>
         </nav>
