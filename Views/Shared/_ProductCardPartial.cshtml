@@ -16,9 +16,9 @@
 @foreach (var item in Model.Product)
 {
     <div class="col-3 card pt-2">
-        <div class="image-thumb">
+        <a href='@Url.Action("Info","ProductTemp")'>
             <img src="@item.PictureLink" class="frame" width="305" height="305" />
-        </div>
+        </a>
         <table class="table-sm">
             <tr>
                 <td scope="col">Verk:</td>
@@ -31,7 +31,9 @@
             <tr>
                 <td scope="col">Pris:</td>
                 <td scope="col">@item.Price kr</td>
-                <td scope="col"><button class="btn-primary addToBasket">Köp</button></td>
+                <td scope="col">
+                    <button class="btn-primary addToBasket">Köp</button>
+                </td>
             </tr>
         </table>
     </div>
