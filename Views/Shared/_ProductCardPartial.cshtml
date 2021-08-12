@@ -11,6 +11,10 @@
             });
         });
     });
+
+    $('select').on('change', function () {
+        alert(this.value);
+    });
 </script>
 
 @foreach (var item in Model.Product)
