@@ -33,13 +33,13 @@
             <td>@Html.DisplayFor(modelItem => item.Width)</td>
             <td>@Html.DisplayFor(modelItem => item.Height)</td>
             <td>@Html.DisplayFor(modelItem => item.ShortDescription)</td>
-            <td>@Html.DisplayFor(modelItem => item.LongDescription)</td>
+            <td id="longDescription">@Html.DisplayFor(modelItem => item.LongDescription)</td>
             <td>@Html.DisplayFor(modelItem => item.Category)</td>
             <td>@Html.DisplayFor(modelItem => item.Style)</td>
             <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
             <td>@Html.DisplayFor(modelItem => item.Price)</td>
             <td>@Html.DisplayFor(modelItem => item.Stock)</td>
-            <td>@Html.DisplayFor(modelItem => item.Artist.ArtistId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Artist.ArtistName)</td>
 
             <td>
                 <a asp-action="ChangeProduct" asp-route-id="@item.ProductId">Change</a> 

@@ -147,3 +147,9 @@ code {
 #pShortDescription {
     /*height: 200px;*/
 }
+.longDescription {
+    height: 50px;
+}
+#longDescription {
+    height: 50px;
+}
