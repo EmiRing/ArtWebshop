@@ -1,0 +1,48 @@
+﻿@inject RoleManager<IdentityRole> roleManager
+@model UserViewModel
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="User.FirstName"></label>
+                <input asp-for="User.FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="User.LastName"></label>
+                <input asp-for="User.LastName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Email"></label>
+                <input asp-for="User.Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            @foreach (var role in roleManager.Roles)
+            {
+                if (Model.Roles.Contains(role.Name))
+                {
+                    <div>
+                        <input type="checkbox" name="Roles" value="@role.Name" checked />
+                        <label>@role.Name</label>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <input type="checkbox" name="Roles" value="@role.Name"/>
+                        <label>@role.Name</label>
+                    </div>
+                }
+            }
+
+            <input asp-for="User.Id" value="@Model.User.Id" hidden />
+            
+            <button id="update-profile-button" type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
