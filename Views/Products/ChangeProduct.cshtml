@@ -58,16 +58,8 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="ArtistId" class="control-label"></label>
-                <select asp-for="ArtistId" class="form-control" asp-items="ViewBag.ArtistId"></select>
-                <span asp-validation-for="ArtistId" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsPaintingOfTheWeek" /> @Html.DisplayNameFor(model => model.IsPaintingOfTheWeek)
-                </label>
-            </div>
+            <input type="hidden" asp-for="ArtistId" />
+            <input type="hidden" asp-for="IsPaintingOfTheWeek" />
             <div class="form-group">
                 <label asp-for="Stock" class="control-label"></label>
                 <input asp-for="Stock" class="form-control" />
