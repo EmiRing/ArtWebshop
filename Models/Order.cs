@@ -10,11 +10,15 @@ namespace ArtWebshop.Models
     {
         [Key]
         public string OrderId { get; set; }
+        [Required]
         public string UserId { get; set; }
-
+        [Required]
         public string DeliveryStreetName { get; set; }
+        [Required]
         public string DeliveryPostalCode { get; set; }
+        [Required]
         public string DeliveryCity { get; set; }
+        [Required]
         public string DeliveryCountry { get; set; }
 
         public string BillingStreetName { get; set; }
@@ -22,6 +26,7 @@ namespace ArtWebshop.Models
         public string BillingCity { get; set; }
         public string BillingCountry { get; set; }
 
+        [Required]
         public DateTime OrderDate { get; set; }
         public string CouponId { get; set; }
 

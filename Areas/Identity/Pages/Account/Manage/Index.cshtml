@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Profile";
+    ViewData["Title"] = "Profil";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
@@ -16,9 +16,39 @@
                 <input asp-for="Username" class="form-control" disabled />
             </div>
             <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Input.PhoneNumber"></label>
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingStreetName"></label>
+                <input asp-for="Input.BillingStreetName" class="form-control" />
+                <span asp-validation-for="Input.BillingStreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingPostalCode"></label>
+                <input asp-for="Input.BillingPostalCode" class="form-control" />
+                <span asp-validation-for="Input.BillingPostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingCity"></label>
+                <input asp-for="Input.BillingCity" class="form-control" />
+                <span asp-validation-for="Input.BillingCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BillingCountry"></label>
+                <input asp-for="Input.BillingCountry" class="form-control" />
+                <span asp-validation-for="Input.BillingCountry" class="text-danger"></span>
             </div>
             <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
         </form>

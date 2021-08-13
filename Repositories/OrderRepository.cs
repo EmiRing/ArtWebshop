@@ -1,13 +1,12 @@
 ﻿using ArtWebshop.Data;
 using ArtWebshop.Models;
-using ArtWebshop.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace ArtWebshop.Repository
+namespace ArtWebshop.Repositories
 {
     public class OrderRepository : Repository<Order>
     {
