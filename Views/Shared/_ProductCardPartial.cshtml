@@ -36,7 +36,9 @@
                 <td scope="col">Pris:</td>
                 <td scope="col">@item.Price kr</td>
                 <td scope="col">
-                    <button class="btn-primary addToBasket">Köp</button>
+                    <button class="btn-primary addToBasket" 
+                            onclick="location.href='@Url.Action("AddToShoppingCart", "ShoppingCart", new { productId = @item.ProductId})'">Köp
+                    </button>
                 </td>
             </tr>
         </table>

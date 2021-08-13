@@ -38,9 +38,7 @@ namespace ArtWebshop.Models
         [Display(Name ="Stil")]
         public string Style { get; set; }
         
-        [Display(Name = "Skapad Datum")]
-        [DataType(DataType.Date)]
-        public DateTime CreationDate { get; set; }
+        public string CreationDate { get; set; }
         
         [Required]
         [Column(TypeName = "decimal(18,2)")]

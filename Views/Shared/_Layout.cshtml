@@ -17,17 +17,10 @@
 </head>
 <body>
     <header>
-<<<<<<< HEAD
-        <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">                                
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Art Webshop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-=======
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Art<br />Webshop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
->>>>>>> Christopher
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span><i class="fa-solid fa-cart-shopping-fast"></i>
                 </button>
@@ -40,11 +33,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="ProductTemp" asp-action="Index">Galleri</a>
                         </li>
                         <li class="nav-item">
-<<<<<<< HEAD
-                            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index">AddART tmp</a>
-=======
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Ladda upp (tmp)</a>
->>>>>>> Christopher
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Products" asp-action="ListProducts">List Products tmp</a>
@@ -52,9 +41,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Sekretess</a>
                         </li>
-<<<<<<< HEAD
-                        
-=======
+
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Artist"))
                         {
                         <li class="nav-item dropdown">
@@ -68,7 +55,6 @@
                             </ul>
                         </li>
                         }
->>>>>>> Christopher
                     </ul>
                     <partial name="_LoginPartial" />
                     @*@await Component.InvokeAsync("ShoppingCartSummary")*@
