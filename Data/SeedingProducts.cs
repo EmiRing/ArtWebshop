@@ -11,7 +11,7 @@ namespace ArtWebshop.Data
         public static void seed(ModelBuilder modelBuilder)
         {
             string artistId = Guid.NewGuid().ToString();
-            SetArtist(artistId, null, "Leonardo da Vinci", modelBuilder);
+            SetArtist(artistId, "Leonardo da Vinci", modelBuilder);
             string monaLisaPictLink = dirPaintings + "Mona Lisa.jpg";
             string monaLisaThumbLink = dirThumbnails + "/Mona Lisa (thumb).jpg";
             string monaLisaLongDesc = "Mona Lisa, also called Portrait of Lisa Gherardini, wife of Francesco del Giocondo, Italian La Gioconda, or French La Joconde, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. It was painted sometime between 1503 and 1519, when Leonardo was living in Florence, and it now hangs in the Louvre Museum, Paris, where it remained an object of pilgrimage in the 21st century. The sitter’s mysterious smile and her unproven identity have made the painting a source of ongoing investigation and fascination.";
@@ -19,7 +19,7 @@ namespace ArtWebshop.Data
                 "1503", 50.50M, monaLisaPictLink, monaLisaThumbLink, false, 15, artistId, modelBuilder);
 
             artistId = Guid.NewGuid().ToString();
-            SetArtist(artistId, null, "Leonardo da Vinci", modelBuilder);
+            SetArtist(artistId, "Leonardo da Vinci", modelBuilder);
             string lastSupperPictLink = dirPaintings + "The Last Supper.jpg";
             string lastSupperThumbLink = dirThumbnails + "Nattvarden (thumb).jpg";
             string lastSupperLongDesc = "Long, long, long description";
@@ -27,7 +27,7 @@ namespace ArtWebshop.Data
                 "1495", 33.00M, lastSupperPictLink, lastSupperThumbLink, false, 3, artistId, modelBuilder);
 
             artistId = Guid.NewGuid().ToString();
-            SetArtist(artistId, null, "Edvard Munch", modelBuilder);
+            SetArtist(artistId, "Edvard Munch", modelBuilder);
             string skrietPictLink = dirPaintings + "Skriet.jpg";
             string skrietThumbLink = dirThumbnails + "Skriet (thumb).";
             string skrietLongDesc = "Long, long, long description";
@@ -35,7 +35,7 @@ namespace ArtWebshop.Data
                 "1903", 15.505M, skrietPictLink, skrietThumbLink, true, 150, artistId, modelBuilder);
 
             artistId = Guid.NewGuid().ToString();
-            SetArtist(artistId, null, "Vincent van Gogh", modelBuilder);
+            SetArtist(artistId, "Vincent van Gogh", modelBuilder);
             string utslitenPictLink = dirPaintings + "Utsliten.jpg";
             string utslitenThumbLink = dirThumbnails + "Utsliten (thumb).jpg";
             string utslitenLongDesc = "Long, long, long description";
@@ -43,7 +43,7 @@ namespace ArtWebshop.Data
                 "1882", 18.505M, utslitenPictLink, utslitenThumbLink, false, 5, artistId, modelBuilder);
 
             artistId = Guid.NewGuid().ToString();
-            SetArtist(artistId, null, "Sandro Botticelli", modelBuilder);
+            SetArtist(artistId, "Sandro Botticelli", modelBuilder);
             string birthOfVenusPictLink = dirPaintings + "Venus Födelse.jpg";
             string birthOfVenusThumbLink = dirThumbnails + "Venus Födelse (thumb).jpg";
             string birthOfVenusLongDesc = "Long, long, long description";
@@ -51,13 +51,12 @@ namespace ArtWebshop.Data
                 "1485", 89.50M, birthOfVenusPictLink, birthOfVenusThumbLink, false, 53, artistId, modelBuilder);
         }
 
-        public static ModelBuilder SetArtist(string artistId, string userId, string artistName, ModelBuilder modelBuilder)
+        public static ModelBuilder SetArtist(string artistId, string artistName, ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Artist>().HasData(
             new Artist
             {
                 ArtistId = artistId,
-                UserId = "userId",
                 ArtistName = artistName
             });
 

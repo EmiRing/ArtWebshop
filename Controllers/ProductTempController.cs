@@ -26,7 +26,7 @@ namespace ArtWebshop.Controllers
         public async Task<IActionResult> Index()
         {
             ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-            artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+            artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
             return View(artProdViewModel);
         }
 
@@ -42,16 +42,16 @@ namespace ArtWebshop.Controllers
                 switch (sortCriteria)
                 {
                     case "title":
-                        artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                     case "artist":
-                        artProdViewModel.Product = await _prodContext.Products.Include(p => p.Artist).OrderBy(p => p.Artist.ArtistName).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.Include(p => p.Artist).OrderBy(p => p.Artist.ArtistName).ToListAsync();
                         break;
                     case "price":
-                        artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Price).Include(a => a.Artist).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Price).Include(a => a.Artist).ToListAsync();
                         break;
                     default:
-                        artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                 }
             }
@@ -60,16 +60,16 @@ namespace ArtWebshop.Controllers
                 switch (sortCriteria)
                 {
                     case "title":
-                        artProdViewModel.Product = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                     case "artist":
-                        artProdViewModel.Product = await _prodContext.Products.Include(a => a.Artist).OrderByDescending(p => p.Artist.ArtistName).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.Include(a => a.Artist).OrderByDescending(p => p.Artist.ArtistName).ToListAsync();
                         break;
                     case "price":
-                        artProdViewModel.Product = await _prodContext.Products.OrderByDescending(p => p.Price).Include(a => a.Artist).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.OrderByDescending(p => p.Price).Include(a => a.Artist).ToListAsync();
                         break;
                     default:
-                        artProdViewModel.Product = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        artProdViewModel.Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                 }
             }
@@ -81,7 +81,7 @@ namespace ArtWebshop.Controllers
             Debug.WriteLine(title);
 
             ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-            artProdViewModel.Product = await _prodContext.Products.OrderBy(p => p.Title)
+            artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title)
                 .Where(p => p.Title == title)
                 .Include(a => a.Artist)
                 .ToListAsync();

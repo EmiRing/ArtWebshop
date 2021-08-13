@@ -70,7 +70,7 @@ namespace ArtWebshop.Controllers
         public async Task<IActionResult> MakePublicConfirmed(string id)
         {
             ArtistProductViewModel artistProdViewModel = new ArtistProductViewModel();
-            artistProdViewModel.Product = await _context.Products
+            artistProdViewModel.Products = await _context.Products
                 .Include(a => a.Artist)
                 .ToListAsync();
             return RedirectToAction(nameof(Index));
