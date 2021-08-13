@@ -86,6 +86,11 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Land")]
             public string BillingCountry { get; set; }
+
+            [Phone]
+            [Required]
+            [Display(Name = "Telefonnummer")]
+            public string PhoneNumber { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -105,6 +110,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
                     Email = Input.Email, 
                     FirstName = Input.FirstName, 
                     LastName = Input.LastName,
+                    PhoneNumber = Input.PhoneNumber,
                     BillingStreetName = Input.BillingStreetName, 
                     BillingPostalCode = Input.BillingPostalCode, 
                     BillingCity = Input.BillingCity, 

@@ -34,20 +34,50 @@ namespace ArtWebshop.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefonnummer")]
             public string PhoneNumber { get; set; }
+            
+            [Display(Name = "Förnamn")]
+            public string FirstName { get; set; }
+
+            
+            [Display(Name = "Efternamn")]
+            public string LastName { get; set; }
+
+            
+            [Display(Name = "Gata")]
+            public string BillingStreetName { get; set; }
+
+            
+            [Display(Name = "Postnummer")]
+            public string BillingPostalCode { get; set; }
+
+            
+            [Display(Name = "Ort/Stad")]
+            public string BillingCity { get; set; }
+
+            
+            [Display(Name = "Land")]
+            public string BillingCountry { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                BillingStreetName = user.BillingStreetName,
+                BillingCity = user.BillingCity,
+                BillingPostalCode = user.BillingPostalCode,
+                BillingCountry = user.BillingCountry
             };
         }
 
@@ -87,10 +117,30 @@ namespace ArtWebshop.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+            user.FirstName = Input.FirstName;
+            user.LastName = Input.LastName;
+            user.BillingStreetName = Input.BillingStreetName;
+            user.BillingPostalCode = Input.BillingPostalCode;
+            user.BillingCity = Input.BillingCity;
+            user.BillingCountry = Input.BillingCountry;
+
+            IdentityResult result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                Errors(result);
+            }
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
+        }
+        private void Errors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
         }
     }
 }

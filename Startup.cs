@@ -49,6 +49,7 @@ namespace ArtWebshop
                 .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddScoped<IRepository<Product>, ProductRepository>();
+            services.AddScoped<IRepository<Order>, OrderRepository>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
             
