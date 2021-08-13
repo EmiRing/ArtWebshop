@@ -11,13 +11,9 @@
             });
         });
     });
-
-    $('select').on('change', function () {
-
-    });
 </script>
 
-@foreach (var item in Model.Product)
+@foreach (var item in Model.Products)
 {
     <div class="col-3 card pt-2">
         <a href='@Url.Action("Info","ProductTemp", new { title=@item.Title })'>

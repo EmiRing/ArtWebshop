@@ -5,7 +5,7 @@ namespace ArtWebshop.ViewModels
 {
     public class ArtistProductViewModel
     {
-        public List<Artist> Artist { get; set; }
-        public List<Product> Product { get; set; }
+        public List<Artist> Artists { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

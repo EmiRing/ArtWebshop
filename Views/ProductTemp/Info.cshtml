@@ -5,46 +5,45 @@
 }
 
 <div class="d-flex justify-content-center m-4">
-    <h2>@Model.Product.FirstOrDefault().Title</h2>
+    <h2>@Model.Products.FirstOrDefault().Title</h2>
 </div>
 
 <div class="d-flex justify-content-center m-4">
-    <img src="@Model.Product.FirstOrDefault().PictureLink" />
+    <img src="@Model.Products.FirstOrDefault().PictureLink" />
 </div>
 
 <div class="d-flex justify-content-center mt-4 mb-3">
     <h3>Lägg till Artist</h3>
 </div>
 <div class="d-flex justify-content-center m-3">
-    <h4>@Model.Product.FirstOrDefault().ShortDescription</h4>
+    <h4>@Model.Products.FirstOrDefault().ShortDescription</h4>
 </div>
 <div class="d-flex justify-content-center m-3">
-    <p>@Model.Product.FirstOrDefault().LongDescription</p>
+    <p>@Model.Products.FirstOrDefault().LongDescription</p>
 </div>
 
 <table class="table">
     <tr>
         <td>
-            Pris: @Model.Product.FirstOrDefault().Price kr
+            Pris: @Model.Products.FirstOrDefault().Price kr
         </td>
         <td>
-            I lager: @Model.Product.FirstOrDefault().Stock st
+            I lager: @Model.Products.FirstOrDefault().Stock st
         </td>
         <td>
-            Dimension: @Model.Product.FirstOrDefault().Width x @Model.Product.FirstOrDefault().Height
+            Dimension: @Model.Products.FirstOrDefault().Width x @Model.Products.FirstOrDefault().Height
         </td>
         <td>
-            Stil: @Model.Product.FirstOrDefault().Style
+            Stil: @Model.Products.FirstOrDefault().Style
         </td>
         <td>
-            @Model.Product.FirstOrDefault().CreationDate
+            @Model.Products.FirstOrDefault().CreationDate
         </td>
         <td>
-            @if (@Model.Product.FirstOrDefault().IsPaintingOfTheWeek)
+            @if (@Model.Products.FirstOrDefault().IsPaintingOfTheWeek)
             {
 
             }
-
         </td>
     </tr>
 </table>
