@@ -1,37 +1,23 @@
 ﻿@model ArtistProductViewModel
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<div class="col">
+    <form id="formSortFilter" method="POST" asp-controller="ProductTemp" asp-action="sortFilter">
+        <label for="sortCriteria" style="margin-right: 10px">Sortera</label>
+        <select id="selectCriteria" name="sortCriteria" onchange="this.form.submit();">
+            <option value="title">Tavla</option>
+            <option value="artist">Konstnär</option>
+            <option value="price">Pris</option>
+        </select>
 
-<script>
-    /*<--$(document).ready(function () {
-        $.ajax({
-            url: 'ProductTemp/"SortFilter/ascDesc',
-            success: function (data) {
-                //alert(data);
-            },
-            statusCode: {
-                404: function (content) { alert('cannot find resource'); },
-                500: function (content) { alert('internal server error'); }
-            },
-            error: function (req, status, errorObj) {
-                // handle status === "timeout"
-                // handle other errors
-            }
-        });
-    });*/
-</script>
+        <select id="selectAscDesc" name="ascDesc" onchange="this.form.submit();">
+            <option value="asc" selected>Asc</option>
+            <option value="desc">Desc</option>
+        </select>
+    </form>
+</div>
 
-<form method="POST" asp-controller="ProductTemp" asp-action="SortFilter">
-    <label for="sortCriteria" style="margin-right: 10px">Sortera</label>
-    <select name="sortCriteria">
-        <option value="title" selected>Tavla</option>
-        <option value="artist">Konstnär</option>
-        <option value="price">Pris</option>
-    </select>
-
-    <select class="ascDesc" name="ascDesc">
-        <option value="asc" selected>Asc</option>
-        <option value="desc">Desc</option>
-    </select>
-    <button type="submit">Sortera</button>
-</form>
+<div class="col">
+    <Label for="filter" style="margin-right: 10px">Filtrera</Label>
+    <input name="filter" type="text" />
+    <button type="submit" class="btn-primary">Sök</button>
+</div>

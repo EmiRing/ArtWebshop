@@ -48,5 +48,8 @@
     </tr>
 </table>
 <div class="d-flex w-100 m-3">
-    <button class="btn-primary">Köp</button>
+    <button class="btn-primary"
+        onclick="location.href='@Url.Action("AddToShoppingCart", "ShoppingCart", new { productId = @Model.Products.FirstOrDefault().ProductId })'">
+        Köp
+    </button>
 </div>

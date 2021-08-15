@@ -1,18 +1,5 @@
 ﻿@model ArtistProductViewModel
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $("#success-alert").hide();
-        $(".addToBasket").click(function showAlert() {
-            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
-                $("#success-alert").slideUp(500);
-            });
-        });
-    });
-</script>
-
 @foreach (var item in Model.Products)
 {
     <div class="col-3 card pt-2">
@@ -21,19 +8,20 @@
         </a>
         <table class="table-sm">
             <tr>
-                <td scope="col">Verk:</td>
-                <td scope="col">@item.Title</td>
+                <td scope="col">Tavla:</td>
+                <td scope="col"><span style="white-space: nowrap;">@item.Title</span></td>
             </tr>
             <tr>
                 <td scope="col">Konstnär:</td>
-                <td scope="col">@item.Artist.ArtistName</td>
+                <td scope="col"><span style="white-space: nowrap;">@item.Artist.ArtistName</span></td>
             </tr>
             <tr>
                 <td scope="col">Pris:</td>
                 <td scope="col">@item.Price kr</td>
                 <td scope="col">
-                    <button class="btn-primary addToBasket" 
-                            onclick="location.href='@Url.Action("AddToShoppingCart", "ShoppingCart", new { productId = @item.ProductId})'">Köp
+                    <button class="btn-success addToBasket" 
+                            onclick="location.href='@Url.Action("AddToShoppingCart", "ShoppingCart", new { productId = @item.ProductId})'">
+                            Köp
                     </button>
                 </td>
             </tr>
