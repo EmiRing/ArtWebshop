@@ -33,6 +33,24 @@ namespace ArtWebshop.Controllers
             });
         }
 
+        [HttpGet]
+        public IActionResult GetVueData()
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = _shoppingCart.GetShoppingCartItems();
+
+            if (items == null) return NotFound();
+
+
+            var cartModel = new ShoppingCartViewModel
+            {
+                shoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+
+            };
+            return Ok(cartModel);
+        }
+
         public async Task<RedirectToActionResult> AddToShoppingCart(string productId) 
         {
             
@@ -94,8 +112,12 @@ namespace ArtWebshop.Controllers
             });
         }
 
-        public async Task<IActionResult> ChangeAmount(string itemId, string check = "neither")
+        [HttpPost]
+        public async Task<IActionResult> ChangeAmount([FromBody] postData postData)
         {
+
+            string itemId = postData.itemId;
+            string check = postData.check;
             var item = _shoppingCart.GetShoppingCartItems().FirstOrDefault(i => i.Product.ProductId == itemId);
             Product product = await _productRepository.GetAsync(item.Product.ProductId);
             switch (check)
@@ -103,15 +125,15 @@ namespace ArtWebshop.Controllers
                 case "add":
                     _shoppingCart.IncreaseAmountInCart(product);
                     break;
-                case "remove":
+                case "reduce":
                     _shoppingCart.ReduceAmountInCart(product);
                     break;
-                case "delete":
+                case "remove":
 
                     _shoppingCart.RemoveFromCart(product);
                     break;
 
-                    
+
                 case "neither":
 
                     break;
@@ -119,9 +141,10 @@ namespace ArtWebshop.Controllers
                     break;
             }
 
-            return NoContent();
+            return Json(new { Success = true });
         }
 
-       
+
+
     }
 }
