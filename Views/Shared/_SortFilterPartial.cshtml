@@ -1,7 +1,7 @@
 ﻿@model ArtistProductViewModel
 
 <div class="col">
-    <form id="formSortFilter" method="POST" asp-controller="ProductTemp" asp-action="sortFilter">
+    <form id="formSortFilter" method="POST" asp-controller="ProductTemp" asp-action="SortFilter">
         <label for="sortCriteria" style="margin-right: 10px">Sortera</label>
         <select id="selectCriteria" name="sortCriteria" onchange="this.form.submit();">
             <option value="title">Tavla</option>
@@ -15,9 +15,10 @@
         </select>
     </form>
 </div>
-
-<div class="col">
-    <Label for="filter" style="margin-right: 10px">Filtrera</Label>
-    <input name="filter" type="text" />
-    <button type="submit" class="btn-primary">Sök</button>
+<div id="filter" class="col">
+    <form id="formSearchFilter" method="POST" asp-controller="ProductTemp" asp-action="SearchFilter">
+        <label class="input-field-label" style="margin-right: 10px">Filtrera</label>
+        <input name="filter" type="text" />
+        <button type="submit" class="btn-primary">Sök</button>
+    </form>
 </div>
