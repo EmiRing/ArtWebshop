@@ -54,5 +54,17 @@ namespace ArtWebshop.Models
         [PersonalData]
         [Display(Name = "Leverans Land")]        
         public string DeliveryCountry { get; set; }
+        
+        [NotMapped]
+        [Display(Name = "Full name")]
+        public string FullName
+        {
+            get
+            {
+                return LastName == null ? FirstName : FirstName + " " + LastName;
+            }
+        }
+
     }
+
 }
