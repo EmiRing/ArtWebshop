@@ -63,6 +63,5 @@ new Vue({
                 this.shoppingCartItems = res.data.shoppingCart.shoppingCartItems,
                     this.shoppingCartTotal = res.data.shoppingCartTotal
             })
-    },
-
+    }
 });

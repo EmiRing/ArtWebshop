@@ -24,11 +24,18 @@ namespace ArtWebshop.Controllers
         private readonly ILogger<HomeController> _logger;
 
         ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
+        List<Product> Products = new List<Product>();
+        //public async Task<IActionResult> Index()
+        //{
+        //    ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
+        //    artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+        //    return View(artProdViewModel);
+        //}
         public async Task<IActionResult> Index()
         {
-            ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-            artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
-            return View(artProdViewModel);
+            
+            Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+            return View(Products);
         }
 
         [HttpPost]
@@ -39,16 +46,16 @@ namespace ArtWebshop.Controllers
                 switch (sortCriteria)
                 {
                     case "title":
-                        artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                     case "artist":
-                        artProdViewModel.Products = await _prodContext.Products.Include(p => p.Artist).OrderBy(p => p.Artist.ArtistName).ToListAsync();
+                        Products = await _prodContext.Products.Include(p => p.Artist).OrderBy(p => p.Artist.ArtistName).ToListAsync();
                         break;
                     case "price":
-                        artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Price).Include(a => a.Artist).ToListAsync();
+                        Products = await _prodContext.Products.OrderBy(p => p.Price).Include(a => a.Artist).ToListAsync();
                         break;
                     default:
-                        artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                 }
             }
@@ -57,33 +64,33 @@ namespace ArtWebshop.Controllers
                 switch (sortCriteria)
                 {
                     case "title":
-                        artProdViewModel.Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                     case "artist":
-                        artProdViewModel.Products = await _prodContext.Products.Include(a => a.Artist).OrderByDescending(p => p.Artist.ArtistName).ToListAsync();
+                        Products = await _prodContext.Products.Include(a => a.Artist).OrderByDescending(p => p.Artist.ArtistName).ToListAsync();
                         break;
                     case "price":
-                        artProdViewModel.Products = await _prodContext.Products.OrderByDescending(p => p.Price).Include(a => a.Artist).ToListAsync();
+                        Products = await _prodContext.Products.OrderByDescending(p => p.Price).Include(a => a.Artist).ToListAsync();
                         break;
                     default:
-                        artProdViewModel.Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
                         break;
                 }
             }
 
-            return View("Index", artProdViewModel);
+            return View("Index", Products);
         }
         public async Task<IActionResult> SearchFilter(string filter)
         {
             filter = (String.IsNullOrEmpty(filter)) ? "" : filter;
 
-            artProdViewModel.Products = await _prodContext.Products
+            Products = await _prodContext.Products
                 .OrderBy(p => p.Title)
                 .Where(p => p.Title.StartsWith(filter))
                 .Include(a => a.Artist)
                 .ToListAsync();
             
-            return View("Index", artProdViewModel);            
+            return View("Index", Products);            
         }
         public async Task<IActionResult> Info(string title)
         {
