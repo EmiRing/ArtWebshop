@@ -8,7 +8,7 @@
            asp-action="Index" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
             <i class="fas fa-shopping-cart"></i><b class="caret"></b>
         </a>
-        <ul id="app" class="dropdown-menu dropdown-menu-end dropend container-xxl" style="width: 400px">
+        <ul id="app" class="dropdown-menu mega-dropdown-menu dropdown-menu-end dropend container-xxl" style="width: 400px">
             <li>
                 <table class="table table-hover">
                     <thead>
@@ -30,7 +30,7 @@
                         <tr>
                             <td colspan="2" class="text-right">Total:</td>
                             <td colspan="2" class="text-left">
-                                {{shoppingCartTotal}} kr
+                                {{total}} kr
                             </td>
                         </tr>
                     </tfoot>
@@ -40,3 +40,11 @@
     </li>
 }
 <script src="~/js/shopping_cart.js"></script>
+<script>
+    $('ul.dropdown-menu.mega-dropdown-menu').on('click', function (event) {
+        // The event won't be propagated up to the document NODE and 
+        // therefore delegated events won't be fired
+        event.stopPropagation();
+    });
+
+</script>
