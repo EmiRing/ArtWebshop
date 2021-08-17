@@ -50,8 +50,8 @@ namespace ArtWebshop.Controllers
             };
             return Ok(cartModel);
         }
-
-        public async Task<RedirectToActionResult> AddToShoppingCart(string productId) 
+        [HttpPost]
+        public async Task<IActionResult> AddToShoppingCart([FromBody]string productId) 
         {
             
             Product product = await _productRepository.GetAsync(productId);
@@ -60,8 +60,8 @@ namespace ArtWebshop.Controllers
             {
                 _shoppingCart.AddToCart(product);
             }
-             
-            return RedirectToAction("ListProducts", "Products");
+
+            return Json(new { Success = true });
         }
 
         public async Task<IActionResult> ReduceAmount(string productId)

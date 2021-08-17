@@ -1,32 +1,51 @@
-﻿@model ArtistProductViewModel
+﻿@model Product
 
-@foreach (var item in Model.Products)
-{
+
     <div class="col-3 card pt-2">
-        <a href='@Url.Action("Info","ProductTemp", new { title=@item.Title })'>
-            <img src="@item.PictureLink" class="frame" width="305" height="305" />
+        <a href='@Url.Action("Info","ProductTemp", new { title=@Model.Title })'>
+            <img src="@Model.PictureLink" class="frame" width="305" height="305" />
         </a>
         <table class="table-sm">
             <tr>
                 <td scope="col">Tavla:</td>
-                <td scope="col"><span style="white-space: nowrap;">@item.Title</span></td>
+                <td scope="col"><span style="white-space: nowrap;">@Model.Title</span></td>
             </tr>
             <tr>
                 <td scope="col">Konstnär:</td>
-                <td scope="col"><span style="white-space: nowrap;">@item.Artist.ArtistName</span></td>
+                <td scope="col"><span style="white-space: nowrap;">@Model.Artist.ArtistName</span></td>
             </tr>
             <tr>
                 <td scope="col">Pris:</td>
-                <td scope="col">@item.Price kr</td>
+                <td scope="col">@Model.Price kr</td>
                 <td scope="col">
-                    <button class="btn-success addToBasket" 
-                            onclick="location.href='@Url.Action("AddToShoppingCart", "ShoppingCart", new { productId = @item.ProductId})'">
+                        <button id="buy" class="btn-success addToBasket"
+                                @@click="addToCart()">
                             Köp
-                    </button>
+                        </button>
                 </td>
             </tr>
         </table>
     </div>
+@{ 
+    var productId = Model.ProductId;
 }
 
-<partial name="_BuyAlertNotification" />
+@*<partial name="_BuyAlertNotification" />*@
+
+<script>
+    new Vue({
+        el: '#buy',
+        data: {
+            productId: productId
+        },
+        methods: {
+            async addToCart() {
+                alert("Hej!")
+                
+                //await axios.post("/ShoppingCart/AddToShoppingCart", id);
+
+
+            }
+        }
+    }
+</script>
