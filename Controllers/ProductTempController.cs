@@ -23,6 +23,7 @@ namespace ArtWebshop.Controllers
         private readonly ProductDbContext _prodContext;
         private readonly ILogger<HomeController> _logger;
 
+        ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
         public async Task<IActionResult> Index()
         {
             ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
@@ -33,10 +34,6 @@ namespace ArtWebshop.Controllers
         [HttpPost]
         public async Task<IActionResult> SortFilter(string ascDesc, string sortCriteria)
         {
-            Debug.WriteLine("\n\t" + sortCriteria + " : " + ascDesc);
-
-            ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-
             if (ascDesc == "asc")
             {
                 switch (sortCriteria)
@@ -76,12 +73,22 @@ namespace ArtWebshop.Controllers
 
             return View("Index", artProdViewModel);
         }
+        public async Task<IActionResult> SearchFilter(string filter)
+        {
+            filter = (String.IsNullOrEmpty(filter)) ? "" : filter;
+
+            artProdViewModel.Products = await _prodContext.Products
+                .OrderBy(p => p.Title)
+                .Where(p => p.Title.StartsWith(filter))
+                .Include(a => a.Artist)
+                .ToListAsync();
+            
+            return View("Index", artProdViewModel);            
+        }
         public async Task<IActionResult> Info(string title)
         {
-            Debug.WriteLine(title);
-
-            ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-            artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title)
+            artProdViewModel.Products = await _prodContext.Products
+                .OrderBy(p => p.Title)
                 .Where(p => p.Title == title)
                 .Include(a => a.Artist)
                 .ToListAsync();
