@@ -144,14 +144,10 @@ namespace ArtWebshop.Controllers
             
             return View("Index", Products);            
         }
-        public async Task<IActionResult> Info(string productId)
+        public async Task<IActionResult> ArtInfoPage(string productId)
         {
 
             Product product = await _productRepository.GetAsync(productId);
-                //_prodContext.Products
-                //.Where(p => p.ProductId == productId)
-                //.Include(a => a.Artist)
-                //;
             
             return View(product);
         }
