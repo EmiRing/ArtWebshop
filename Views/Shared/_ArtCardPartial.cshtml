@@ -14,7 +14,7 @@
 }
 
 <div class="col-3 card pt-2">
-    <a href='@Url.Action("Info","ProductTemp", new { productId=@Model.ProductId })'>
+    <a href='@Url.Action("ArtDetailsPage","ProductTemp", new { productId=@Model.ProductId })'>
         <img src="@Model.PictureLink" class="frame" width="305" height="305" />
     </a>
     <table class="table-sm">
@@ -31,28 +31,20 @@
             <td scope="col">@Model.Price kr</td>
             <td scope="col">
                 <div id="purchase">
-                    <a class=" btn btn-success btn-sm" asp-action="AddToShoppingCart" asp-controller="ShoppingCart" asp-all-route-data="data">Köp</a>
-                    @*<add-button v-bind="@Model.ProductId"></add-button>*@
+                    <a class="btn btn-success btn-sm addToBasket" asp-action="AddToShoppingCart" asp-controller="ShoppingCart" asp-all-route-data="data">Köp</a>
                 </div>
             </td>
         </tr>
     </table>
 </div>
 
-
 <script>
-
     Vue.component('add-button', {
          data: function () {
             return {
                 product: (@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
             }
         },
-        @*data: function () {
-            return {
-                product: (@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
-            }
-        },*@
         methods: {
             async addToCart(id) {
 
@@ -66,31 +58,3 @@
 
     })
 </script>
-@*<script>
-
-    let addButtonComponent = {
-        template: '<button class="btn-success" @@click="addToCart(product.ProductId)" >Köp</button>',
-        data: function () {
-            return {
-                product: []
-            }
-        },
-        mounted() {
-            this.product =(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
-        },
-        methods: {
-            async addToCart(id) {
-
-                await axios.post("/ShoppingCart/AddToShoppingCart?prodId=" + id);
-            }
-        }
-    }
-
-    let purchase = new Vue({
-        el: '#purchase',
-
-        components: {
-            'add-button': addButtonComponent
-        }
-    })
-</script>*@

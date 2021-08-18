@@ -15,7 +15,6 @@ namespace ArtWebshop.Controllers
 {
     public class ProductTempController : Controller
     {
-
         public ProductTempController(ILogger<HomeController> logger, ProductDbContext prodContext, IRepository<Product> productRepository)
         {
             _logger = logger;
@@ -27,18 +26,10 @@ namespace ArtWebshop.Controllers
         private readonly IRepository<Product> _productRepository;
         private readonly ILogger<HomeController> _logger;
 
-        ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
         List<Product> Products = new List<Product>();
-        //public async Task<IActionResult> Index()
-        //{
-        //    ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
-        //    artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
-        //    return View(artProdViewModel);
-        //}
+
         public async Task<IActionResult> Index(string ascDesc = "asc", string sortCriteria = "title")
         {
-            
-            //Products = await _prodContext.Products.Include(a => a.Artist).ToListAsync();
             if (ascDesc == "asc")
             {
                 switch (sortCriteria)
@@ -82,7 +73,6 @@ namespace ArtWebshop.Controllers
                 sortCriteria = sortCriteria,
                 ascDesc = ascDesc
             });
-
         }
 
         [HttpPost]
@@ -132,7 +122,7 @@ namespace ArtWebshop.Controllers
                 ascDesc = ascDesc
             });
         }
-        public async Task<IActionResult> SearchFilter(string filter)
+        public async Task<IActionResult> SearchFilter(string filter, string sortCriteria, string ascDesc)
         {
             filter = (String.IsNullOrEmpty(filter)) ? "" : filter;
 
@@ -141,17 +131,17 @@ namespace ArtWebshop.Controllers
                 .Where(p => p.Title.StartsWith(filter))
                 .Include(a => a.Artist)
                 .ToListAsync();
-            
-            return View("Index", Products);            
-        }
-        public async Task<IActionResult> Info(string productId)
-        {
 
+            return View("Index", new ListProductsViewModel
+            {
+                Products = Products,
+                sortCriteria = sortCriteria,
+                ascDesc = ascDesc
+            });
+        }
+        public async Task<IActionResult> ArtDetailsPage(string productId)
+        {
             Product product = await _productRepository.GetAsync(productId);
-                //_prodContext.Products
-                //.Where(p => p.ProductId == productId)
-                //.Include(a => a.Artist)
-                //;
             
             return View(product);
         }
