@@ -47,38 +47,7 @@
     </tr>
 </table>
 
-<div class="d-flex w-100 m-3" @*id="purchase"*@>
-    @*<add-button>@Model.ProductId</add-button>*@
-    <a class=" btn btn-success" asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-productId="@Model.ProductId" >Köp</a>
-    @*<button class="btn-success"
-                onclick="location.href='@Url.Action("AddToShoppingCart", "ShoppingCart", new { productId = @Model.Products.FirstOrDefault().ProductId })'">
-            Köp
-        </button>*@
+<div class="d-flex w-100 m-3">    
+    <a class=" btn btn-success addToBasket" asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-productId="@Model.ProductId">Köp</a>
 </div>
-@*@{
-    var prod = Model;
-}
-
-<script>
-
-    Vue.component('add-button', {
-       
-        data: function () {
-            return {
-                product: (@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
-            }
-        },
-        methods: {
-            async addToCart(id) {
-
-                await axios.post("/ShoppingCart/AddToShoppingCart?productId=" + id);
-                this.$forceUpdate();
-            }
-        },
-        template: '<button class="btn-success" @@click="addToCart(product.ProductId)" >Köp</button>'
-    })
-    let purchase = new Vue({
-        el: '#purchase'
-
-    })
-</script>*@
+<partial name="_AddedToBasketNotification" />
