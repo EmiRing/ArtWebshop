@@ -75,7 +75,7 @@ namespace ArtWebshop.Controllers
                 _shoppingCart.AddToCart(product);
             }
 
-            return RedirectToAction("Info", "ProductTemp", new { productId = productId});
+            return RedirectToAction("ArtDetailsPage", "ProductTemp", new { productId = productId});
         }
         public async Task<IActionResult> ReduceAmount(string productId)
         {

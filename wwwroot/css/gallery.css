@@ -14,10 +14,12 @@ img:hover {
     border: 1px solid transparent;
     border-radius: 4px;
 }
-
 .success {
     color: #3c763d;
     background-color: #dff0d8;
     border-color: #d6e9c6;
     display: none;
+}
+.success-alert {
+    position: absolute;
 }
