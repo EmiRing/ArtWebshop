@@ -32,16 +32,13 @@
             <td scope="col">
                 <div id="purchase">
                     <a class="btn btn-success btn-sm addToBasket" asp-action="AddToShoppingCart" asp-controller="ShoppingCart" asp-all-route-data="data">Köp</a>
-                    @*<add-button v-bind="@Model.ProductId"></add-button>*@
                 </div>
             </td>
         </tr>
     </table>
 </div>
 
-
 <script>
-
     Vue.component('add-button', {
          data: function () {
             return {
@@ -66,31 +63,3 @@
 
     })
 </script>
-@*<script>
-
-    let addButtonComponent = {
-        template: '<button class="btn-success" @@click="addToCart(product.ProductId)" >Köp</button>',
-        data: function () {
-            return {
-                product: []
-            }
-        },
-        mounted() {
-            this.product =(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
-        },
-        methods: {
-            async addToCart(id) {
-
-                await axios.post("/ShoppingCart/AddToShoppingCart?prodId=" + id);
-            }
-        }
-    }
-
-    let purchase = new Vue({
-        el: '#purchase',
-
-        components: {
-            'add-button': addButtonComponent
-        }
-    })
-</script>*@
