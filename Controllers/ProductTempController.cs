@@ -1,5 +1,6 @@
 ﻿using ArtWebshop.Data;
 using ArtWebshop.Models;
+using ArtWebshop.Repositories;
 using ArtWebshop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,13 +15,16 @@ namespace ArtWebshop.Controllers
 {
     public class ProductTempController : Controller
     {
-        public ProductTempController(ILogger<HomeController> logger, ProductDbContext prodContext)
+
+        public ProductTempController(ILogger<HomeController> logger, ProductDbContext prodContext, IRepository<Product> productRepository)
         {
             _logger = logger;
             _prodContext = prodContext;
+            _productRepository = productRepository;
         }
 
         private readonly ProductDbContext _prodContext;
+        private readonly IRepository<Product> _productRepository;
         private readonly ILogger<HomeController> _logger;
 
         ArtistProductViewModel artProdViewModel = new ArtistProductViewModel();
@@ -31,11 +35,54 @@ namespace ArtWebshop.Controllers
         //    artProdViewModel.Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
         //    return View(artProdViewModel);
         //}
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string ascDesc = "asc", string sortCriteria = "title")
         {
             
-            Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
-            return View(Products);
+            //Products = await _prodContext.Products.Include(a => a.Artist).ToListAsync();
+            if (ascDesc == "asc")
+            {
+                switch (sortCriteria)
+                {
+                    case "title":
+                        Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        break;
+                    case "artist":
+                        Products = await _prodContext.Products.Include(p => p.Artist).OrderBy(p => p.Artist.ArtistName).ToListAsync();
+                        break;
+                    case "price":
+                        Products = await _prodContext.Products.OrderBy(p => p.Price).Include(a => a.Artist).ToListAsync();
+                        break;
+                    default:
+                        Products = await _prodContext.Products.OrderBy(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        break;
+                }
+            }
+            else
+            {
+                switch (sortCriteria)
+                {
+                    case "title":
+                        Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        break;
+                    case "artist":
+                        Products = await _prodContext.Products.Include(a => a.Artist).OrderByDescending(p => p.Artist.ArtistName).ToListAsync();
+                        break;
+                    case "price":
+                        Products = await _prodContext.Products.OrderByDescending(p => p.Price).Include(a => a.Artist).ToListAsync();
+                        break;
+                    default:
+                        Products = await _prodContext.Products.OrderByDescending(p => p.Title).Include(a => a.Artist).ToListAsync();
+                        break;
+                }
+            }
+
+            return View(new ListProductsViewModel
+            {
+                Products = Products,
+                sortCriteria = sortCriteria,
+                ascDesc = ascDesc
+            });
+
         }
 
         [HttpPost]
@@ -78,7 +125,12 @@ namespace ArtWebshop.Controllers
                 }
             }
 
-            return View("Index", Products);
+            return View("Index", new ListProductsViewModel
+            {
+                Products = Products,
+                sortCriteria = sortCriteria,
+                ascDesc = ascDesc
+            });
         }
         public async Task<IActionResult> SearchFilter(string filter)
         {
@@ -92,15 +144,16 @@ namespace ArtWebshop.Controllers
             
             return View("Index", Products);            
         }
-        public async Task<IActionResult> Info(string title)
+        public async Task<IActionResult> Info(string productId)
         {
-            artProdViewModel.Products = await _prodContext.Products
-                .OrderBy(p => p.Title)
-                .Where(p => p.Title == title)
-                .Include(a => a.Artist)
-                .ToListAsync();
+
+            Product product = await _productRepository.GetAsync(productId);
+                //_prodContext.Products
+                //.Where(p => p.ProductId == productId)
+                //.Include(a => a.Artist)
+                //;
             
-            return View(artProdViewModel);
+            return View(product);
         }
     }
 }

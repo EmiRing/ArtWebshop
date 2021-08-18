@@ -22,6 +22,7 @@ namespace ArtWebshop.Controllers
 
         public IActionResult Index()
         {
+            
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
             
@@ -50,10 +51,10 @@ namespace ArtWebshop.Controllers
             };
             return Ok(cartModel);
         }
-        [HttpPost]
-        public async Task<IActionResult> AddToShoppingCart([FromBody]string productId) 
+        
+        public async Task<RedirectToActionResult> AddToShoppingCart(string productId, string sortCriteria, string ascDesc) 
         {
-            
+            //string productId = prodId.ToString();
             Product product = await _productRepository.GetAsync(productId);
             
             if (product != null)
@@ -61,9 +62,21 @@ namespace ArtWebshop.Controllers
                 _shoppingCart.AddToCart(product);
             }
 
-            return Json(new { Success = true });
+            return RedirectToAction("Index", "ProductTemp", new { sortCriteria, ascDesc});
         }
+        
+        public async Task<RedirectToActionResult> AddToCart(string productId)
+        {
+            //string productId = prodId.ToString();
+            Product product = await _productRepository.GetAsync(productId);
 
+            if (product != null)
+            {
+                _shoppingCart.AddToCart(product);
+            }
+
+            return RedirectToAction("Info", "ProductTemp", new { productId = productId});
+        }
         public async Task<IActionResult> ReduceAmount(string productId)
         {
             Product product = await _productRepository.GetAsync(productId);
@@ -129,13 +142,7 @@ namespace ArtWebshop.Controllers
                     _shoppingCart.ReduceAmountInCart(product);
                     break;
                 case "remove":
-
                     _shoppingCart.RemoveFromCart(product);
-                    break;
-
-
-                case "neither":
-
                     break;
                 default:
                     break;

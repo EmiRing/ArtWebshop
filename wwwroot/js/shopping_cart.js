@@ -36,9 +36,9 @@ Vue.component('cart-rows', {
     template: '<tr class="p-2">\
                     <td class="text-left">{{ item.product.title }}</td>\
                     <td class="text-center">\
-                    <a class="pointer" v-on:click="reduce(item.product.productId)">-</a> \
+                    <a class="pointer" v-on:click="reduce(item.product.productId)">- </a> \
                     {{item.amount}} \
-                    <a class="pointer" v-on:click="add(item.product.productId)">+</a></td>\
+                    <a class="pointer" v-on:click="add(item.product.productId)"> +</a></td>\
                     <td class="text-right"> {{item.product.price}} kr<br />{{this.subtotal}} kr</td>\
                     <td class="text-left">\
                         <a class="pointer" v-on:click="remove(item.product.productId)"><i class="far fa-trash-alt"></i></a>\

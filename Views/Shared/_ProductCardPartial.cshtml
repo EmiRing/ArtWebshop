@@ -1,51 +1,96 @@
 ﻿@model Product
-
-
-    <div class="col-3 card pt-2">
-        <a href='@Url.Action("Info","ProductTemp", new { title=@Model.Title })'>
-            <img src="@Model.PictureLink" class="frame" width="305" height="305" />
-        </a>
-        <table class="table-sm">
-            <tr>
-                <td scope="col">Tavla:</td>
-                <td scope="col"><span style="white-space: nowrap;">@Model.Title</span></td>
-            </tr>
-            <tr>
-                <td scope="col">Konstnär:</td>
-                <td scope="col"><span style="white-space: nowrap;">@Model.Artist.ArtistName</span></td>
-            </tr>
-            <tr>
-                <td scope="col">Pris:</td>
-                <td scope="col">@Model.Price kr</td>
-                <td scope="col">
-                        <button id="buy" class="btn-success addToBasket"
-                                @@click="addToCart()">
-                            Köp
-                        </button>
-                </td>
-            </tr>
-        </table>
-    </div>
+@{
+    var prod = Model;
+}
 @{ 
-    var productId = Model.ProductId;
+    Dictionary<string, string> data = new Dictionary<string, string>()
+    {
+        { "productId", Model.ProductId },
+        { "sortCriteria", "artist" },
+        {"ascDesc", "asc" }
+
+
+    };
 }
 
-@*<partial name="_BuyAlertNotification" />*@
+<div class="col-3 card pt-2">
+    <a href='@Url.Action("Info","ProductTemp", new { productId=@Model.ProductId })'>
+        <img src="@Model.PictureLink" class="frame" width="305" height="305" />
+    </a>
+    <table class="table-sm">
+        <tr>
+            <td scope="col">Tavla:</td>
+            <td scope="col"><span style="white-space: nowrap;">@Model.Title</span></td>
+        </tr>
+        <tr>
+            <td scope="col">Konstnär:</td>
+            <td scope="col"><span style="white-space: nowrap;">@Model.Artist.ArtistName</span></td>
+        </tr>
+        <tr>
+            <td scope="col">Pris:</td>
+            <td scope="col">@Model.Price kr</td>
+            <td scope="col">
+                <div id="purchase">
+                    <a class=" btn btn-success btn-sm" asp-action="AddToShoppingCart" asp-controller="ShoppingCart" asp-all-route-data="data">Köp</a>
+                    @*<add-button v-bind="@Model.ProductId"></add-button>*@
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
 <script>
-    new Vue({
-        el: '#buy',
-        data: {
-            productId: productId
+
+    Vue.component('add-button', {
+         data: function () {
+            return {
+                product: (@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
+            }
+        },
+        @*data: function () {
+            return {
+                product: (@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
+            }
+        },*@
+        methods: {
+            async addToCart(id) {
+
+                await axios.post("/ShoppingCart/AddToShoppingCart?productId="+ id);
+            }
+        },
+        template: '<button class="btn-success" @@click="addToCart(product.ProductId)" >Köp</button>'
+    })
+    let purchase = new Vue({
+        el: '#purchase'
+
+    })
+</script>
+@*<script>
+
+    let addButtonComponent = {
+        template: '<button class="btn-success" @@click="addToCart(product.ProductId)" >Köp</button>',
+        data: function () {
+            return {
+                product: []
+            }
+        },
+        mounted() {
+            this.product =(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
         },
         methods: {
-            async addToCart() {
-                alert("Hej!")
-                
-                //await axios.post("/ShoppingCart/AddToShoppingCart", id);
+            async addToCart(id) {
 
-
+                await axios.post("/ShoppingCart/AddToShoppingCart?prodId=" + id);
             }
         }
     }
-</script>
+
+    let purchase = new Vue({
+        el: '#purchase',
+
+        components: {
+            'add-button': addButtonComponent
+        }
+    })
+</script>*@

@@ -1,17 +1,59 @@
-﻿@model List<Product>
+﻿@model ListProductsViewModel
+
+@{ 
+    Dictionary<string, string> sortCriteria = new Dictionary<string, string>()
+
+        {
+        { "title", "Tavla"},
+        { "artist","Konstnär" },
+        { "price", "Pris" }
+        };
+    Dictionary<string, string> ascDesc = new Dictionary<string, string>()
+
+    {
+        { "asc", "Stigande" },
+        { "desc", "Fallande" }
+    };
+}
 
 <div class="col">
     <form id="formSortFilter" method="POST" asp-controller="ProductTemp" asp-action="SortFilter">
         <label for="sortCriteria" style="margin-right: 10px">Sortera</label>
         <select id="selectCriteria" name="sortCriteria" onchange="this.form.submit();">
-            <option value="title">Tavla</option>
+            @foreach (var item in sortCriteria)
+            {
+                if (item.Key == Model.sortCriteria)
+                {
+                    <option value=@item.Key selected>@item.Value</option>
+
+                }
+                else
+                {
+                    <option value=@item.Key>@item.Value</option>
+                }
+
+            }
+            @*<option value="title" @( Model.searchCriteria= ="title" ? "selected" : "" )>Tavla</option>
             <option value="artist">Konstnär</option>
-            <option value="price">Pris</option>
+            <option value="price">Pris</option>*@
         </select>
 
         <select id="selectAscDesc" name="ascDesc" onchange="this.form.submit();">
-            <option value="asc" selected>Asc</option>
-            <option value="desc">Desc</option>
+            @foreach (var item in ascDesc)
+            {
+                if (item.Key == Model.ascDesc)
+                {
+                    <option value=@item.Key selected>@item.Value</option>
+
+                }
+                else
+                {
+                    <option value=@item.Key>@item.Value</option>
+                }
+
+            }
+            @*<option value="asc" selected>Asc</option>
+            <option value="desc">Desc</option>*@
         </select>
     </form>
 </div>
@@ -22,3 +64,14 @@
         <button type="submit" class="btn-primary">Sök</button>
     </form>
 </div>
+
+@*<select name="formscore">
+    <option value="1" @((your_db_variable= ="1" ) ? "selected" : "" )>1</option>
+    <option value="2" @((your_db_variable= ="2" ) ? "selected" : "" )>2</option>
+    <option value="3" @((your_db_variable= ="3" ) ? "selected" : "" )>3</option>
+    <option value="4" @((your_db_variable= ="4" ) ? "selected" : "" )>4</option>
+    <option value="5" @((your_db_variable= ="5" ) ? "selected" : "" )>5</option>
+    <option value="6" @((your_db_variable= ="6" ) ? "selected" : "" )>6</option>
+    <option value="7" @((your_db_variable= ="7" ) ? "selected" : "" )>7</option>
+    <option value="8" @((your_db_variable= ="8" ) ? "selected" : "" )>8</option>
+</select>*@
