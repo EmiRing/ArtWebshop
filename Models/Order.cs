@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,7 +26,10 @@ namespace ArtWebshop.Models
         public string BillingPostalCode { get; set; }
         public string BillingCity { get; set; }
         public string BillingCountry { get; set; }
-
+        
+        [BindNever]
+        [Required]
+        public decimal OrderTotal { get; set; }
         [Required]
         public DateTime OrderDate { get; set; }
         public string CouponId { get; set; }

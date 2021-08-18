@@ -8,10 +8,16 @@ using System.Threading.Tasks;
 
 namespace ArtWebshop.Repositories
 {
-    public class OrderRepository : Repository<Order>
+    public class OrderRepository: Repository<Order>
     {
-        public OrderRepository(ProductDbContext context) : base(context)
+        private readonly ShoppingCart _shoppingCart;
+        private readonly AppDbContext _appDbContext;
+
+
+        public OrderRepository(ProductDbContext context,ShoppingCart shoppingCart, AppDbContext appDbContext) :base(context)
         {
+            _shoppingCart = shoppingCart;
+            _appDbContext = appDbContext;
         }
 
         public override Order Update(Order entity)
@@ -35,6 +41,29 @@ namespace ArtWebshop.Repositories
             order.DeliveryCountry = entity.DeliveryCountry;
             
             return base.Update(order);
+        }
+
+        public async Task CreateOrder(Order order)
+        {
+            order.OrderDate = DateTime.Now;
+            var shoppingCartItems = _shoppingCart.GetShoppingCartItems();
+            order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
+
+            order.OrderRows = new List<OrderRow>();
+
+            foreach (var cartItem in shoppingCartItems)
+            {
+                var orderRow = new OrderRow()
+                {
+                    Amount = cartItem.Amount,
+                    Price = cartItem.Product.Price,
+                    ProductId = cartItem.Product.ProductId
+                };
+                order.OrderRows.Add(orderRow);
+            }
+
+            await _productContext.Orders.AddAsync(order);
+            await _productContext.SaveChangesAsync();
         }
     }
 }

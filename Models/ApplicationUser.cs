@@ -22,39 +22,44 @@ namespace ArtWebshop.Models
 
         [Required]
         [PersonalData]
+        [Display(Name = "Leverans Gata")]
+        public string DeliveryStreetName { get; set; }
+
+        [Required]
+        [PersonalData]
+        [Display(Name = "Leverans Postnummer")]
+        public string DeliveryPostalCode { get; set; }
+
+        [Required]
+        [PersonalData]
+        [Display(Name = "Leverans Stad")]        
+        public string DeliveryCity { get; set; }
+
+        [Required]
+        [PersonalData]
+        [Display(Name = "Leverans Land")]        
+        public string DeliveryCountry { get; set; }
+
+        
+        [PersonalData]
         [Display(Name = "Gata")]
         public string BillingStreetName { get; set; }
+
         
-        [Required]
         [PersonalData]
         [Display(Name = "Postnummer")]
         public string BillingPostalCode { get; set; }
+
         
-        [Required]
         [PersonalData]
         [Display(Name = "Stad")]
         public string BillingCity { get; set; }
-        
+
         [PersonalData]
         [Display(Name = "Stad")]
         public string BillingCountry { get; set; }
 
-        [PersonalData]
-        [Display(Name = "Leverans Gata")]
-        public string DeliveryStreetName { get; set; }
-        
-        [PersonalData]
-        [Display(Name = "Leverans Postnummer")]
-        public string DeliveryPostalCode { get; set; }
-        
-        [PersonalData]
-        [Display(Name = "Leverans Stad")]        
-        public string DeliveryCity { get; set; }
-        
-        [PersonalData]
-        [Display(Name = "Leverans Land")]        
-        public string DeliveryCountry { get; set; }
-        
+
         [NotMapped]
         [Display(Name = "Full name")]
         public string FullName

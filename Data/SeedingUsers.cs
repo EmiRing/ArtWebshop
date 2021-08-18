@@ -35,10 +35,10 @@ namespace ArtWebshop.Data
                 EmailConfirmed = true,
                 UserName = "admin@site.com",
                 NormalizedUserName = "ADMIN@SITE.COM",
-                BillingStreetName = "Hemadress 1",
-                BillingPostalCode = "12345",
-                BillingCity = "Göteborg",
-                BillingCountry = "Sverige"
+                DeliveryStreetName = "Hemadress 1",
+                DeliveryPostalCode = "12345",
+                DeliveryCity = "Göteborg",
+                DeliveryCountry = "Sverige"
             };
 
             PasswordHasher<ApplicationUser> pH = new PasswordHasher<ApplicationUser>();
@@ -75,10 +75,10 @@ namespace ArtWebshop.Data
                 EmailConfirmed = true,
                 UserName = "vendor@site.com",
                 NormalizedUserName = "VENDOR@SITE.COM",
-                BillingStreetName = "Hemadress 1",
-                BillingPostalCode = "12345",
-                BillingCity = "Göteborg",
-                BillingCountry = "Sverige"
+                DeliveryStreetName = "Hemadress 1",
+                DeliveryPostalCode = "12345",
+                DeliveryCity = "Göteborg",
+                DeliveryCountry = "Sverige"
             };
 
 
@@ -115,10 +115,10 @@ namespace ArtWebshop.Data
                 EmailConfirmed = true,
                 UserName = "customer@site.com",
                 NormalizedUserName = "CUSTOMER@SITE.COM",
-                BillingStreetName = "Hemadress 1",
-                BillingPostalCode = "12345",
-                BillingCity = "Göteborg",
-                BillingCountry = "Sverige"
+                DeliveryStreetName = "Hemadress 1",
+                DeliveryPostalCode = "12345",
+                DeliveryCity = "Göteborg",
+                DeliveryCountry = "Sverige"
             };
 
 
@@ -155,10 +155,10 @@ namespace ArtWebshop.Data
                 EmailConfirmed = true,
                 UserName = "artist@site.com",
                 NormalizedUserName = "ARTIST@SITE.COM",
-                BillingStreetName = "Hemadress 1",
-                BillingPostalCode = "12345",
-                BillingCity = "Göteborg",
-                BillingCountry = "Sverige"
+                DeliveryStreetName = "Hemadress 1",
+                DeliveryPostalCode = "12345",
+                DeliveryCity = "Göteborg",
+                DeliveryCountry = "Sverige"
             };
 
 

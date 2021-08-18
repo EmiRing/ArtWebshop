@@ -4,13 +4,13 @@
 {
     <li class="nav-item dropdown d-block">
 
-        <a asp-controller="ShoppingCart"
-           asp-action="Index" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+        <a @*asp-controller="ShoppingCart"
+           asp-action="Index"*@ class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
             <i class="fas fa-shopping-cart"></i><b class="caret"></b>
         </a>
-        <ul id="app" class="dropdown-menu mega-dropdown-menu dropdown-menu-end dropend container-xxl" style="width: 400px">
+        <ul id="app" class="dropdown-menu mega-dropdown-menu dropdown-menu-end dropend container-xxl p-0" style="width: 400px">
             <li>
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered mb-0" id="app">
                     <thead>
                         <tr>
                             <th class="text-left col-6" scope="col">Produkt</th>
@@ -20,11 +20,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template id="app">
-                            <cart-rows v-for="item in shoppingCartItems"
+                        
+                            <tr is="cart-rows" v-for="item in shoppingCartItems"
                                        v-bind:key="item.id"
-                                       v-bind:item="item"></cart-rows>
-                        </template>
+                                       v-bind:item="item"></tr>
+                        
                     </tbody>
                     <tfoot>
                         <tr>
@@ -34,8 +34,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <a class="btn btn-success text-center">Gå till Kassa</a>
+                            <td colspan="4" class="p-0" >
+                                <div class="d-grid">
+                                    <button class="btn btn-warning text-center m-0" type="button" onclick="location.href='@Url.Action("Checkout", "Order")'">Gå till Kassa</button>
+                                </div>
                             </td>
                         </tr>
                     </tfoot>

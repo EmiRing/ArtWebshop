@@ -1,5 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model CheckoutViewModel
+@{
+    var shoppingCartItems = Model.shoppingCart.GetShoppingCartItems();
+}
+<div id="lapp">
+    <table class="table table-hover table-bordered mb-0">
+        <thead>
+            <tr>
+                <th class="text-left col-6" scope="col">Produkt</th>
+                <th class="text-right col-2" scope="col">Antal</th>
+                <th class="text-right col-3" scope="col">Pris</th>
+                <th class="col-1" scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr is="cart-row" v-for="item in shoppingCartItems"
+                           v-bind:key="item.id"
+                           v-bind:item="item"></tr>
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-right">Total:</td>
+                <td colspan="2" class="text-left">
+                    {{total}} kr
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 
-Vue.component('cart-rows', {
+
+<script>
+
+Vue.component('cart-row', {
     props: ['item'],
     computed: {
         subtotal: function() {
@@ -48,7 +85,7 @@ Vue.component('cart-rows', {
 
 
 new Vue({
-    el: '#app',
+    el: '#lapp',
     data: {
         shoppingCartItems: [],
         shoppingCartTotal: 0
@@ -66,3 +103,4 @@ new Vue({
             })
     }
 });
+</script>
