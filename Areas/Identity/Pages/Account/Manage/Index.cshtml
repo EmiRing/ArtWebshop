@@ -15,15 +15,17 @@
                 <label asp-for="Username"></label>
                 <input asp-for="Username" class="form-control" disabled />
             </div>
-            <div class="form-group">
-                <label asp-for="Input.FirstName"></label>
-                <input asp-for="Input.FirstName" class="form-control" />
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.LastName"></label>
-                <input asp-for="Input.LastName" class="form-control" />
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="form-group col w-50">
+                    <label asp-for="Input.FirstName"></label>
+                    <input asp-for="Input.FirstName" class="form-control" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group col w-50">
+                    <label asp-for="Input.LastName"></label>
+                    <input asp-for="Input.LastName" class="form-control" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Input.PhoneNumber"></label>
@@ -35,15 +37,17 @@
                 <input asp-for="Input.BillingStreetName" class="form-control" />
                 <span asp-validation-for="Input.BillingStreetName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.BillingPostalCode"></label>
-                <input asp-for="Input.BillingPostalCode" class="form-control" />
-                <span asp-validation-for="Input.BillingPostalCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.BillingCity"></label>
-                <input asp-for="Input.BillingCity" class="form-control" />
-                <span asp-validation-for="Input.BillingCity" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="form-group col w-25">
+                    <label asp-for="Input.BillingPostalCode"></label>
+                    <input asp-for="Input.BillingPostalCode" class="form-control" />
+                    <span asp-validation-for="Input.BillingPostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-group w-75">
+                    <label asp-for="Input.BillingCity"></label>
+                    <input asp-for="Input.BillingCity" class="form-control" />
+                    <span asp-validation-for="Input.BillingCity" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Input.BillingCountry"></label>

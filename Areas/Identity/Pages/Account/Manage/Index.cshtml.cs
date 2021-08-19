@@ -23,6 +23,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
+        [Display(Name = "Användarnamn")]
         public string Username { get; set; }
 
         [TempData]
