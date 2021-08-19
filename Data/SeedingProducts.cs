@@ -14,7 +14,7 @@ namespace ArtWebshop.Data
             SetArtist(artistId, "Leonardo da Vinci", modelBuilder);
             string monaLisaPictLink = dirPaintings + "Mona Lisa.jpg";
             string monaLisaThumbLink = dirThumbnails + "/Mona Lisa (thumb).jpg";
-            string monaLisaLongDesc = "Mona Lisa, also called Portrait of Lisa Gherardini, wife of Francesco del Giocondo, Italian La Gioconda, or French La Joconde, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. It was painted sometime between 1503 and 1519, when Leonardo was living in Florence, and it now hangs in the Louvre Museum, Paris, where it remained an object of pilgrimage in the 21st century. The sitter’s mysterious smile and her unproven identity have made the painting a source of ongoing investigation and fascination.";
+            string monaLisaLongDesc = "Mona Lisa, also called Portrait of Lisa Gherardini, wife of Francesco del Giocondo, Italian La Gioconda, or French La Joconde, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting.";
             modelBuilder = SetProduct("Mona Lisa", 77, 53, "A mysterious woman", monaLisaLongDesc, "Print", "Oil on wood Panel",
                 "1503", 50.50M, monaLisaPictLink, monaLisaThumbLink, false, 15, artistId, modelBuilder);
 

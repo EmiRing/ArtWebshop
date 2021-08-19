@@ -23,21 +23,11 @@
 
 <table class="table">
     <tr>
-        <td>
-            Pris: @Model.Price kr
-        </td>
-        <td>
-            I lager: @Model.Stock st
-        </td>
-        <td>
-            Dimension: @Model.Width x @Model.Height
-        </td>
-        <td>
-            Stil: @Model.Style
-        </td>
-        <td>
-            @Model.CreationDate
-        </td>
+        <td>Pris: @Model.Price kr</td>
+        <td>I lager: @Model.Stock st</td>
+        <td>Dimension: @Model.Width x @Model.Height</td>
+        <td>Stil: @Model.Style</td>
+        <td>Skapad: @Model.CreationDate</td>
         <td>
             @if (@Model.IsPaintingOfTheWeek)
             {
