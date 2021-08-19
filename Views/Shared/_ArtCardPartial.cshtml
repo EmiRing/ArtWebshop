@@ -1,32 +1,32 @@
-﻿@model Product
+﻿@model ListProductsViewModel
 @{
     var prod = Model;
 }
 @{ 
     Dictionary<string, string> data = new Dictionary<string, string>()
     {
-        { "productId", Model.ProductId },
-        { "sortCriteria", "artist" },
-        {"ascDesc", "asc" }
+        { "productId", Model.Product.ProductId },
+        { "sortCriteria", Model.sortCriteria },
+        {"ascDesc", Model.ascDesc }
     };
 }
 
 <div class="card p-2">
-    <a href='@Url.Action("ArtDetailsPage","ProductTemp", new { productId=@Model.ProductId })'>
-        <img src="@Model.PictureLink" class="frame" width="300" height="300" />
+    <a href='@Url.Action("ArtDetailsPage","ProductTemp", new { productId=@Model.Product.ProductId })'>
+        <img src="@Model.Product.PictureLink" class="frame" width="300" height="300" />
     </a>
     <table class="table-sm">
         <tr>
             <td >Tavla:</td>
-            <td><span style="white-space: nowrap;">@Model.Title</span></td>
+            <td><span style="white-space: nowrap;">@Model.Product.Title</span></td>
         </tr>
         <tr>
             <td>Konstnär:</td>
-            <td><span style="white-space: nowrap;">@Model.Artist.ArtistName</span></td>
+            <td><span style="white-space: nowrap;">@Model.Product.Artist.ArtistName</span></td>
         </tr>
         <tr>
             <td>Pris:</td>
-            <td>@Model.Price kr</td>
+            <td>@Model.Product.Price kr</td>
             <td>
                 <div id="purchase" class="mr-5">
                     <a class="btn btn-success btn-sm addToBasket" asp-action="AddToShoppingCart" asp-controller="ShoppingCart" asp-all-route-data="data">Köp</a>
@@ -35,24 +35,3 @@
         </tr>
     </table>
 </div>
-
-<script>
-    Vue.component('add-button', {
-         data: function () {
-            return {
-                product: (@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
-            }
-        },
-        methods: {
-            async addToCart(id) {
-
-                await axios.post("/ShoppingCart/AddToShoppingCart?productId="+ id);
-            }
-        },
-        template: '<button class="btn-success" @@click="addToCart(product.ProductId)" >Köp</button>'
-    })
-    let purchase = new Vue({
-        el: '#purchase'
-
-    })
-</script>

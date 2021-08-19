@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Shared\Components\ChangeAmount\**" />
+    <Content Remove="Views\Shared\Components\ChangeAmount\**" />
+    <EmbeddedResource Remove="Views\Shared\Components\ChangeAmount\**" />
+    <None Remove="Views\Shared\Components\ChangeAmount\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Areas\Identity\Pages\Account\Manage\ManageUsers.cshtml.cs" />
   </ItemGroup>
 
@@ -33,9 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\Products\" />
-    <Folder Include="Data\Migrations\Users\" />
-    <Folder Include="Views\Shared\Components\ChangeAmount\" />
     <Folder Include="wwwroot\Images\Originals\Prints\" />
     <Folder Include="wwwroot\Images\Thumbnails\Paintings\" />
     <Folder Include="wwwroot\Images\Thumbnails\Prints\" />

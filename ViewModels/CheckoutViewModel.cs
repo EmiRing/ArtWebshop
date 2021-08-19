@@ -9,7 +9,6 @@ namespace ArtWebshop.ViewModels
     public class CheckoutViewModel
     {
         public Order order { get; set; }
-
         public ShoppingCart shoppingCart { get; set; }
     }
 }

@@ -10,8 +10,8 @@ namespace ArtWebshop.Models
     public class OrderRow
     {
         [Key]
-        public string RowId { get; set; }
-        public string OrderId { get; set; }
+        public int RowId { get; set; }
+        public int OrderId { get; set; }
         public string ProductId { get; set; }
         public int Amount { get; set; }
         

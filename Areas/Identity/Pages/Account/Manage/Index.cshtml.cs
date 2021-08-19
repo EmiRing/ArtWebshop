@@ -47,19 +47,19 @@ namespace ArtWebshop.Areas.Identity.Pages.Account.Manage
 
             
             [Display(Name = "Gata")]
-            public string BillingStreetName { get; set; }
+            public string DeliveryStreetName { get; set; }
 
             
             [Display(Name = "Postnummer")]
-            public string BillingPostalCode { get; set; }
+            public string DeliveryPostalCode { get; set; }
 
             
             [Display(Name = "Ort/Stad")]
-            public string BillingCity { get; set; }
+            public string DeliveryCity { get; set; }
 
             
             [Display(Name = "Land")]
-            public string BillingCountry { get; set; }
+            public string DeliveryCountry { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -75,10 +75,10 @@ namespace ArtWebshop.Areas.Identity.Pages.Account.Manage
                 PhoneNumber = phoneNumber,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                BillingStreetName = user.BillingStreetName,
-                BillingCity = user.BillingCity,
-                BillingPostalCode = user.BillingPostalCode,
-                BillingCountry = user.BillingCountry
+                DeliveryStreetName = user.DeliveryStreetName,
+                DeliveryPostalCode = user.DeliveryPostalCode,
+                DeliveryCity = user.DeliveryCity,
+                DeliveryCountry = user.DeliveryCountry
             };
         }
 
@@ -120,10 +120,10 @@ namespace ArtWebshop.Areas.Identity.Pages.Account.Manage
             }
             user.FirstName = Input.FirstName;
             user.LastName = Input.LastName;
-            user.BillingStreetName = Input.BillingStreetName;
-            user.BillingPostalCode = Input.BillingPostalCode;
-            user.BillingCity = Input.BillingCity;
-            user.BillingCountry = Input.BillingCountry;
+            user.DeliveryStreetName = Input.DeliveryStreetName;
+            user.DeliveryPostalCode = Input.DeliveryPostalCode;
+            user.DeliveryCity = Input.DeliveryCity;
+            user.DeliveryCountry = Input.DeliveryCountry;
 
             IdentityResult result = await _userManager.UpdateAsync(user);
 

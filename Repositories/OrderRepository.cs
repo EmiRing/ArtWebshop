@@ -8,19 +8,26 @@ using System.Threading.Tasks;
 
 namespace ArtWebshop.Repositories
 {
-    public class OrderRepository: Repository<Order>
+    public class OrderRepository: IOrderRepository
     {
         private readonly ShoppingCart _shoppingCart;
-        private readonly AppDbContext _appDbContext;
+        private readonly IRepository<Product> _productRepository;
+        private readonly ProductDbContext _productContext;
 
-
-        public OrderRepository(ProductDbContext context,ShoppingCart shoppingCart, AppDbContext appDbContext) :base(context)
+        public OrderRepository(ProductDbContext productContext,ShoppingCart shoppingCart, IRepository<Product> productRepository)
         {
+            _productContext = productContext;
             _shoppingCart = shoppingCart;
-            _appDbContext = appDbContext;
+            _productRepository = productRepository;
+            
         }
 
-        public override Order Update(Order entity)
+        public async Task<Order> GetOrderAsync(int orderId)
+        {
+            return await _productContext.FindAsync<Order>(orderId);
+        }
+
+        public Order Update(Order entity)
         {
             var order = _productContext.Orders.Single(o => o.OrderId == entity.OrderId);
 
@@ -39,8 +46,8 @@ namespace ArtWebshop.Repositories
             order.DeliveryCity = entity.DeliveryCity;
             order.DeliveryPostalCode = entity.DeliveryPostalCode;
             order.DeliveryCountry = entity.DeliveryCountry;
-            
-            return base.Update(order);
+
+        return _productContext.Update(order).Entity;
         }
 
         public async Task CreateOrder(Order order)
@@ -53,13 +60,20 @@ namespace ArtWebshop.Repositories
 
             foreach (var cartItem in shoppingCartItems)
             {
-                var orderRow = new OrderRow()
+                var item = await _productRepository.GetAsync(cartItem.Product.ProductId);
+                if (item.Stock >= cartItem.Amount)
                 {
-                    Amount = cartItem.Amount,
-                    Price = cartItem.Product.Price,
-                    ProductId = cartItem.Product.ProductId
-                };
-                order.OrderRows.Add(orderRow);
+                    item.Stock -= cartItem.Amount;
+
+                    var orderRow = new OrderRow()
+                    {
+                        Amount = cartItem.Amount,
+                        Price = cartItem.Product.Price,
+                        ProductId = cartItem.Product.ProductId
+                    };
+                    order.OrderRows.Add(orderRow);
+                    _productRepository.Update(item);
+                }
             }
 
             await _productContext.Orders.AddAsync(order);

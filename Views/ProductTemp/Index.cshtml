@@ -5,7 +5,7 @@
 }
 
 <div id="Filter" class="row mt-5">
-        <partial name="_SortFilterPartial" model=" Model"/>
+        <partial name="_SortFilterPartial" model="Model"/>
 </div>
 <input type="hidden" name="@Model.sortCriteria" />
 <input type="hidden" name="@Model.ascDesc" />
@@ -13,7 +13,7 @@
 <div id="cards" class="d-flex d-flex align-content-start flex-wrap mt-3">
     @foreach (var item in Model.Products)
     {
-        <partial name="_ArtCardPartial" model="item" />
+        <partial name="_ArtCardPartial" model="new ListProductsViewModel {Product = item, sortCriteria = Model.sortCriteria, ascDesc= Model.ascDesc }" />
     }
     <partial name="_AddedToBasketNotification" />
 </div>

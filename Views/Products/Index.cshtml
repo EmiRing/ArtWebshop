@@ -1,14 +1,15 @@
-﻿@model IEnumerable<ArtWebshop.Models.Product>
+﻿@model IEnumerator<Product>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>@User.Identity.Name</h1>
+<h1>Mina produkter</h1>
 
 <p>
     <a asp-action="AddProduct">Ladda upp konstverk</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>

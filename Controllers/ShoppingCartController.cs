@@ -54,7 +54,6 @@ namespace ArtWebshop.Controllers
         
         public async Task<RedirectToActionResult> AddToShoppingCart(string productId, string sortCriteria, string ascDesc) 
         {
-            //string productId = prodId.ToString();
             Product product = await _productRepository.GetAsync(productId);
             
             if (product != null)
