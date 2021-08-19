@@ -36,13 +36,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Ladda upp (tmp)</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Products" asp-action="ListProducts">List Products tmp</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Sekretess</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ListUsers">Hantera användare</a>
                         </li>
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Artist"))
                         {
