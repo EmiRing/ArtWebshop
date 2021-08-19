@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ArtWebshop.Models
 {
@@ -13,7 +9,7 @@ namespace ArtWebshop.Models
         public string ArtistId { get; set; }
         public string UserId { get; set; }
 
-        [Display(Name ="Artistnamn")]
+        [Display(Name ="Konstnär")]
         public string ArtistName { get; set; }
         
         [Display(Name ="Profilbild")]
@@ -23,6 +19,5 @@ namespace ArtWebshop.Models
         public string Presentation { get; set; }
 
         public List<ArtistRow> ArtistRows { get; set; }
-        //public ApplicationUser User { get; set; }
     }
 }

@@ -141,7 +141,6 @@ code {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-
 .imgTopSeller1, .imgTopSeller2, .imgTopSeller3 {
     border-radius: 15px;
     width: 75%;
@@ -155,6 +154,6 @@ code {
 .longDescription {
     height: 50px;
 }
-#longDescription {
-    height: 50px;
+.prevent-linebreak {
+    white-space: nowrap;
 }
