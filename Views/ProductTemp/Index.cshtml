@@ -10,7 +10,7 @@
 <input type="hidden" name="@Model.sortCriteria" />
 <input type="hidden" name="@Model.ascDesc" />
 
-<div id="cards" class="container row mt-3">
+<div id="cards" class="d-flex d-flex align-content-start flex-wrap mt-3">
     @foreach (var item in Model.Products)
     {
         <partial name="_ArtCardPartial" model="item" />

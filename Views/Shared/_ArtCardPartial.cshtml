@@ -11,24 +11,24 @@
     };
 }
 
-<div class="col-3 card pt-2">
+<div class="card p-2">
     <a href='@Url.Action("ArtDetailsPage","ProductTemp", new { productId=@Model.ProductId })'>
-        <img src="@Model.PictureLink" class="frame" width="305" height="305" />
+        <img src="@Model.PictureLink" class="frame" width="300" height="300" />
     </a>
     <table class="table-sm">
         <tr>
-            <td scope="col">Tavla:</td>
-            <td scope="col"><span style="white-space: nowrap;">@Model.Title</span></td>
+            <td >Tavla:</td>
+            <td><span style="white-space: nowrap;">@Model.Title</span></td>
         </tr>
         <tr>
-            <td scope="col">Konstnär:</td>
-            <td scope="col"><span style="white-space: nowrap;">@Model.Artist.ArtistName</span></td>
+            <td>Konstnär:</td>
+            <td><span style="white-space: nowrap;">@Model.Artist.ArtistName</span></td>
         </tr>
         <tr>
-            <td scope="col">Pris:</td>
-            <td scope="col">@Model.Price kr</td>
-            <td scope="col">
-                <div id="purchase">
+            <td>Pris:</td>
+            <td>@Model.Price kr</td>
+            <td>
+                <div id="purchase" class="mr-5">
                     <a class="btn btn-success btn-sm addToBasket" asp-action="AddToShoppingCart" asp-controller="ShoppingCart" asp-all-route-data="data">Köp</a>
                 </div>
             </td>
