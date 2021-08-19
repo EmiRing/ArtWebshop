@@ -27,18 +27,21 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <div><input class="col-1 text-success mt-2" type="checkbox" onclick="myFunction()">Visa som plantext</div>
-            <br /><div class="col-12 w-100 border-top"></div><br />
-            <div class="form-group">
-                <label asp-for="Input.FirstName"></label>
-                <input asp-for="Input.FirstName" class="form-control" />
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+
+            <div class="col-12 w-100 border-top"></div>
+            <div class="form-group row mt-3">
+                <div class="form-group col w-50">
+                    <label asp-for="Input.FirstName"></label>
+                    <input asp-for="Input.FirstName" class="form-control" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group col w-50">
+                        <label asp-for="Input.LastName"></label>
+                        <input asp-for="Input.LastName" class="form-control" />
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.LastName"></label>
-                <input asp-for="Input.LastName" class="form-control" />
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Input.PhoneNumber"></label>
                 <input asp-for="Input.PhoneNumber" class="form-control" />
@@ -49,15 +52,17 @@
                 <input asp-for="Input.DeliveryStreetName" class="form-control" />
                 <span asp-validation-for="Input.DeliveryStreetName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.DeliveryPostalCode"></label>
-                <input asp-for="Input.DeliveryPostalCode" class="form-control" />
-                <span asp-validation-for="Input.DeliveryPostalCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.DeliveryCity"></label>
-                <input asp-for="Input.DeliveryCity" class="form-control" />
-                <span asp-validation-for="Input.DeliveryCity" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="form-group col w-25">
+                    <label asp-for="Input.DeliveryPostalCode"></label>
+                    <input asp-for="Input.DeliveryPostalCode" class="form-control" />
+                    <span asp-validation-for="Input.DeliveryPostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-groupcol w-75">
+                    <label asp-for="Input.DeliveryCity"></label>
+                    <input asp-for="Input.DeliveryCity" class="form-control" />
+                    <span asp-validation-for="Input.DeliveryCity" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Input.DeliveryCountry"></label>
