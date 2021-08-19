@@ -1,4 +1,4 @@
-﻿@model ArtWebshop.Models.Artist
+﻿@model Artist
 
 @{
     ViewData["Title"] = "CreateArtist";
@@ -11,25 +11,28 @@
     <div class="col-md-4">
         <form asp-action="CreateArtist">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <input type="hidden" asp-for="ArtistId" />
             <input type="hidden" asp-for="UserId" />
+
             <div class="form-group">
                 <label asp-for="ArtistName" class="control-label"></label>
                 <input asp-for="ArtistName" class="form-control" />
                 <span asp-validation-for="ArtistName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ProfilePicture" class="control-label"></label>
-                <input asp-for="ProfilePicture" class="form-control" />
-                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
-            </div>
+            <!--<div class="form-group">
+        <label asp-for="ProfilePicture" class="control-label"></label>
+        <input asp-for="ProfilePicture" class="form-control" />
+        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+    </div>-->
             <div class="form-group">
                 <label asp-for="Presentation" class="control-label"></label>
                 <input asp-for="Presentation" class="form-control" />
                 <span asp-validation-for="Presentation" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Skapa" class="btn btn-primary" />
             </div>
         </form>
     </div>
