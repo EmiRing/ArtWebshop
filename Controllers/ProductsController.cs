@@ -29,7 +29,7 @@ namespace ArtWebshop.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             
-            artistProdViewModel.Product = await _productContext.Products
+            artistProdViewModel.Products = await _productContext.Products
                 .OrderBy(d => d.CreationDate)
                 .Where(p => p.ArtistId == id)
                 .Include(a => a.Artist)
@@ -99,7 +99,7 @@ namespace ArtWebshop.Controllers
         public async Task<IActionResult> MakePublicConfirmed(string id)
         {
             ArtistProductViewModel artistProdViewModel = new ArtistProductViewModel();
-            artistProdViewModel.Product = await _productContext.Products
+            artistProdViewModel.Products = await _productContext.Products
                 .Include(a => a.Artist)
                 .ToListAsync();
             return RedirectToAction(nameof(Index));

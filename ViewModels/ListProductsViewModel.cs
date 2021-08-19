@@ -9,7 +9,7 @@ namespace ArtWebshop.ViewModels
     public class ListProductsViewModel
     {
         public List<Product> Products { get; set; }
-
+        public Product Product { get; set; }
         public string sortCriteria { get; set; }
         public string ascDesc { get; set; }
     }
