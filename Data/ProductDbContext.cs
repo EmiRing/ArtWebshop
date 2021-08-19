@@ -17,7 +17,7 @@ namespace ArtWebshop.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderRow> OrderRows { get; set; }
-        public DbSet<Artist> Artists { get; set; }
+        public DbSet<Artist> Artist { get; set; }
         public DbSet<ArtistRow> ArtistRows { get; set; }
         //public DbSet<Coupon> Coupons { get; set; }
 
