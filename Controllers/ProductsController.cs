@@ -23,19 +23,10 @@ namespace ArtWebshop.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(string id)
+        public async Task<IActionResult> Index()
         {
-            Product product = new Product();
-            var user = await _userManager.GetUserAsync(User);
-
-            
-            product = await _productContext.Products
-                .OrderBy(d => d.CreationDate)
-                .Where(p => p.ArtistId == id)
-                .Include(a => a.Artist)
-                .ToListAsync();
-
-            return View(product);
+            var productDbContext = _productContext.Products.Include(p => p.Artist);
+            return View(await productDbContext.ToListAsync());
         }
 
         [HttpGet]
