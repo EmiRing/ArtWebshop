@@ -1,54 +1,107 @@
-﻿@model IEnumerable<ArtWebshop.Models.Product>
+﻿@model ArtistProductViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>@User.Identity.Name</h1>
+<h1>Mina produkter</h1>
 
 <p>
     <a asp-action="AddProduct">Upload Art</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Title)</th>
-            <th>@Html.DisplayNameFor(model => model.Width)</th>
-            <th>@Html.DisplayNameFor(model => model.Height)</th>
-            <th>@Html.DisplayNameFor(model => model.ShortDescription)</th>
-            <th>@Html.DisplayNameFor(model => model.LongDescription)</th>
-            <th>@Html.DisplayNameFor(model => model.Category)</th>
-            <th>@Html.DisplayNameFor(model => model.Style)</th>
-            <th>@Html.DisplayNameFor(model => model.CreationDate)</th>
-            <th>@Html.DisplayNameFor(model => model.Price)</th>
-            <th>@Html.DisplayNameFor(model => model.Stock)</th>
-            <th>@Html.DisplayNameFor(model => model.Artist)</th>
-        </tr>
-    </thead>
+<div>
+    <table class="table">
+        <thead class="row" width="500px">
+            <tr height="10%" width="50px">
+                Titel
+            </tr>
+            <tr height="10%" width="50px">
+                Bredd
+            </tr>
+            <tr height="10%" width="50px">
+                Höjd
+            </tr>
+            <tr height="10%" width="50px">
+                Kort info
+            </tr>
+            <tr height="10%" width="50px">
+                Beskrivning
+            </tr>
+            <tr height="10%" width="50px">
+                Kategori
+            </tr>
+            <tr height="10%" width="50px">
+                Stil
+            </tr>
+            <tr height="10%" width="50px">
+                Skapad
+            </tr>
+            <tr height="10%" width="50px">
+                Pris
+            </tr>
+            <tr height="10%" width="50px">
+                Bild
+            </tr>
+            <tr height="10%" width="50px">
+                ThumbnailLink
+            </tr>
+            <tr height="10%" width="50px">
+                Antal
+            </tr>
+            <tr height="10%" width="50px">
+                Artist
+            </tr>
+        </thead>
+        @foreach (var item in Model.Product)
+        {
+            <tr width="500px">
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Width)
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Height)
+                </td>
+                <td height="10%" width="10px">
+                    <textarea maxlength="20" disabled="disabled">
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                    </textarea>
+                </td>
+                <td height="10%" width="10px">
+                    <textarea maxlength="20" disabled="disabled">
+                    @Html.DisplayFor(modelItem => item.LongDescription)
+                    </textarea>
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Style)
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td height="10%" width="50px">
+                    @Html.DisplayFor(modelItem => item.Artist.ArtistName)
+                </td>
 
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Title)</td>
-            <td>@Html.DisplayFor(modelItem => item.Width)</td>
-            <td>@Html.DisplayFor(modelItem => item.Height)</td>
-            <td>@Html.DisplayFor(modelItem => item.ShortDescription)</td>
-            <td id="longDescription">@Html.DisplayFor(modelItem => item.LongDescription)</td>
-            <td>@Html.DisplayFor(modelItem => item.Category)</td>
-            <td>@Html.DisplayFor(modelItem => item.Style)</td>
-            <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
-            <td>@Html.DisplayFor(modelItem => item.Price)</td>
-            <td>@Html.DisplayFor(modelItem => item.Stock)</td>
-            <td>@Html.DisplayFor(modelItem => item.Artist.ArtistName)</td>
+                <td>
+                    <a asp-action="ChangeProduct" asp-route-id="@item.ProductId">Change</a>
 
-            <td>
-                <a asp-action="ChangeProduct" asp-route-id="@item.ProductId">Change</a>
+                    <a asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
 
-                <a asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
-
-                <a asp-action="MakePublic" asp-route-id="@item.ProductId">Make public</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    <a asp-action="MakePublic" asp-route-id="@item.ProductId">Make public</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+          

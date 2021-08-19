@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\Account\Manage\ManageUsers.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="artwebshop.snk" />
   </ItemGroup>
 

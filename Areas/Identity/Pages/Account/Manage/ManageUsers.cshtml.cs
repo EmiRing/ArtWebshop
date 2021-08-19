@@ -1,13 +1,14 @@
-﻿@model IEnumerable<ApplicationUser>
+﻿@page
+@model IEnumerable<ApplicationUser>
 
-<h2>Hantera användare</h2>
+<h2>Users</h2>
 
 <table class="table table-bordered table-sm">
     @foreach (var user in Model)
     {
         <tr class="">
             <td class="col-6">
-                <a   asp-action="UpdateUser" asp-route-Id="@user.Id">@user.FullName</a>
+                <a asp-controller="Admin" asp-action="UpdateUser" asp-route-Id="@user.Id">@user.FullName</a>
             </td>
 
             @if (Context.User.IsInRole("Admin"))
