@@ -73,19 +73,19 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
             
             [Required]
             [Display(Name = "Gata")]
-            public string BillingStreetName { get; set; }
+            public string DeliveryStreetName { get; set; }
 
             [Required]
             [Display(Name = "Postnummer")]
-            public string BillingPostalCode { get; set; }
+            public string DeliveryPostalCode { get; set; }
 
             [Required]
             [Display(Name = "Ort/Stad")]
-            public string BillingCity { get; set; }
+            public string DeliveryCity { get; set; }
 
             [Required]
             [Display(Name = "Land")]
-            public string BillingCountry { get; set; }
+            public string DeliveryCountry { get; set; }
 
             [Phone]
             [Required]
@@ -111,10 +111,10 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
                     FirstName = Input.FirstName, 
                     LastName = Input.LastName,
                     PhoneNumber = Input.PhoneNumber,
-                    BillingStreetName = Input.BillingStreetName, 
-                    BillingPostalCode = Input.BillingPostalCode, 
-                    BillingCity = Input.BillingCity, 
-                    BillingCountry = Input.BillingCountry
+                    DeliveryStreetName = Input.DeliveryStreetName,
+                    DeliveryPostalCode = Input.DeliveryPostalCode, 
+                    DeliveryCity = Input.DeliveryCity,
+                    DeliveryCountry = Input.DeliveryCountry
                 };
 
                 var result = await _userManager.CreateAsync(appUser, Input.Password);
@@ -145,7 +145,7 @@ namespace ArtWebshop.Areas.Identity.Pages.Account
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
                     );
 
-                    var resultAddUserToRole = await _userManager.AddToRoleAsync(appUser, "Customer");
+                    var resultAddUserToRole = await _userManager.AddToRoleAsync(appUser, "User");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

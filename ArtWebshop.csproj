@@ -13,13 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\Data\Migrations\Products\20210818190552_20210818.cs" Link="20210818190552_20210818.cs" />
-    <Compile Include="..\..\..\Data\Migrations\Products\20210818190552_20210818.Designer.cs" Link="20210818190552_20210818.Designer.cs" />
-    <Compile Include="..\..\..\Data\Migrations\Users\20210818190232_20210818.cs" Link="20210818190232_20210818.cs" />
-    <Compile Include="..\..\..\Data\Migrations\Users\20210818190232_20210818.Designer.cs" Link="20210818190232_20210818.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="eFlexis.Dialog" Version="0.1.0" />
     <PackageReference Include="jQuery" Version="3.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.8" />
@@ -36,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Migrations\Products\" />
+    <Folder Include="Data\Migrations\Users\" />
     <Folder Include="Views\Shared\Components\ChangeAmount\" />
     <Folder Include="wwwroot\Images\Originals\Prints\" />
     <Folder Include="wwwroot\Images\Thumbnails\Paintings\" />
