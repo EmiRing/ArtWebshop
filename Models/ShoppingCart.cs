@@ -144,6 +144,13 @@ namespace ArtWebshop.Models
             return SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems");
         }
 
+        public void ClearCart()
+        {
+            _contextAccessor.HttpContext.Session.Remove("ShoppingCartItems");
+        }
+
+        
+
         public decimal GetShoppingCartTotal()
         {
             if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(_contextAccessor.HttpContext.Session, "ShoppingCartItems") == null) return 0;

@@ -1,12 +1,10 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model CheckoutViewModel
-@{
+﻿
+@model Order
+@*@{
     var shoppingCartItems = Model.shoppingCart.GetShoppingCartItems();
-}
-<div id="lapp">
-    <table class="table table-hover table-bordered mb-0">
+}*@
+<div id="checkout" class="container-md">
+    <table class="table table-hover table-bd mb-0">
         <thead>
             <tr>
                 <th class="text-left col-6" scope="col">Produkt</th>
@@ -31,6 +29,43 @@
             </tr>
         </tfoot>
     </table>
+</div>
+
+<div class="container-lg">
+    <div class="row">
+        <div class="col-md-6">
+            <form id="profile-form" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="DeliveryFirstName"></label>
+                    <input asp-for="DeliveryFirstName" value="@Model.DeliveryFirstName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryLastName"></label>
+                    <input asp-for="DeliveryLastName" value="@Model.DeliveryLastName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryStreetName"></label>
+                    <input asp-for="DeliveryStreetName" value="@Model.DeliveryStreetName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryPostalCode"></label>
+                    <input asp-for="DeliveryPostalCode" value="@Model.DeliveryPostalCode" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryCity"></label>
+                    <input asp-for="DeliveryCity" value="@Model.DeliveryCity" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryCountry"></label>
+                    <input asp-for="DeliveryCountry" value="@Model.DeliveryCountry" class="form-control" />
+                </div>
+                <input asp-for="UserId" value="@Model.UserId" hidden />
+
+                <button id="update-profile-button" type="submit" class="btn btn-primary">Slutför köp</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 
@@ -85,7 +120,7 @@ Vue.component('cart-row', {
 
 
 new Vue({
-    el: '#lapp',
+    el: '#checkout',
     data: {
         shoppingCartItems: [],
         shoppingCartTotal: 0

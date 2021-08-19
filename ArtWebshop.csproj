@@ -29,8 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\Products\" />
-    <Folder Include="Data\Migrations\Users\" />
     <Folder Include="Views\Shared\Components\ChangeAmount\" />
     <Folder Include="wwwroot\Images\Originals\Prints\" />
     <Folder Include="wwwroot\Images\Thumbnails\Paintings\" />

@@ -22,27 +22,27 @@ namespace ArtWebshop.Models
 
         [Required]
         [PersonalData]
-        [Display(Name = "Leverans Gata")]
+        [Display(Name = "Adress")]
         public string DeliveryStreetName { get; set; }
 
         [Required]
         [PersonalData]
-        [Display(Name = "Leverans Postnummer")]
+        [Display(Name = "Postnummer")]
         public string DeliveryPostalCode { get; set; }
 
         [Required]
         [PersonalData]
-        [Display(Name = "Leverans Stad")]        
+        [Display(Name = "Stad")]        
         public string DeliveryCity { get; set; }
 
         [Required]
         [PersonalData]
-        [Display(Name = "Leverans Land")]        
+        [Display(Name = "Land")]        
         public string DeliveryCountry { get; set; }
 
         
         [PersonalData]
-        [Display(Name = "Gata")]
+        [Display(Name = "Adress")]
         public string BillingStreetName { get; set; }
 
         
@@ -56,7 +56,7 @@ namespace ArtWebshop.Models
         public string BillingCity { get; set; }
 
         [PersonalData]
-        [Display(Name = "Stad")]
+        [Display(Name = "Land")]
         public string BillingCountry { get; set; }
 
 
