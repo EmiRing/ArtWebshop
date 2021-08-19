@@ -8,44 +8,73 @@ using Microsoft.EntityFrameworkCore;
 using ArtWebshop.Data;
 using ArtWebshop.Models;
 using ArtWebshop.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace ArtWebshop.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ProductDbContext _context;
+        private readonly ProductDbContext _productContext;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ProductsController(ProductDbContext context)
+        public ProductsController(ProductDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;
+            _productContext = context;
+            _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string id)
         {
-            var productDbContext = _context.Products.Include(p => p.Artist);
-            return View(await productDbContext.ToListAsync());
+            ArtistProductViewModel artistProdViewModel = new ArtistProductViewModel();
+            var user = await _userManager.GetUserAsync(User);
+
+            
+            artistProdViewModel.Product = await _productContext.Products
+                .OrderBy(d => d.CreationDate)
+                .Where(p => p.ArtistId == id)
+                .Include(a => a.Artist)
+                .ToListAsync();
+
+            return View(artistProdViewModel);
         }
 
-
+        [HttpGet]
         public IActionResult AddProduct()
         {
-            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId");
+            //var user = await _userManager.GetUserAsync(User);
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product)
         {
+            var myUser = await _userManager.GetUserAsync(User);
+
+            Artist artist = _productContext.Artist.FirstOrDefault(u => u.UserId == myUser.Id);
+
             if (ModelState.IsValid)
             {
-                product.ProductId = Guid.NewGuid().ToString();
-                _context.Add(product);
+                Product newProduct = new Product
+                {
+                    ProductId = Guid.NewGuid().ToString(),
+                    ArtistId = artist.ArtistId,
+                    Title = product.Title,
+                    Width = product.Width,
+                    Height = product.Height,
+                    ShortDescription = product.ShortDescription,
+                    LongDescription = product.LongDescription,
+                    Category = product.Category,
+                    Style = product.Style,
+                    CreationDate = product.CreationDate,
+                    Price = product.Price,
+                    Stock = product.Stock,
 
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                };
+                _productContext.Add(newProduct);
+
+                await _productContext.SaveChangesAsync();
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", product.ArtistId);
-            return View(product);
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> MakePublic(string id)
@@ -55,7 +84,7 @@ namespace ArtWebshop.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
+            var product = await _productContext.Products
                 .Include(p => p.Artist)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
@@ -70,7 +99,7 @@ namespace ArtWebshop.Controllers
         public async Task<IActionResult> MakePublicConfirmed(string id)
         {
             ArtistProductViewModel artistProdViewModel = new ArtistProductViewModel();
-            artistProdViewModel.Products = await _context.Products
+            artistProdViewModel.Product = await _productContext.Products
                 .Include(a => a.Artist)
                 .ToListAsync();
             return RedirectToAction(nameof(Index));
@@ -83,12 +112,12 @@ namespace ArtWebshop.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
+            var product = await _productContext.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", product.ArtistId);
+            ViewData["ArtistId"] = new SelectList(_productContext.Artist, "ArtistId", "ArtistId", product.ArtistId);
             return View(product);
         }
 
@@ -105,8 +134,8 @@ namespace ArtWebshop.Controllers
             {
                 try
                 {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
+                    _productContext.Update(product);
+                    await _productContext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -122,7 +151,7 @@ namespace ArtWebshop.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", product.ArtistId);
+            ViewData["ArtistId"] = new SelectList(_productContext.Artist, "ArtistId", "ArtistId", product.ArtistId);
             return View(product);
         }
 
@@ -134,7 +163,7 @@ namespace ArtWebshop.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
+            var product = await _productContext.Products
                 .Include(p => p.Artist)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
@@ -149,20 +178,20 @@ namespace ArtWebshop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            var product = await _productContext.Products.FindAsync(id);
+            _productContext.Products.Remove(product);
+            await _productContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(string id)
         {
-            return _context.Products.Any(e => e.ProductId == id);
+            return _productContext.Products.Any(e => e.ProductId == id);
         }
 
         public IActionResult ListProducts()
         {
-            return View(_context.Products.ToList());
+            return View(_productContext.Products.ToList());
         }
     }
 }
