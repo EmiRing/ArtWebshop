@@ -35,24 +35,3 @@
         </tr>
     </table>
 </div>
-
-<script>
-    Vue.component('add-button', {
-         data: function () {
-            return {
-                product: (@Html.Raw(System.Text.Json.JsonSerializer.Serialize(prod)))
-            }
-        },
-        methods: {
-            async addToCart(id) {
-
-                await axios.post("/ShoppingCart/AddToShoppingCart?productId="+ id);
-            }
-        },
-        template: '<button class="btn-success" @@click="addToCart(product.ProductId)" >Köp</button>'
-    })
-    let purchase = new Vue({
-        el: '#purchase'
-
-    })
-</script>
