@@ -8,6 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using ArtWebshop.Repositories;
 
 namespace ArtWebshop.Controllers
 {
@@ -15,66 +19,90 @@ namespace ArtWebshop.Controllers
     {
         private readonly ProductDbContext _productDbContext;
         private readonly AppDbContext _appDbContext;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IRepository<Product> _productRepository;
 
-        public ArtistController(ProductDbContext productDbContext, AppDbContext appDbContext)
+        public ArtistController(ProductDbContext productDbContext, AppDbContext appDbContext, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IRepository<Product> productRepository)
         {
             _productDbContext = productDbContext;
             _appDbContext = appDbContext;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _productRepository = productRepository;
         }
 
-
-        public IActionResult Index()
+        //[Authorize(Roles = "Artist")]
+        public async Task<IActionResult> Index()
         {
-            var productDbContext = _productDbContext.Artists.Include(p => p.ArtistRows);
-            return View(productDbContext.ToList());
+            var user = await _userManager.GetUserAsync(User);
+            var artist = _productDbContext.Artist
+                .FirstOrDefault(u => u.UserId == user.Id);
+
+            return View(artist);
         }
 
-        public IActionResult CreateArtist()
+        [HttpGet]
+        public async Task<IActionResult> CreateArtist()
         {
-            ViewData["ArtistId"] = new SelectList(_productDbContext.Products, "ArtistId", "ArtistId");
+            var user = await _userManager.GetUserAsync(User);
+
+                if (!_productDbContext.Artist.Any(u => u.UserId == user.Id))
+                {
+                    Artist newArtist = new Artist
+                    {
+                        ArtistId = Guid.NewGuid().ToString(),
+                        UserId = user.Id,
+                        ArtistName = "Artist",
+                        Presentation = "Presentation"
+                    };
+
+                    _productDbContext.Add(newArtist);
+                    await _productDbContext.SaveChangesAsync();
+                }
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateArtist(Artist artist)
         {
-            if (ModelState.IsValid && !ArtistExists(artist.ArtistId))
-            {
-                artist.ArtistId = Guid.NewGuid().ToString();
-                _productDbContext.Add(artist);
+            var newArtist = _productDbContext.Artist.FirstOrDefault(u => u.ArtistId == artist.ArtistId);
 
-                await _productDbContext.SaveChangesAsync();
-            }
+            Artist artistModel = new Artist
+            {
+                ArtistName = artist.ArtistName,
+                Presentation = artist.Presentation
+            };
+            await _productDbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult EditArtist()
+        [HttpGet]
+        public async Task<IActionResult> EditArtist()
         {
-            ViewData["ArtistID"] = new SelectList(_productDbContext.Artists, "ArtistId", "ArtistId");
-            return View();
-        }
+            var user = await _userManager.GetUserAsync(User);
+            var artist = _productDbContext.Artist
+            .FirstOrDefault(u => u.UserId == user.Id);
 
-        [HttpPost, ActionName("EditArtist")]
-        public async Task<IActionResult> EditArtistConfirmed(Artist artist)
+            var myUser = await _userManager.FindByIdAsync(user.Id);
+            return View(artist);
+            
+        }
+       [HttpPost]
+        public async Task<IActionResult> EditArtist(Artist artist)
         {
-            if (ModelState.IsValid && ArtistExists(artist.ArtistId))
-            {
-                _productDbContext.Update(artist);
-                await _productDbContext.SaveChangesAsync();
-            }
-            else
-            {
-                artist.ArtistId = Guid.NewGuid().ToString();
-                _productDbContext.Add(artist);
-                await _productDbContext.SaveChangesAsync();
-            }
+            var user = await _userManager.FindByIdAsync(artist.ArtistId);
+
+            artist.ArtistId = artist.ArtistId;
+            artist.ArtistName = artist.ArtistName;
+            artist.ProfilePicture = artist.ProfilePicture;
+            artist.Presentation = artist.Presentation;
+
+            _productDbContext.Artist.Update(artist);
+            await _productDbContext.SaveChangesAsync();
+
+
             return RedirectToAction(nameof(Index));
-        }
-    
-
-        private bool ArtistExists(string id)
-        {
-            return _productDbContext.Artists.Any(e => e.ArtistId == id);
         }
     }
 }
