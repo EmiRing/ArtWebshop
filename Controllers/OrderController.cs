@@ -96,5 +96,11 @@ namespace ArtWebshop.Controllers
             
             return View(order);
         }
+
+        public IActionResult RemoveProduct(Order order, string itemId)
+        {
+            _orderRepository.RemoveProduct(order, itemId);
+            return RedirectToAction("UpdateOrder", "Admin", order.OrderId);
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace ArtWebshop.Repositories
         Task<Order> GetOrderAsync(int orderId);
         Order Update(Order order);
         Task CreateOrder(Order order);
+        void RemoveProduct(Order order, string productId);
     }
 }

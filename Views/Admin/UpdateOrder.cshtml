@@ -1,0 +1,50 @@
+﻿@model Order
+
+
+<div id="update-order" class="container-md border border-2 bg-white w-75">
+    <table class="table table-hover table-bd mb-0">
+        <thead>
+            <tr>
+                <th class="text-left col-6" scope="col">Produkt</th>
+                <th class="text-right col-2" scope="col">Antal</th>
+                <th class="text-right col-3" scope="col">Pris</th>
+                <th class="col-1" scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.OrderRows)
+            {
+                <tr class="p-2">
+
+
+                    <td class="text-left">@row.Product.Title</td>
+                    <td class="text-center">
+
+                        <a class="pointer" asp-action=""> - </a>
+                        @row.Amount
+                        <a class="pointer" v-on:click="add(item.product.productId)"> + </a>
+                    </td>
+                    <td class="text-right"> @row.Price kr<br />@(row.Price * row.Amount) kr</td>
+                    <td class="text-left">
+
+                        <a class="pointer"asp-action="RemoveProduct" asp-controller="Order"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+            @*<tr is="cart-row" v-for="item in shoppingCartItems"
+                v-bind:key="item.id"
+                v-bind:item="item"></tr>*@
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-right">Total:</td>
+                <td colspan="2" class="text-left">
+                    @Model.OrderTotal kr
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+

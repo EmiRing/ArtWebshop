@@ -79,5 +79,19 @@ namespace ArtWebshop.Repositories
             await _productContext.Orders.AddAsync(order);
             await _productContext.SaveChangesAsync();
         }
+
+        public void RemoveProduct(Order order, string productId)
+        {
+            var orderRow = _productContext.OrderRows.Where(o => o.OrderId == order.OrderId).FirstOrDefault(r => r.ProductId == productId);
+
+            if (orderRow != null)
+            {
+                var product = _productContext.Products.FirstOrDefault(p => p.ProductId == productId);
+                product.Stock += orderRow.Amount;
+                _productContext.Products.Update(product);
+                _productContext.OrderRows.Remove(orderRow);
+                _productContext.SaveChanges();
+            }
+        }
     }
 }

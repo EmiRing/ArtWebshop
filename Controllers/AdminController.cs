@@ -1,4 +1,5 @@
-﻿using ArtWebshop.Models;
+﻿using ArtWebshop.Data;
+using ArtWebshop.Models;
 using ArtWebshop.Repositories;
 using ArtWebshop.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -16,12 +17,14 @@ namespace ArtWebshop.Controllers
         private readonly IRepository<ApplicationUser> _userRepository;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ProductDbContext _productDbContext;
 
-        public AdminController(IRepository<ApplicationUser> userRepository, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        public AdminController(IRepository<ApplicationUser> userRepository, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, ProductDbContext productDbContext)
         {
             _userRepository = userRepository;
             _roleManager = roleManager;
             _userManager = userManager;
+            _productDbContext = productDbContext;
         }
         public IActionResult Index()
         {
@@ -102,6 +105,20 @@ namespace ArtWebshop.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListOrders()
+        {
+            //List<Order> orders = _productDbContext.Orders.Include(r => r.OrderRows).ThenInclude(p => p.Product).ToList();
+            List<Order> orders = _productDbContext.Orders.ToList();
+            return View(orders);
+        }
+
+        public IActionResult UpdateOrder(int orderId)
+        {
+            Order order = _productDbContext.Orders.Include(r => r.OrderRows).ThenInclude(p => p.Product).FirstOrDefault(o => o.OrderId == orderId);
+            return View(order);
         }
         private void Errors(IdentityResult result)
         {

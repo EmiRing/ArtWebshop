@@ -1,0 +1,8 @@
+﻿@model List<Order>
+
+    <ul>
+        @foreach (var order in Model)
+	{
+        <li><a asp-action="UpdateOrder" asp-controller="Admin" asp-route-orderId="@order.OrderId">@order.OrderId</a></li> 
+	}
+    </ul>
