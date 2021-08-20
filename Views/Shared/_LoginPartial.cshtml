@@ -11,6 +11,18 @@
 }
 
 <ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Artist"))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @User.Identity.Name
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Artist" asp-action="Index">Min sida</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Artist" asp-action="EditArtist">Redigera profil</a></li>
+            </ul>
+        </li>
+    }
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">

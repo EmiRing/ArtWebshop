@@ -17,9 +17,12 @@
         <img src="Model.Artist.FirstOrDefault().ProfilePicture" />
     </div>-->
     <br />
-        <div class="col-lg-1">
-            @Model.Presentation
-        </div>
+    <div class="col-md-1" style="width:200px">
+        @Model.Presentation
+    </div>
+    <br />
+    <br />
+    @Html.ActionLink("Ändra", "EditArtist", "Artist", new { id = "ÄndraArtist" }, null)
 </div>
 
 

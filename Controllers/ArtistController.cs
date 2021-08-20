@@ -35,6 +35,7 @@ namespace ArtWebshop.Controllers
         //[Authorize(Roles = "Artist")]
         public async Task<IActionResult> Index()
         {
+            
             var user = await _userManager.GetUserAsync(User);
             var artist = _productDbContext.Artist
                 .FirstOrDefault(u => u.UserId == user.Id);
@@ -74,9 +75,10 @@ namespace ArtWebshop.Controllers
                 Presentation = artist.Presentation
             };
             await _productDbContext.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(EditArtist));
         }
 
+        
         [HttpGet]
         public async Task<IActionResult> EditArtist()
         {
@@ -94,10 +96,9 @@ namespace ArtWebshop.Controllers
                 _productDbContext.Add(newArtist);
                 await _productDbContext.SaveChangesAsync();
             }
-            var artist = _productDbContext.Artist
+                var artist = _productDbContext.Artist
             .FirstOrDefault(u => u.UserId == user.Id);
 
-            var myUser = await _userManager.FindByIdAsync(user.Id);
             return View(artist);
 
         }
