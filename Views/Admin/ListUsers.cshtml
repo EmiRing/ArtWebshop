@@ -2,12 +2,12 @@
 
 <h2>Hantera användare</h2>
 
-<table class="table table-bordered table-sm">
+<table class="table table-borderless table-sm">
     @foreach (var user in Model)
     {
         <tr class="">
             <td class="col-6">
-                <a   asp-action="UpdateUser" asp-route-Id="@user.Id">@user.FullName</a>
+                <a asp-action="UpdateUser" asp-route-Id="@user.Id">@user.FullName</a>
             </td>
         </tr>
     }

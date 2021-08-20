@@ -66,7 +66,6 @@ namespace ArtWebshop.Controllers
         
         public async Task<RedirectToActionResult> AddToCart(string productId)
         {
-            //string productId = prodId.ToString();
             Product product = await _productRepository.GetAsync(productId);
 
             if (product != null)
@@ -76,53 +75,53 @@ namespace ArtWebshop.Controllers
 
             return RedirectToAction("ArtDetailsPage", "ProductTemp", new { productId = productId});
         }
-        public async Task<IActionResult> ReduceAmount(string productId)
-        {
-            Product product = await _productRepository.GetAsync(productId);
+        //public async Task<IActionResult> ReduceAmount(string productId)
+        //{
+        //    Product product = await _productRepository.GetAsync(productId);
 
-            if (product != null)
-            {
-                _shoppingCart.ReduceAmountInCart(product);
-            }
+        //    if (product != null)
+        //    {
+        //        _shoppingCart.ReduceAmountInCart(product);
+        //    }
 
-            return View("Index", new ShoppingCartViewModel
-            {
-                shoppingCart = _shoppingCart,
-                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-            });
-        }
+        //    return View("Index", new ShoppingCartViewModel
+        //    {
+        //        shoppingCart = _shoppingCart,
+        //        ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+        //    });
+        //}
 
-        public async Task<IActionResult> IncreaseAmount(string productId)
-        {
-            Product product = await _productRepository.GetAsync(productId);
+        //public async Task<IActionResult> IncreaseAmount(string productId)
+        //{
+        //    Product product = await _productRepository.GetAsync(productId);
 
-            if (product != null)
-            {
-                _shoppingCart.IncreaseAmountInCart(product);
-            }
+        //    if (product != null)
+        //    {
+        //        _shoppingCart.IncreaseAmountInCart(product);
+        //    }
 
-            return View("Index", new ShoppingCartViewModel
-            {
-                shoppingCart = _shoppingCart,
-                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-            });
-        }
+        //    return View("Index", new ShoppingCartViewModel
+        //    {
+        //        shoppingCart = _shoppingCart,
+        //        ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+        //    });
+        //}
 
-        public async Task<IActionResult> RemoveFromCart(string productId)
-        {
-            Product product = await _productRepository.GetAsync(productId);
+        //public async Task<IActionResult> RemoveFromCart(string productId)
+        //{
+        //    Product product = await _productRepository.GetAsync(productId);
 
-            if (product != null)
-            {
-                _shoppingCart.RemoveFromCart(product);
-            }
+        //    if (product != null)
+        //    {
+        //        _shoppingCart.RemoveFromCart(product);
+        //    }
 
-            return View("Index", new ShoppingCartViewModel
-            {
-                shoppingCart = _shoppingCart,
-                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-            });
-        }
+        //    return View("Index", new ShoppingCartViewModel
+        //    {
+        //        shoppingCart = _shoppingCart,
+        //        ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+        //    });
+        //}
 
         [HttpPost]
         public async Task<IActionResult> ChangeAmount([FromBody] postData postData)

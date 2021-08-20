@@ -81,6 +81,19 @@ namespace ArtWebshop.Controllers
         public async Task<IActionResult> EditArtist()
         {
             var user = await _userManager.GetUserAsync(User);
+            if (!_productDbContext.Artist.Any(u => u.UserId == user.Id))
+            {
+                Artist newArtist = new Artist
+                {
+                    ArtistId = Guid.NewGuid().ToString(),
+                    UserId = user.Id,
+                    ArtistName = "Artist",
+                    Presentation = "Presentation"
+                };
+
+                _productDbContext.Add(newArtist);
+                await _productDbContext.SaveChangesAsync();
+            }
             var artist = _productDbContext.Artist
             .FirstOrDefault(u => u.UserId == user.Id);
 
