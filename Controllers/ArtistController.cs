@@ -47,19 +47,19 @@ namespace ArtWebshop.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
-                if (!_productDbContext.Artist.Any(u => u.UserId == user.Id))
+            if (!_productDbContext.Artist.Any(u => u.UserId == user.Id))
+            {
+                Artist newArtist = new Artist
                 {
-                    Artist newArtist = new Artist
-                    {
-                        ArtistId = Guid.NewGuid().ToString(),
-                        UserId = user.Id,
-                        ArtistName = "Artist",
-                        Presentation = "Presentation"
-                    };
+                    ArtistId = Guid.NewGuid().ToString(),
+                    UserId = user.Id,
+                    ArtistName = "Artist",
+                    Presentation = "Presentation"
+                };
 
-                    _productDbContext.Add(newArtist);
-                    await _productDbContext.SaveChangesAsync();
-                }
+                _productDbContext.Add(newArtist);
+                await _productDbContext.SaveChangesAsync();
+            }
             return View();
         }
 
@@ -86,9 +86,9 @@ namespace ArtWebshop.Controllers
 
             var myUser = await _userManager.FindByIdAsync(user.Id);
             return View(artist);
-            
+
         }
-       [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> EditArtist(Artist artist)
         {
             var user = await _userManager.FindByIdAsync(artist.ArtistId);
@@ -103,6 +103,13 @@ namespace ArtWebshop.Controllers
 
 
             return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> ArtOverview(List<Product> product)
+        {
+            //Product product = new Product();
+            product = await _productDbContext.Products.ToListAsync();
+
+            return View(product);
         }
     }
 }

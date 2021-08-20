@@ -13,7 +13,7 @@ namespace ArtWebshop.Models
         public string ProductId { get; set; }
         
         [Required]        
-        [Display(Name = "Titel")]
+        [Display(Name = "Tavla")]
         public string Title { get; set; }
         
         [Required]
@@ -37,7 +37,8 @@ namespace ArtWebshop.Models
         
         [Display(Name ="Stil")]
         public string Style { get; set; }
-        
+
+        [Display(Name = "Skapad år")]
         public string CreationDate { get; set; }
         
         [Required]
@@ -53,7 +54,7 @@ namespace ArtWebshop.Models
 
         public bool IsPaintingOfTheWeek { get; set; }
         
-        [Display(Name ="Lagersaldo")]
+        [Display(Name ="I lager")]
         public int Stock { get; set; }
 
         public bool IsPublic { get; set; }
@@ -63,5 +64,10 @@ namespace ArtWebshop.Models
         public Artist Artist { get; set; }
         public List<ArtistRow> ArtistRows { get; set; }
         public List<OrderRow> OrderRows { get; set; }
+
+        public static implicit operator Product(List<Product> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
